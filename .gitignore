@@ -1,0 +1,17 @@
+# Virtuelle Umgebung
+.venv/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+
+# Flet Build-Artefakte
+build/
+dist/
+
+# Lokale Datenstände (optional, falls private Testdaten nicht online sollen)
+# app_data.json
+
+# Betriebssystem-Dateien
+.DS_Store

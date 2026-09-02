@@ -1,0 +1,2 @@
+- Anmelden / Starten der App im Terminal: flet run --web -p 8550
+- Beenden im Terminal: CTRG + C

@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "language": "Englisch",
+        "front": "Tisch",
+        "back": "table",
+        "box": 2,
+        "due_date": "2026-09-03"
+    },
+    {
+        "id": 2,
+        "language": "Englisch",
+        "front": "Stuhl",
+        "back": "chair",
+        "box": 1,
+        "due_date": "2026-08-31"
+    },
+    {
+        "id": 3,
+        "language": "Spanisch",
+        "front": "Tisch",
+        "back": "mesa",
+        "box": 1,
+        "due_date": "2026-08-31"
+    },
+    {
+        "id": 4,
+        "language": "Spanisch",
+        "front": "Haus",
+        "back": "casa",
+        "box": 1,
+        "due_date": "2026-08-31"
+    }
+]
