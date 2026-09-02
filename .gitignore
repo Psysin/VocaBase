@@ -10,6 +10,9 @@ __pycache__/
 build/
 dist/
 
+# Lokale Testdateien
+Flet_Test.txt
+
 # Lokale Datenstände (optional, falls private Testdaten nicht online sollen)
 # app_data.json
 
