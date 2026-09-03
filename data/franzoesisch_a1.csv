@@ -1,0 +1,206 @@
+Französisch,Deutsch,Kategorie
+bonjour,guten Tag,Begrüßung
+salut,hallo,Begrüßung
+bonsoir,guten Abend,Begrüßung
+bonne nuit,gute Nacht,Begrüßung
+au revoir,auf Wiedersehen,Begrüßung
+s'il vous plaît,bitte,Begrüßung
+merci,danke,Begrüßung
+merci beaucoup,vielen Dank,Begrüßung
+de rien,gern geschehen,Begrüßung
+pardon,Entschuldigung,Begrüßung
+excusez-moi,entschuldigen Sie,Begrüßung
+bienvenue,willkommen,Begrüßung
+oui,ja,Begrüßung
+non,nein,Begrüßung
+peut-être,vielleicht,Begrüßung
+d'accord,einverstanden,Begrüßung
+nom,Name,Personen
+prénom,Vorname,Personen
+personne,Person,Personen
+homme,Mann,Personen
+femme,Frau,Personen
+enfant,Kind,Personen
+garçon,Junge,Personen
+fille,Mädchen,Personen
+ami,Freund,Personen
+amie,Freundin,Personen
+monsieur,Herr,Personen
+madame,Frau,Personen
+âge,Alter,Personen
+famille,Familie,Familie
+père,Vater,Familie
+mère,Mutter,Familie
+parents,Eltern,Familie
+fils,Sohn,Familie
+fille,Tochter,Familie
+frère,Bruder,Familie
+sœur,Schwester,Familie
+grand-père,Großvater,Familie
+grand-mère,Großmutter,Familie
+oncle,Onkel,Familie
+tante,Tante,Familie
+cousin,Cousin,Familie
+mari,Ehemann,Familie
+femme,Ehefrau,Familie
+zéro,null,Zahlen
+un,eins,Zahlen
+deux,zwei,Zahlen
+trois,drei,Zahlen
+quatre,vier,Zahlen
+cinq,fünf,Zahlen
+six,sechs,Zahlen
+sept,sieben,Zahlen
+huit,acht,Zahlen
+neuf,neun,Zahlen
+dix,zehn,Zahlen
+vingt,zwanzig,Zahlen
+trente,dreißig,Zahlen
+cent,hundert,Zahlen
+mille,tausend,Zahlen
+premier,erste,Zahlen
+tout,alle,Zahlen
+beaucoup,viel,Zahlen
+un peu,ein wenig,Zahlen
+plus,mehr,Zahlen
+moins,weniger,Zahlen
+temps,Zeit,Zeit & Datum
+heure,Stunde,Zeit & Datum
+minute,Minute,Zeit & Datum
+jour,Tag,Zeit & Datum
+aujourd'hui,heute,Zeit & Datum
+hier,gestern,Zeit & Datum
+demain,morgen,Zeit & Datum
+semaine,Woche,Zeit & Datum
+week-end,Wochenende,Zeit & Datum
+mois,Monat,Zeit & Datum
+an,Jahr,Zeit & Datum
+matin,Morgen,Zeit & Datum
+midi,Mittag,Zeit & Datum
+soir,Abend,Zeit & Datum
+nuit,Nacht,Zeit & Datum
+lundi,Montag,Wochentage
+mardi,Dienstag,Wochentage
+mercredi,Mittwoch,Wochentage
+jeudi,Donnerstag,Wochentage
+vendredi,Freitag,Wochentage
+samedi,Samstag,Wochentage
+dimanche,Sonntag,Wochentage
+printemps,Frühling,Jahreszeiten
+été,Sommer,Jahreszeiten
+automne,Herbst,Jahreszeiten
+hiver,Winter,Jahreszeiten
+maintenant,jetzt,Zeitangaben
+plus tard,später,Zeitangaben
+toujours,immer,Zeitangaben
+jamais,nie,Zeitangaben
+souvent,oft,Zeitangaben
+parfois,manchmal,Zeitangaben
+maison,Haus,Wohnen
+appartement,Wohnung,Wohnen
+chambre,Zimmer,Wohnen
+cuisine,Küche,Wohnen
+salon,Wohnzimmer,Wohnen
+salle de bains,Badezimmer,Wohnen
+jardin,Garten,Wohnen
+porte,Tür,Wohnen
+fenêtre,Fenster,Wohnen
+table,Tisch,Möbel
+chaise,Stuhl,Möbel
+lit,Bett,Möbel
+canapé,Sofa,Möbel
+armoire,Schrank,Möbel
+lampe,Lampe,Möbel
+nourriture,Essen,Essen & Trinken
+boisson,Getränk,Essen & Trinken
+pain,Brot,Essen & Trinken
+beurre,Butter,Essen & Trinken
+fromage,Käse,Essen & Trinken
+œuf,Ei,Essen & Trinken
+viande,Fleisch,Essen & Trinken
+poisson,Fisch,Essen & Trinken
+eau,Wasser,Essen & Trinken
+lait,Milch,Essen & Trinken
+café,Kaffee,Essen & Trinken
+thé,Tee,Essen & Trinken
+bière,Bier,Essen & Trinken
+vin,Wein,Essen & Trinken
+pomme,Apfel,Essen & Trinken
+vêtements,Kleidung,Kleidung
+chemise,Hemd,Kleidung
+pantalon,Hose,Kleidung
+robe,Kleid,Kleidung
+veste,Jacke,Kleidung
+manteau,Mantel,Kleidung
+chaussures,Schuhe,Kleidung
+corps,Körper,Gesundheit
+tête,Kopf,Gesundheit
+yeux,Augen,Gesundheit
+main,Hand,Gesundheit
+pied,Fuß,Gesundheit
+médecin,Arzt,Gesundheit
+ville,Stadt,Reisen & Stadt
+rue,Straße,Reisen & Stadt
+place,Platz,Reisen & Stadt
+gare,Bahnhof,Reisen & Stadt
+hôtel,Hotel,Reisen & Stadt
+restaurant,Restaurant,Reisen & Stadt
+voiture,Auto,Verkehr
+bus,Bus,Verkehr
+train,Zug,Verkehr
+avion,Flugzeug,Verkehr
+vélo,Fahrrad,Verkehr
+billet,Fahrkarte,Verkehr
+travail,Arbeit,Arbeit & Beruf
+argent,Geld,Finanzen
+soleil,Sonne,Natur & Wetter
+pluie,Regen,Natur & Wetter
+chien,Hund,Tiere
+chat,Katze,Tiere
+être,sein,Verben
+avoir,haben,Verben
+faire,machen,Verben
+aller,gehen,Verben
+venir,kommen,Verben
+voir,sehen,Verben
+écouter,zuhören,Verben
+parler,sprechen,Verben
+dire,sagen,Verben
+demander,fragen,Verben
+lire,lesen,Verben
+écrire,schreiben,Verben
+comprendre,verstehen,Verben
+savoir,wissen,Verben
+vouloir,wollen,Verben
+pouvoir,können,Verben
+manger,essen,Verben
+boire,trinken,Verben
+dormir,schlafen,Verben
+acheter,kaufen,Verben
+payer,bezahlen,Verben
+travailler,arbeiten,Verben
+habiter,wohnen,Verben
+aimer,lieben,Verben
+bon,gut,Adjektive
+mauvais,schlecht,Adjektive
+grand,groß,Adjektive
+petit,klein,Adjektive
+nouveau,neu,Adjektive
+vieux,alt,Adjektive
+chaud,warm,Adjektive
+froid,kalt,Adjektive
+facile,einfach,Adjektive
+difficile,schwierig,Adjektive
+cher,teuer,Adjektive
+beau,schön,Adjektive
+qui,wer,Fragewörter
+que,was,Fragewörter
+où,wo,Fragewörter
+quand,wann,Fragewörter
+pourquoi,warum,Fragewörter
+comment,wie,Fragewörter
+combien,wie viel,Fragewörter
+ici,hier,Ortsangaben
+là,dort,Ortsangaben
+à gauche,links,Ortsangaben
+à droite,rechts,Ortsangaben

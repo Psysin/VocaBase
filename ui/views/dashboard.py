@@ -1,10 +1,16 @@
+"""ui/views/dashboard.py
+
+Dies ist das Herzstück nach dem App-Start. Es zeigt Statistiken an
+und bietet Navigation zu allen anderen Bereichen.
+"""
+
 import flet as ft
 from core.models import UserProfile
 from core.spaced_rep import get_due_words
 
 
 class DashboardView(ft.Container):
-    """Haupt-Dashboard mit 4 klar getrennten Bereichen (Einstellungen, Begrüßung, Stats, Buttons)."""
+    """Haupt-Dashboard mit klar getrennten Bereichen."""
 
     def __init__(
         self,
@@ -16,7 +22,7 @@ class DashboardView(ft.Container):
         on_open_settings,
     ):
         super().__init__()
-        self.expand = True
+        self.expand = True  # Container nimmt den gesamten verfügbaren Platz ein
         self.profile = profile
         self.on_start_practice = on_start_practice
         self.on_add_word = on_add_word
@@ -24,16 +30,23 @@ class DashboardView(ft.Container):
         self.on_switch_profile = on_switch_profile
         self.on_open_settings = on_open_settings
 
-        # 1. Daten und Zähler berechnen
+        # 1. LIVE-DATEN BERECHNEN
         total_words = len(self.profile.words)
         due_words_count = len(get_due_words(self.profile.words))
+
+        # Zählt, wie viele Wörter schon gut verinnerlicht sind (Kasten 4 oder 5)
         learned_count = sum(1 for w in self.profile.words if w.box in (4, 5))
+
         quest_size = getattr(self.profile, "daily_quest_size", 30)
+
+        # Wenn nur 5 Wörter fällig sind, ist die Quest auch nur 5 Wörter groß, nicht 30.
         actual_quest_words = min(due_words_count, quest_size)
 
         # -------------------------------------------------------------
-        # ABSCHNITT 1: Zahnrad-Zeile ganz oben (rechtsbündig)
+        # UI-AUFBAU IN BÖCKEN
         # -------------------------------------------------------------
+
+        # ABSCHNITT 1: Zahnrad-Zeile ganz oben (rechtsbündig)
         settings_row = ft.Row(
             alignment=ft.MainAxisAlignment.END,
             controls=[
@@ -47,9 +60,7 @@ class DashboardView(ft.Container):
             width=340,
         )
 
-        # -------------------------------------------------------------
-        # ABSCHNITT 2: Begrüßungs-Bereich (zentriert)
-        # -------------------------------------------------------------
+        # ABSCHNITT 2: Begrüßungs-Bereich (zentriert untereinander)
         greeting_block = ft.Column(
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
@@ -71,9 +82,8 @@ class DashboardView(ft.Container):
             width=340,
         )
 
-        # -------------------------------------------------------------
         # ABSCHNITT 3: Dashboard-Statistiken (3 Kacheln nebeneinander)
-        # -------------------------------------------------------------
+        # Nutzt eine Hilfsfunktion (unten definiert), um Code-Wiederholungen zu vermeiden
         stat_sessions = self._build_stat_card(
             "🔥 Einheiten", str(self.profile.weekly_sessions), "diese Woche"
         )
@@ -91,9 +101,7 @@ class DashboardView(ft.Container):
             width=340,
         )
 
-        # -------------------------------------------------------------
-        # ABSCHNITT 4: Aktions-Buttons (untereinander)
-        # -------------------------------------------------------------
+        # ABSCHNITT 4: Aktions-Buttons
         btn_quest = ft.ElevatedButton(
             content=ft.Row(
                 controls=[
@@ -108,6 +116,7 @@ class DashboardView(ft.Container):
             ),
             width=340,
             height=48,
+            # Button wird gesperrt (ausgegraut), wenn es heute nichts zu lernen gibt
             disabled=due_words_count == 0,
             on_click=lambda e: self.on_start_practice(),
         )
@@ -153,36 +162,25 @@ class DashboardView(ft.Container):
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=12,
-            controls=[
-                btn_quest,
-                btn_add,
-                btn_list,
-                btn_profile,
-            ],
+            controls=[btn_quest, btn_add, btn_list, btn_profile],
             width=340,
         )
 
-        # -------------------------------------------------------------
-        # Gesamt-Layout (mit vergrößertem oberen Padding für iOS-Statusleiste)
-        # -------------------------------------------------------------
+        # ZUSAMMENBAU DES GESAMTLAYOUTS
         self.content = ft.Container(
             content=ft.Column(
                 alignment=ft.MainAxisAlignment.START,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 spacing=16,
-                controls=[
-                    settings_row,  # 1. Zahnrad oben rechts
-                    greeting_block,  # 2. Begrüßung
-                    stats_row,  # 3. Statistiken
-                    buttons_block,  # 4. Buttons
-                ],
+                controls=[settings_row, greeting_block, stats_row, buttons_block],
             ),
+            # top=48 sorgt dafür, dass die App auf dem iPhone nicht unter der Notch/Kamera klebt!
             padding=ft.Padding(left=20, top=48, right=20, bottom=20),
             expand=True,
         )
 
     def _build_stat_card(self, title: str, main_val: str, subtitle: str) -> ft.Card:
-        """Erzeugt eine gleichmäßig formatierte Statistik-Kachel."""
+        """Hilfsfunktion: Erzeugt eine gleichmäßig formatierte Statistik-Kachel."""
         return ft.Card(
             content=ft.Container(
                 content=ft.Column(

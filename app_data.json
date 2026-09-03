@@ -1,5 +1,5 @@
 {
-    "active_profile": "Paul",
+    "active_profile": "en_test",
     "profiles": [
         {
             "name": "Nadine",
@@ -7,6 +7,7 @@
             "weekly_sessions": 0,
             "daily_quest_size": 30,
             "dark_mode": true,
+            "max_attempts": 3,
             "words": [
                 {
                     "id": 1,
@@ -4293,7 +4294,3906 @@
             "weekly_sessions": 0,
             "daily_quest_size": 30,
             "dark_mode": true,
+            "max_attempts": 3,
             "words": []
+        },
+        {
+            "name": "Homo",
+            "language": "Englisch",
+            "weekly_sessions": 0,
+            "daily_quest_size": 10,
+            "dark_mode": true,
+            "max_attempts": 1,
+            "words": [
+                {
+                    "id": 1,
+                    "front": "Tisch",
+                    "back": "table",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 2,
+                    "front": "Stuhl",
+                    "back": "chair",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 3,
+                    "front": "Buch",
+                    "back": "book",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 4,
+                    "front": "Auto",
+                    "back": "car",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 5,
+                    "front": "Haus",
+                    "back": "house",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 6,
+                    "front": "Hund",
+                    "back": "dog",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 7,
+                    "front": "Katze",
+                    "back": "cat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 8,
+                    "front": "Apfel",
+                    "back": "apple",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 9,
+                    "front": "Wasser",
+                    "back": "water",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 10,
+                    "front": "Brot",
+                    "back": "bread",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 11,
+                    "front": "Milch",
+                    "back": "milk",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 12,
+                    "front": "Kaffee",
+                    "back": "coffee",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 13,
+                    "front": "Tee",
+                    "back": "tea",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 14,
+                    "front": "Fenster",
+                    "back": "window",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 15,
+                    "front": "Tür",
+                    "back": "door",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 16,
+                    "front": "Bett",
+                    "back": "bed",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 17,
+                    "front": "Zimmer",
+                    "back": "room",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 18,
+                    "front": "Stadt",
+                    "back": "city",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 19,
+                    "front": "Straße",
+                    "back": "street",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 20,
+                    "front": "Freund",
+                    "back": "friend",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 21,
+                    "front": "Kind",
+                    "back": "child",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 22,
+                    "front": "Mann",
+                    "back": "man",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 23,
+                    "front": "Frau",
+                    "back": "woman",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 24,
+                    "front": "Vater",
+                    "back": "father",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 25,
+                    "front": "Mutter",
+                    "back": "mother",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 26,
+                    "front": "Sohn",
+                    "back": "son",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 27,
+                    "front": "Tochter",
+                    "back": "daughter",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 28,
+                    "front": "Tag",
+                    "back": "day",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 29,
+                    "front": "Nacht",
+                    "back": "night",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 30,
+                    "front": "Morgen",
+                    "back": "morning",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 31,
+                    "front": "Abend",
+                    "back": "evening",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 32,
+                    "front": "Woche",
+                    "back": "week",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 33,
+                    "front": "Monat",
+                    "back": "month",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 34,
+                    "front": "Jahr",
+                    "back": "year",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 35,
+                    "front": "Zeit",
+                    "back": "time",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 36,
+                    "front": "Geld",
+                    "back": "money",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 37,
+                    "front": "Arbeit",
+                    "back": "work",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 38,
+                    "front": "Schule",
+                    "back": "school",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 39,
+                    "front": "Sonne",
+                    "back": "sun",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 40,
+                    "front": "Mond",
+                    "back": "moon",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 41,
+                    "front": "Baum",
+                    "back": "tree",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 42,
+                    "front": "Blume",
+                    "back": "flower",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 43,
+                    "front": "Meer",
+                    "back": "sea",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 44,
+                    "front": "Berg",
+                    "back": "mountain",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 45,
+                    "front": "Zug",
+                    "back": "train",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 46,
+                    "front": "Flugzeug",
+                    "back": "airplane",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 47,
+                    "front": "Fahrrad",
+                    "back": "bicycle",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 48,
+                    "front": "Tasche",
+                    "back": "bag",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 49,
+                    "front": "Telefon",
+                    "back": "phone",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 50,
+                    "front": "Computer",
+                    "back": "computer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 51,
+                    "front": "sein",
+                    "back": "be",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 52,
+                    "front": "haben",
+                    "back": "have",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 53,
+                    "front": "machen",
+                    "back": "make",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 54,
+                    "front": "tun",
+                    "back": "do",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 55,
+                    "front": "gehen",
+                    "back": "go",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 56,
+                    "front": "kommen",
+                    "back": "come",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 57,
+                    "front": "sehen",
+                    "back": "see",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 58,
+                    "front": "hören",
+                    "back": "hear",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 59,
+                    "front": "essen",
+                    "back": "eat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 60,
+                    "front": "trinken",
+                    "back": "drink",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 61,
+                    "front": "schlafen",
+                    "back": "sleep",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 62,
+                    "front": "sprechen",
+                    "back": "speak",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 63,
+                    "front": "lesen",
+                    "back": "read",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 64,
+                    "front": "schreiben",
+                    "back": "write",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 65,
+                    "front": "lernen",
+                    "back": "learn",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 66,
+                    "front": "verstehen",
+                    "back": "understand",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 67,
+                    "front": "wissen",
+                    "back": "know",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 68,
+                    "front": "wollen",
+                    "back": "want",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 69,
+                    "front": "können",
+                    "back": "can",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 70,
+                    "front": "müssen",
+                    "back": "must",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 71,
+                    "front": "kaufen",
+                    "back": "buy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 72,
+                    "front": "verkaufen",
+                    "back": "sell",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 73,
+                    "front": "geben",
+                    "back": "give",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 74,
+                    "front": "nehmen",
+                    "back": "take",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 75,
+                    "front": "finden",
+                    "back": "find",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 76,
+                    "front": "suchen",
+                    "back": "search",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 77,
+                    "front": "helfen",
+                    "back": "help",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 78,
+                    "front": "wohnen",
+                    "back": "live",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 79,
+                    "front": "arbeiten",
+                    "back": "work",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 80,
+                    "front": "öffnen",
+                    "back": "open",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 81,
+                    "front": "schließen",
+                    "back": "close",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 82,
+                    "front": "fragen",
+                    "back": "ask",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 83,
+                    "front": "antworten",
+                    "back": "answer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 84,
+                    "front": "gut",
+                    "back": "good",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 85,
+                    "front": "schlecht",
+                    "back": "bad",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 86,
+                    "front": "groß",
+                    "back": "big",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 87,
+                    "front": "klein",
+                    "back": "small",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 88,
+                    "front": "neu",
+                    "back": "new",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 89,
+                    "front": "alt",
+                    "back": "old",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 90,
+                    "front": "schön",
+                    "back": "beautiful",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 91,
+                    "front": "schnell",
+                    "back": "fast",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 92,
+                    "front": "langsam",
+                    "back": "slow",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 93,
+                    "front": "teuer",
+                    "back": "expensive",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 94,
+                    "front": "billig",
+                    "back": "cheap",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 95,
+                    "front": "heiß",
+                    "back": "hot",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 96,
+                    "front": "kalt",
+                    "back": "cold",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 97,
+                    "front": "einfach",
+                    "back": "easy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 98,
+                    "front": "schwer",
+                    "back": "difficult",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 99,
+                    "front": "ja",
+                    "back": "yes",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 100,
+                    "front": "nein",
+                    "back": "no",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 101,
+                    "front": "danke",
+                    "back": "thank you",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 102,
+                    "front": "bitte",
+                    "back": "please",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                }
+            ]
+        },
+        {
+            "name": "en_test",
+            "language": "Englisch Basis A1",
+            "weekly_sessions": 0,
+            "daily_quest_size": 10,
+            "dark_mode": true,
+            "max_attempts": 3,
+            "words": [
+                {
+                    "id": 1,
+                    "front": "hallo",
+                    "back": "hello",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 2,
+                    "front": "guten Morgen",
+                    "back": "good morning",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 3,
+                    "front": "guten Abend",
+                    "back": "good evening",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 4,
+                    "front": "gute Nacht",
+                    "back": "good night",
+                    "box": 2,
+                    "due_date": "2026-09-06"
+                },
+                {
+                    "id": 5,
+                    "front": "auf Wiedersehen",
+                    "back": "goodbye",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 6,
+                    "front": "tschüss",
+                    "back": "bye",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 7,
+                    "front": "bitte",
+                    "back": "please",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 8,
+                    "front": "danke",
+                    "back": "thank you",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 9,
+                    "front": "danke",
+                    "back": "thanks",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 10,
+                    "front": "gern geschehen",
+                    "back": "you are welcome",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 11,
+                    "front": "Entschuldigung",
+                    "back": "sorry",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 12,
+                    "front": "Entschuldigung",
+                    "back": "excuse me",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 13,
+                    "front": "willkommen",
+                    "back": "welcome",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 14,
+                    "front": "ja",
+                    "back": "yes",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 15,
+                    "front": "nein",
+                    "back": "no",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 16,
+                    "front": "vielleicht",
+                    "back": "maybe",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 17,
+                    "front": "in Ordnung",
+                    "back": "okay",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 18,
+                    "front": "Name",
+                    "back": "name",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 19,
+                    "front": "Vorname",
+                    "back": "first name",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 20,
+                    "front": "Nachname",
+                    "back": "surname",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 21,
+                    "front": "Person",
+                    "back": "person",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 22,
+                    "front": "Leute",
+                    "back": "people",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 23,
+                    "front": "Freund",
+                    "back": "friend",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 24,
+                    "front": "Junge",
+                    "back": "boy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 25,
+                    "front": "Mädchen",
+                    "back": "girl",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 26,
+                    "front": "Mann",
+                    "back": "man",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 27,
+                    "front": "Frau",
+                    "back": "woman",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 28,
+                    "front": "Kind",
+                    "back": "child",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 29,
+                    "front": "Kinder",
+                    "back": "children",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 30,
+                    "front": "Baby",
+                    "back": "baby",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 31,
+                    "front": "Herr",
+                    "back": "mr",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 32,
+                    "front": "Frau",
+                    "back": "mrs",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 33,
+                    "front": "Alter",
+                    "back": "age",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 34,
+                    "front": "Geburtstag",
+                    "back": "birthday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 35,
+                    "front": "Familie",
+                    "back": "family",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 36,
+                    "front": "Vater",
+                    "back": "father",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 37,
+                    "front": "Mutter",
+                    "back": "mother",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 38,
+                    "front": "Eltern",
+                    "back": "parents",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 39,
+                    "front": "Sohn",
+                    "back": "son",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 40,
+                    "front": "Tochter",
+                    "back": "daughter",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 41,
+                    "front": "Bruder",
+                    "back": "brother",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 42,
+                    "front": "Schwester",
+                    "back": "sister",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 43,
+                    "front": "Großvater",
+                    "back": "grandfather",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 44,
+                    "front": "Großmutter",
+                    "back": "grandmother",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 45,
+                    "front": "Großeltern",
+                    "back": "grandparents",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 46,
+                    "front": "Onkel",
+                    "back": "uncle",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 47,
+                    "front": "Tante",
+                    "back": "aunt",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 48,
+                    "front": "Cousin",
+                    "back": "cousin",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 49,
+                    "front": "Ehemann",
+                    "back": "husband",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 50,
+                    "front": "Ehefrau",
+                    "back": "wife",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 51,
+                    "front": "Partner",
+                    "back": "partner",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 52,
+                    "front": "null",
+                    "back": "zero",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 53,
+                    "front": "eins",
+                    "back": "one",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 54,
+                    "front": "zwei",
+                    "back": "two",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 55,
+                    "front": "drei",
+                    "back": "three",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 56,
+                    "front": "vier",
+                    "back": "four",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 57,
+                    "front": "fünf",
+                    "back": "five",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 58,
+                    "front": "sechs",
+                    "back": "six",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 59,
+                    "front": "sieben",
+                    "back": "seven",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 60,
+                    "front": "acht",
+                    "back": "eight",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 61,
+                    "front": "neun",
+                    "back": "nine",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 62,
+                    "front": "zehn",
+                    "back": "ten",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 63,
+                    "front": "elf",
+                    "back": "eleven",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 64,
+                    "front": "zwölf",
+                    "back": "twelve",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 65,
+                    "front": "dreizehn",
+                    "back": "thirteen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 66,
+                    "front": "vierzehn",
+                    "back": "fourteen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 67,
+                    "front": "fünfzehn",
+                    "back": "fifteen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 68,
+                    "front": "sechzehn",
+                    "back": "sixteen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 69,
+                    "front": "siebzehn",
+                    "back": "seventeen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 70,
+                    "front": "achtzehn",
+                    "back": "eighteen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 71,
+                    "front": "neunzehn",
+                    "back": "nineteen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 72,
+                    "front": "zwanzig",
+                    "back": "twenty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 73,
+                    "front": "dreißig",
+                    "back": "thirty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 74,
+                    "front": "vierzig",
+                    "back": "forty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 75,
+                    "front": "fünfzig",
+                    "back": "fifty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 76,
+                    "front": "sechzig",
+                    "back": "sixty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 77,
+                    "front": "siebzig",
+                    "back": "seventy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 78,
+                    "front": "achtzig",
+                    "back": "eighty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 79,
+                    "front": "neunzig",
+                    "back": "ninety",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 80,
+                    "front": "hundert",
+                    "back": "hundred",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 81,
+                    "front": "tausend",
+                    "back": "thousand",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 82,
+                    "front": "erste",
+                    "back": "first",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 83,
+                    "front": "zweite",
+                    "back": "second",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 84,
+                    "front": "dritte",
+                    "back": "third",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 85,
+                    "front": "Nummer",
+                    "back": "number",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 86,
+                    "front": "Hälfte",
+                    "back": "half",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 87,
+                    "front": "alle",
+                    "back": "all",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 88,
+                    "front": "viele",
+                    "back": "many",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 89,
+                    "front": "viel",
+                    "back": "much",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 90,
+                    "front": "einige",
+                    "back": "some",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 91,
+                    "front": "wenige",
+                    "back": "few",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 92,
+                    "front": "mehr",
+                    "back": "more",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 93,
+                    "front": "weniger",
+                    "back": "less",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 94,
+                    "front": "gesamt",
+                    "back": "total",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 95,
+                    "front": "Zeit",
+                    "back": "time",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 96,
+                    "front": "Stunde",
+                    "back": "hour",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 97,
+                    "front": "Minute",
+                    "back": "minute",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 98,
+                    "front": "Sekunde",
+                    "back": "second",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 99,
+                    "front": "Tag",
+                    "back": "day",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 100,
+                    "front": "heute",
+                    "back": "today",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 101,
+                    "front": "gestern",
+                    "back": "yesterday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 102,
+                    "front": "morgen",
+                    "back": "tomorrow",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 103,
+                    "front": "Woche",
+                    "back": "week",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 104,
+                    "front": "Wochenende",
+                    "back": "weekend",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 105,
+                    "front": "Monat",
+                    "back": "month",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 106,
+                    "front": "Jahr",
+                    "back": "year",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 107,
+                    "front": "Morgen",
+                    "back": "morning",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 108,
+                    "front": "Mittag",
+                    "back": "noon",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 109,
+                    "front": "Nachmittag",
+                    "back": "afternoon",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 110,
+                    "front": "Abend",
+                    "back": "evening",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 111,
+                    "front": "Nacht",
+                    "back": "night",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 112,
+                    "front": "Uhr",
+                    "back": "clock",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 113,
+                    "front": "Montag",
+                    "back": "monday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 114,
+                    "front": "Dienstag",
+                    "back": "tuesday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 115,
+                    "front": "Mittwoch",
+                    "back": "wednesday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 116,
+                    "front": "Donnerstag",
+                    "back": "thursday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 117,
+                    "front": "Freitag",
+                    "back": "friday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 118,
+                    "front": "Samstag",
+                    "back": "saturday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 119,
+                    "front": "Sonntag",
+                    "back": "sunday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 120,
+                    "front": "Januar",
+                    "back": "january",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 121,
+                    "front": "Februar",
+                    "back": "february",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 122,
+                    "front": "März",
+                    "back": "march",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 123,
+                    "front": "April",
+                    "back": "april",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 124,
+                    "front": "Mai",
+                    "back": "may",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 125,
+                    "front": "Juni",
+                    "back": "june",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 126,
+                    "front": "Juli",
+                    "back": "july",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 127,
+                    "front": "August",
+                    "back": "august",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 128,
+                    "front": "September",
+                    "back": "september",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 129,
+                    "front": "Oktober",
+                    "back": "october",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 130,
+                    "front": "November",
+                    "back": "november",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 131,
+                    "front": "Dezember",
+                    "back": "december",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 132,
+                    "front": "Frühling",
+                    "back": "spring",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 133,
+                    "front": "Sommer",
+                    "back": "summer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 134,
+                    "front": "Herbst",
+                    "back": "autumn",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 135,
+                    "front": "Winter",
+                    "back": "winter",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 136,
+                    "front": "jetzt",
+                    "back": "now",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 137,
+                    "front": "später",
+                    "back": "later",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 138,
+                    "front": "früh",
+                    "back": "early",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 139,
+                    "front": "spät",
+                    "back": "late",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 140,
+                    "front": "immer",
+                    "back": "always",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 141,
+                    "front": "nie",
+                    "back": "never",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 142,
+                    "front": "oft",
+                    "back": "often",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 143,
+                    "front": "manchmal",
+                    "back": "sometimes",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 144,
+                    "front": "Haus",
+                    "back": "house",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 145,
+                    "front": "Zuhause",
+                    "back": "home",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 146,
+                    "front": "Wohnung",
+                    "back": "apartment",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 147,
+                    "front": "Zimmer",
+                    "back": "room",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 148,
+                    "front": "Küche",
+                    "back": "kitchen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 149,
+                    "front": "Schlafzimmer",
+                    "back": "bedroom",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 150,
+                    "front": "Wohnzimmer",
+                    "back": "living room",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 151,
+                    "front": "Badezimmer",
+                    "back": "bathroom",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 152,
+                    "front": "Garten",
+                    "back": "garden",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 153,
+                    "front": "Balkon",
+                    "back": "balcony",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 154,
+                    "front": "Tür",
+                    "back": "door",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 155,
+                    "front": "Fenster",
+                    "back": "window",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 156,
+                    "front": "Wand",
+                    "back": "wall",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 157,
+                    "front": "Boden",
+                    "back": "floor",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 158,
+                    "front": "Dach",
+                    "back": "roof",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 159,
+                    "front": "Treppe",
+                    "back": "stairs",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 160,
+                    "front": "Tisch",
+                    "back": "table",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 161,
+                    "front": "Stuhl",
+                    "back": "chair",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 162,
+                    "front": "Bett",
+                    "back": "bed",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 163,
+                    "front": "Sofa",
+                    "back": "sofa",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 164,
+                    "front": "Schrank",
+                    "back": "closet",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 165,
+                    "front": "Regal",
+                    "back": "shelf",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 166,
+                    "front": "Lampe",
+                    "back": "lamp",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 167,
+                    "front": "Teppich",
+                    "back": "carpet",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 168,
+                    "front": "Spiegel",
+                    "back": "mirror",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 169,
+                    "front": "Schlüssel",
+                    "back": "key",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 170,
+                    "front": "Essen",
+                    "back": "food",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 171,
+                    "front": "Getränk",
+                    "back": "drink",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 172,
+                    "front": "Frühstück",
+                    "back": "breakfast",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 173,
+                    "front": "Mittagessen",
+                    "back": "lunch",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 174,
+                    "front": "Abendessen",
+                    "back": "dinner",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 175,
+                    "front": "Brot",
+                    "back": "bread",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 176,
+                    "front": "Butter",
+                    "back": "butter",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 177,
+                    "front": "Käse",
+                    "back": "cheese",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 178,
+                    "front": "Ei",
+                    "back": "egg",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 179,
+                    "front": "Fleisch",
+                    "back": "meat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 180,
+                    "front": "Hähnchen",
+                    "back": "chicken",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 181,
+                    "front": "Rindfleisch",
+                    "back": "beef",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 182,
+                    "front": "Schweinefleisch",
+                    "back": "pork",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 183,
+                    "front": "Fisch",
+                    "back": "fish",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 184,
+                    "front": "Suppe",
+                    "back": "soup",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 185,
+                    "front": "Salat",
+                    "back": "salad",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 186,
+                    "front": "Gemüse",
+                    "back": "vegetables",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 187,
+                    "front": "Obst",
+                    "back": "fruit",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 188,
+                    "front": "Apfel",
+                    "back": "apple",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 189,
+                    "front": "Banane",
+                    "back": "banana",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 190,
+                    "front": "Orange",
+                    "back": "orange",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 191,
+                    "front": "Tomate",
+                    "back": "tomato",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 192,
+                    "front": "Kartoffel",
+                    "back": "potato",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 193,
+                    "front": "Wasser",
+                    "back": "water",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 194,
+                    "front": "Milch",
+                    "back": "milk",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 195,
+                    "front": "Kaffee",
+                    "back": "coffee",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 196,
+                    "front": "Tee",
+                    "back": "tea",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 197,
+                    "front": "Saft",
+                    "back": "juice",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 198,
+                    "front": "Bier",
+                    "back": "beer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 199,
+                    "front": "Wein",
+                    "back": "wine",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 200,
+                    "front": "Zucker",
+                    "back": "sugar",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 201,
+                    "front": "Salz",
+                    "back": "salt",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 202,
+                    "front": "Pfeffer",
+                    "back": "pepper",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 203,
+                    "front": "Reis",
+                    "back": "rice",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 204,
+                    "front": "Nudeln",
+                    "back": "pasta",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 205,
+                    "front": "Kuchen",
+                    "back": "cake",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 206,
+                    "front": "Eis",
+                    "back": "ice cream",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 207,
+                    "front": "Kleidung",
+                    "back": "clothes",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 208,
+                    "front": "Hemd",
+                    "back": "shirt",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 209,
+                    "front": "T-Shirt",
+                    "back": "t-shirt",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 210,
+                    "front": "Hose",
+                    "back": "pants",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 211,
+                    "front": "Jeans",
+                    "back": "jeans",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 212,
+                    "front": "Rock",
+                    "back": "skirt",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 213,
+                    "front": "Kleid",
+                    "back": "dress",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 214,
+                    "front": "Jacke",
+                    "back": "jacket",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 215,
+                    "front": "Mantel",
+                    "back": "coat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 216,
+                    "front": "Pullover",
+                    "back": "sweater",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 217,
+                    "front": "Schuhe",
+                    "back": "shoes",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 218,
+                    "front": "Stiefel",
+                    "back": "boots",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 219,
+                    "front": "Socken",
+                    "back": "socks",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 220,
+                    "front": "Hut",
+                    "back": "hat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 221,
+                    "front": "Mütze",
+                    "back": "cap",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 222,
+                    "front": "Schal",
+                    "back": "scarf",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 223,
+                    "front": "Handschuhe",
+                    "back": "gloves",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 224,
+                    "front": "Gürtel",
+                    "back": "belt",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 225,
+                    "front": "Tasche",
+                    "back": "bag",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 226,
+                    "front": "Brille",
+                    "back": "glasses",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 227,
+                    "front": "Körper",
+                    "back": "body",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 228,
+                    "front": "Kopf",
+                    "back": "head",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 229,
+                    "front": "Haar",
+                    "back": "hair",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 230,
+                    "front": "Gesicht",
+                    "back": "face",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 231,
+                    "front": "Auge",
+                    "back": "eye",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 232,
+                    "front": "Ohr",
+                    "back": "ear",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 233,
+                    "front": "Nase",
+                    "back": "nose",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 234,
+                    "front": "Mund",
+                    "back": "mouth",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 235,
+                    "front": "Zahn",
+                    "back": "tooth",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 236,
+                    "front": "Hals",
+                    "back": "neck",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 237,
+                    "front": "Schulter",
+                    "back": "shoulder",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 238,
+                    "front": "Arm",
+                    "back": "arm",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 239,
+                    "front": "Hand",
+                    "back": "hand",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 240,
+                    "front": "Finger",
+                    "back": "finger",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 241,
+                    "front": "Brust",
+                    "back": "chest",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 242,
+                    "front": "Magen",
+                    "back": "stomach",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 243,
+                    "front": "Bein",
+                    "back": "leg",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 244,
+                    "front": "Knie",
+                    "back": "knee",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 245,
+                    "front": "Fuß",
+                    "back": "foot",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 246,
+                    "front": "Zeh",
+                    "back": "toe",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 247,
+                    "front": "Rücken",
+                    "back": "back",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 248,
+                    "front": "Herz",
+                    "back": "heart",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 249,
+                    "front": "Schmerz",
+                    "back": "pain",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 250,
+                    "front": "Arzt",
+                    "back": "doctor",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 251,
+                    "front": "Krankenhaus",
+                    "back": "hospital",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 252,
+                    "front": "Medikament",
+                    "back": "medicine",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 253,
+                    "front": "krank",
+                    "back": "sick",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 254,
+                    "front": "gesund",
+                    "back": "healthy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 255,
+                    "front": "müde",
+                    "back": "tired",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 256,
+                    "front": "Stadt",
+                    "back": "city",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 257,
+                    "front": "Kleinstadt",
+                    "back": "town",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 258,
+                    "front": "Dorf",
+                    "back": "village",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 259,
+                    "front": "Straße",
+                    "back": "street",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 260,
+                    "front": "Weg",
+                    "back": "road",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 261,
+                    "front": "Platz",
+                    "back": "square",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 262,
+                    "front": "Zentrum",
+                    "back": "center",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 263,
+                    "front": "Bahnhof",
+                    "back": "station",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 264,
+                    "front": "Flughafen",
+                    "back": "airport",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 265,
+                    "front": "Haltestelle",
+                    "back": "bus stop",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 266,
+                    "front": "Hotel",
+                    "back": "hotel",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 267,
+                    "front": "Restaurant",
+                    "back": "restaurant",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 268,
+                    "front": "Café",
+                    "back": "cafe",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 269,
+                    "front": "Bank",
+                    "back": "bank",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 270,
+                    "front": "Post",
+                    "back": "post office",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 271,
+                    "front": "Supermarkt",
+                    "back": "supermarket",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 272,
+                    "front": "Geschäft",
+                    "back": "shop",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 273,
+                    "front": "Apotheke",
+                    "back": "pharmacy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 274,
+                    "front": "Museum",
+                    "back": "museum",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 275,
+                    "front": "Park",
+                    "back": "park",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 276,
+                    "front": "Kirche",
+                    "back": "church",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 277,
+                    "front": "Auto",
+                    "back": "car",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 278,
+                    "front": "Bus",
+                    "back": "bus",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 279,
+                    "front": "Zug",
+                    "back": "train",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 280,
+                    "front": "U-Bahn",
+                    "back": "subway",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 281,
+                    "front": "Flugzeug",
+                    "back": "plane",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 282,
+                    "front": "Fahrrad",
+                    "back": "bicycle",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 283,
+                    "front": "Taxi",
+                    "back": "taxi",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 284,
+                    "front": "Fahrkarte",
+                    "back": "ticket",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 285,
+                    "front": "Reise",
+                    "back": "trip",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 286,
+                    "front": "Urlaub",
+                    "back": "holiday",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 287,
+                    "front": "Reisepass",
+                    "back": "passport",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 288,
+                    "front": "Gepäck",
+                    "back": "luggage",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 289,
+                    "front": "Karte",
+                    "back": "map",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 290,
+                    "front": "Beruf",
+                    "back": "job",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 291,
+                    "front": "Arbeit",
+                    "back": "work",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 292,
+                    "front": "Büro",
+                    "back": "office",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 293,
+                    "front": "Firma",
+                    "back": "company",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 294,
+                    "front": "Chef",
+                    "back": "boss",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 295,
+                    "front": "Kollege",
+                    "back": "colleague",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 296,
+                    "front": "Lehrer",
+                    "back": "teacher",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 297,
+                    "front": "Schüler",
+                    "back": "student",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 298,
+                    "front": "Krankenschwester",
+                    "back": "nurse",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 299,
+                    "front": "Kellner",
+                    "back": "waiter",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 300,
+                    "front": "Polizist",
+                    "back": "police officer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 301,
+                    "front": "Fahrer",
+                    "back": "driver",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 302,
+                    "front": "Ingenieur",
+                    "back": "engineer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 303,
+                    "front": "Geld",
+                    "back": "money",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 304,
+                    "front": "Preis",
+                    "back": "price",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 305,
+                    "front": "Euro",
+                    "back": "euro",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 306,
+                    "front": "Dollar",
+                    "back": "dollar",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 307,
+                    "front": "Wetter",
+                    "back": "weather",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 308,
+                    "front": "Sonne",
+                    "back": "sun",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 309,
+                    "front": "Regen",
+                    "back": "rain",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 310,
+                    "front": "Schnee",
+                    "back": "snow",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 311,
+                    "front": "Wind",
+                    "back": "wind",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 312,
+                    "front": "Wolke",
+                    "back": "cloud",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 313,
+                    "front": "Himmel",
+                    "back": "sky",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 314,
+                    "front": "Meer",
+                    "back": "sea",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 315,
+                    "front": "See",
+                    "back": "lake",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 316,
+                    "front": "Fluss",
+                    "back": "river",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 317,
+                    "front": "Berg",
+                    "back": "mountain",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 318,
+                    "front": "Wald",
+                    "back": "forest",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 319,
+                    "front": "Baum",
+                    "back": "tree",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 320,
+                    "front": "Blume",
+                    "back": "flower",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 321,
+                    "front": "Tier",
+                    "back": "animal",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 322,
+                    "front": "Hund",
+                    "back": "dog",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 323,
+                    "front": "Katze",
+                    "back": "cat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 324,
+                    "front": "Vogel",
+                    "back": "bird",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 325,
+                    "front": "Pferd",
+                    "back": "horse",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 326,
+                    "front": "sein",
+                    "back": "be",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 327,
+                    "front": "haben",
+                    "back": "have",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 328,
+                    "front": "tun",
+                    "back": "do",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 329,
+                    "front": "machen",
+                    "back": "make",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 330,
+                    "front": "gehen",
+                    "back": "go",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 331,
+                    "front": "kommen",
+                    "back": "come",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 332,
+                    "front": "sehen",
+                    "back": "see",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 333,
+                    "front": "schauen",
+                    "back": "look",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 334,
+                    "front": "hören",
+                    "back": "hear",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 335,
+                    "front": "zuhören",
+                    "back": "listen",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 336,
+                    "front": "sprechen",
+                    "back": "speak",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 337,
+                    "front": "reden",
+                    "back": "talk",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 338,
+                    "front": "sagen",
+                    "back": "say",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 339,
+                    "front": "erzählen",
+                    "back": "tell",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 340,
+                    "front": "fragen",
+                    "back": "ask",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 341,
+                    "front": "antworten",
+                    "back": "answer",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 342,
+                    "front": "lesen",
+                    "back": "read",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 343,
+                    "front": "schreiben",
+                    "back": "write",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 344,
+                    "front": "lernen",
+                    "back": "learn",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 345,
+                    "front": "unterrichten",
+                    "back": "teach",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 346,
+                    "front": "verstehen",
+                    "back": "understand",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 347,
+                    "front": "wissen",
+                    "back": "know",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 348,
+                    "front": "denken",
+                    "back": "think",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 349,
+                    "front": "wollen",
+                    "back": "want",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 350,
+                    "front": "mögen",
+                    "back": "like",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 351,
+                    "front": "lieben",
+                    "back": "love",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 352,
+                    "front": "essen",
+                    "back": "eat",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 353,
+                    "front": "trinken",
+                    "back": "drink",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 354,
+                    "front": "schlafen",
+                    "back": "sleep",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 355,
+                    "front": "aufwachen",
+                    "back": "wake up",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 356,
+                    "front": "kaufen",
+                    "back": "buy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 357,
+                    "front": "verkaufen",
+                    "back": "sell",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 358,
+                    "front": "bezahlen",
+                    "back": "pay",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 359,
+                    "front": "helfen",
+                    "back": "help",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 360,
+                    "front": "geben",
+                    "back": "give",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 361,
+                    "front": "nehmen",
+                    "back": "take",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 362,
+                    "front": "bringen",
+                    "back": "bring",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 363,
+                    "front": "öffnen",
+                    "back": "open",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 364,
+                    "front": "schließen",
+                    "back": "close",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 365,
+                    "front": "anfangen",
+                    "back": "start",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 366,
+                    "front": "anhalten",
+                    "back": "stop",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 367,
+                    "front": "beenden",
+                    "back": "finish",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 368,
+                    "front": "warten",
+                    "back": "wait",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 369,
+                    "front": "arbeiten",
+                    "back": "work",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 370,
+                    "front": "leben",
+                    "back": "live",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 371,
+                    "front": "reisen",
+                    "back": "travel",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 372,
+                    "front": "fahren",
+                    "back": "drive",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 373,
+                    "front": "spazieren",
+                    "back": "walk",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 374,
+                    "front": "rennen",
+                    "back": "run",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 375,
+                    "front": "schwimmen",
+                    "back": "swim",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 376,
+                    "front": "spielen",
+                    "back": "play",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 377,
+                    "front": "singen",
+                    "back": "sing",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 378,
+                    "front": "treffen",
+                    "back": "meet",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 379,
+                    "front": "finden",
+                    "back": "find",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 380,
+                    "front": "suchen",
+                    "back": "search",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 381,
+                    "front": "bleiben",
+                    "back": "stay",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 382,
+                    "front": "verlassen",
+                    "back": "leave",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 383,
+                    "front": "legen",
+                    "back": "put",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 384,
+                    "front": "stehen",
+                    "back": "stand",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 385,
+                    "front": "sitzen",
+                    "back": "sit",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 386,
+                    "front": "anrufen",
+                    "back": "call",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 387,
+                    "front": "brauchen",
+                    "back": "need",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 388,
+                    "front": "versuchen",
+                    "back": "try",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 389,
+                    "front": "kosten",
+                    "back": "cost",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 390,
+                    "front": "gut",
+                    "back": "good",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 391,
+                    "front": "schlecht",
+                    "back": "bad",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 392,
+                    "front": "groß",
+                    "back": "big",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 393,
+                    "front": "klein",
+                    "back": "small",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 394,
+                    "front": "neu",
+                    "back": "new",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 395,
+                    "front": "alt",
+                    "back": "old",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 396,
+                    "front": "jung",
+                    "back": "young",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 397,
+                    "front": "schnell",
+                    "back": "fast",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 398,
+                    "front": "langsam",
+                    "back": "slow",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 399,
+                    "front": "heiß",
+                    "back": "hot",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 400,
+                    "front": "kalt",
+                    "back": "cold",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 401,
+                    "front": "warm",
+                    "back": "warm",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 402,
+                    "front": "sauber",
+                    "back": "clean",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 403,
+                    "front": "schmutzig",
+                    "back": "dirty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 404,
+                    "front": "einfach",
+                    "back": "easy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 405,
+                    "front": "schwierig",
+                    "back": "difficult",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 406,
+                    "front": "billig",
+                    "back": "cheap",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 407,
+                    "front": "teuer",
+                    "back": "expensive",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 408,
+                    "front": "schön",
+                    "back": "beautiful",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 409,
+                    "front": "hässlich",
+                    "back": "ugly",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 410,
+                    "front": "glücklich",
+                    "back": "happy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 411,
+                    "front": "traurig",
+                    "back": "sad",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 412,
+                    "front": "müde",
+                    "back": "tired",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 413,
+                    "front": "hungrig",
+                    "back": "hungry",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 414,
+                    "front": "durstig",
+                    "back": "thirsty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 415,
+                    "front": "voll",
+                    "back": "full",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 416,
+                    "front": "leer",
+                    "back": "empty",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 417,
+                    "front": "hell",
+                    "back": "light",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 418,
+                    "front": "dunkel",
+                    "back": "dark",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 419,
+                    "front": "schwer",
+                    "back": "heavy",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 420,
+                    "front": "stark",
+                    "back": "strong",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 421,
+                    "front": "schwach",
+                    "back": "weak",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 422,
+                    "front": "laut",
+                    "back": "loud",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 423,
+                    "front": "leise",
+                    "back": "quiet",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 424,
+                    "front": "richtig",
+                    "back": "right",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 425,
+                    "front": "falsch",
+                    "back": "wrong",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 426,
+                    "front": "wichtig",
+                    "back": "important",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 427,
+                    "front": "frei",
+                    "back": "free",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 428,
+                    "front": "fertig",
+                    "back": "ready",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 429,
+                    "front": "was",
+                    "back": "what",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 430,
+                    "front": "wer",
+                    "back": "who",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 431,
+                    "front": "wo",
+                    "back": "where",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 432,
+                    "front": "wann",
+                    "back": "when",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 433,
+                    "front": "warum",
+                    "back": "why",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 434,
+                    "front": "wie",
+                    "back": "how",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 435,
+                    "front": "wie viel",
+                    "back": "how much",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 436,
+                    "front": "wie viele",
+                    "back": "how many",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 437,
+                    "front": "welche",
+                    "back": "which",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 438,
+                    "front": "hier",
+                    "back": "here",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 439,
+                    "front": "dort",
+                    "back": "there",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 440,
+                    "front": "links",
+                    "back": "left",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 441,
+                    "front": "rechts",
+                    "back": "right",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 442,
+                    "front": "geradeaus",
+                    "back": "straight ahead",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 443,
+                    "front": "oben",
+                    "back": "up",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 444,
+                    "front": "unten",
+                    "back": "down",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 445,
+                    "front": "drinnen",
+                    "back": "inside",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 446,
+                    "front": "draußen",
+                    "back": "outside",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 447,
+                    "front": "vor",
+                    "back": "in front of",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 448,
+                    "front": "hinter",
+                    "back": "behind",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 449,
+                    "front": "zwischen",
+                    "back": "between",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 450,
+                    "front": "neben",
+                    "back": "next to",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 451,
+                    "front": "nah",
+                    "back": "near",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                },
+                {
+                    "id": 452,
+                    "front": "weit",
+                    "back": "far",
+                    "box": 1,
+                    "due_date": "2026-09-03"
+                }
+            ]
         }
     ]
 }

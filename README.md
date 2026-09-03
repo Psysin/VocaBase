@@ -9,14 +9,17 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
 * **Mehrbenutzer- & Mehrsprachen-Verwaltung:**
   * Dynamisches Anlegen und Löschen von Profilen direkt in der Benutzeroberfläche.
   * Individuelle Zielsprachen pro Profil (Englisch, Spanisch, Französisch, Italienisch).
-  * Vordefinierte A1-Starter-Wortschätze (100+ Grundvokabeln bzw. 200+ kuratierte Buchvokabeln) mit optionaler Startauswahl via Checkbox.
+  * Vordefinierte A1-Starter-Wortschätze (100+ Grundvokabeln bzw. 1500+ kuratierte Buchvokabeln) mit optionaler Startauswahl via Checkbox.
+  * Vokabellisten wurde per CSV im /data Ordner abgelegt, der Zugriff auf die Vokabeln erfolgt über
+  starter_words.py
+  * Vokabeln liegen zusätzlich als Tabelle in Google Drive ab
   * Vollständig getrennte Vokabeldaten, Einstellungen und Lernstatistiken pro Nutzer.
 * **Intelligenter Spaced-Repetition-Algorithmus (Leitner-System):**
   * Automatisches 5-Kästen-Intervallsystem (1, 3, 7, 14 und 30 Tage) zur nachhaltigen Langzeitverankerung.
   * Automatische Berechnung der nächsten Fälligkeit (`due_date`) im ISO-Format (`JJJJ-MM-TT`).
 * **Interaktiver Übungs- & Daily-Quest-Modus:**
   * **Gewichteter Modus-Mix:**  100 % Schreib-Modus (Aktives Eintippen mit automatischer Prüfung).
-  * **Fehlertoleranz beim Schreiben:** Bis zu 3 Versuche pro Vokabel. Erst nach dem 3. Fehlversuch wird aufgelöst und die Karte auf Kasten 1 zurückgestuft.
+  * **Fehlertoleranz beim Schreiben:** Bis zu 5 (variabel einstellbar) Versuche pro Vokabel. Erst nach dem letzten  Fehlversuch wird aufgelöst und die Karte auf Kasten 1 zurückgestuft.
   * **Daily Quest Portionierung:** Frei konfigurierbare Session-Größe (10, 20, 30, 50 oder 100 Vokabeln pro Durchgang), um große Vokabelmengen portionsweise zu bewältigen.
   * **Jederzeit abbrechbar:** Bereits geübte Wörter werden sofort persistent gespeichert.
   * Zähler für wöchentlich gemeisterte Lerneinheiten.
@@ -28,6 +31,7 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
 * **Einstellungen & Design:**
   * Einstellungs-Dialog (Zahnrad-Menü) zur Anpassung der Daily-Quest-Größe.
   * Nahtlose Umschaltung zwischen Dark Mode und Light Mode pro Profil.
+  * Anpassung der Fehlversuche zwischen 1 und 5
   * Mobil-optimiertes Layout mit Safe-Area-Padding für iOS.
   * Versions- und Entwicklerinformationen.
 
@@ -80,7 +84,7 @@ Jedes Wort (`Word`) besitzt eine Kasten-Zugehörigkeit (`box`: 1–5) und ein F�
 
 * **Richtig beantwortet (Schreiben / „Gewusst“):** Die Karte steigt einen Kasten auf (`box = min(box + 1, 5)`). Das neue Fälligkeitsdatum wird mit `date.today() + timedelta(days=intervall)` in die Zukunft gesetzt.
 * **Wiederholen (Lesen):** Die Karte verbleibt im aktuellen Kasten und bleibt für den aktuellen Tag fällig.
-* **Falsch beantwortet (nach 3 Fehlversuchen / „Nicht gewusst“):** Die Karte fällt sofort auf Kasten 1 zurück (`box = 1`) und muss ab morgen erneut geübt werden.
+* **Falsch beantwortet (nach diversen Fehlversuchen / „Nicht gewusst“):** Die Karte fällt sofort auf Kasten 1 zurück (`box = 1`) und muss ab morgen erneut geübt werden.
 
 ---
 
@@ -89,8 +93,8 @@ Jedes Wort (`Word`) besitzt eine Kasten-Zugehörigkeit (`box`: 1–5) und ein F�
 ### 1. Repository klonen & Verzeichnis öffnen
 
 ```bash
-git clone [https://github.com/DEIN_BENUTZERNAME/Vokabel_App.git](https://github.com/DEIN_BENUTZERNAME/Vokabel_App.git)
-cd Vokabel_App
+git clone [https://github.com/Psysin/VocaBase.git](https://github.com/Psysin/VocaBase.git)
+cd VocaBase
 ```
 
 ### 2. Virtuelle Umgebung erstellen und aktivieren
@@ -139,5 +143,5 @@ Folgende Module sind für zukünftige Releases vorgesehen:
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.0.0
+* **Version:** 1.0.1
 * **Lizenz:** © 2026 Alle Rechte vorbehalten

@@ -1,3 +1,8 @@
+"""ui/views/practice.py
+
+Setzt die Leitner-Logik visuell in einer Schreibübung (Daily Quest) um.
+"""
+
 import flet as ft
 from core.models import UserProfile, Word
 from core.spaced_rep import get_due_words, review_word
@@ -16,20 +21,18 @@ class PracticeView(ft.Container):
         self.all_profiles = all_profiles
         self.on_finish = on_finish
 
-        # 1. Fällige Vokabeln abrufen und auf die eingestellte Quest-Größe beschränken
+        # 1. SPIELLOGIK (State / Zustand)
         all_due = get_due_words(self.profile.words)
         quest_limit = getattr(self.profile, "daily_quest_size", 30)
+
+        # Beschneidet die Liste auf das Tageslimit
         self.due_words: list[Word] = all_due[:quest_limit]
-
         self.current_index: int = 0
-        self.attempts_left: int = 3
+        self.attempts_left: int = 3  # Wird in load_next_card überschrieben
 
-        # 2. UI-Elemente initialisieren
+        # 2. UI-ELEMENTE
         self.status_text = ft.Text(
-            value="",
-            size=14,
-            weight=ft.FontWeight.W_500,
-            color=ft.Colors.GREY_600,
+            value="", size=14, weight=ft.FontWeight.W_500, color=ft.Colors.GREY_600
         )
 
         self.btn_abort = ft.TextButton(
@@ -51,18 +54,12 @@ class PracticeView(ft.Container):
 
         # Wortanzeige (Deutsches Wort)
         self.word_display = ft.Text(
-            value="",
-            size=26,
-            weight=ft.FontWeight.BOLD,
-            text_align=ft.TextAlign.CENTER,
+            value="", size=26, weight=ft.FontWeight.BOLD, text_align=ft.TextAlign.CENTER
         )
 
-        # Feedback-Text (Richtig / Falsch / Lösung)
+        # Feedback-Text (Richtig / Falsch / Lösung) - Unsichtbar zu Beginn!
         self.feedback_display = ft.Text(
-            value="",
-            size=15,
-            text_align=ft.TextAlign.CENTER,
-            visible=False,
+            value="", size=15, text_align=ft.TextAlign.CENTER, visible=False
         )
 
         self.card_container = ft.Card(
@@ -79,7 +76,8 @@ class PracticeView(ft.Container):
             )
         )
 
-        # Eingabefeld für die Zielsprache
+        # Eingabefeld
+        # on_submit triggert, wenn der Nutzer auf dem Handy oder PC "Enter"/"Return" drückt
         self.input_field = ft.TextField(
             label=f"Übersetzung ({self.profile.language})",
             hint_text="Antwort eintippen...",
@@ -89,7 +87,6 @@ class PracticeView(ft.Container):
             on_submit=self.check_typed_answer,
         )
 
-        # Button: Antwort prüfen
         self.btn_check = ft.ElevatedButton(
             content=ft.Row(
                 controls=[ft.Icon(ft.Icons.CHECK), ft.Text("Prüfen")],
@@ -101,7 +98,6 @@ class PracticeView(ft.Container):
             on_click=self.check_typed_answer,
         )
 
-        # Button: Weiter zur nächsten Karte
         self.btn_next = ft.ElevatedButton(
             content=ft.Row(
                 controls=[ft.Icon(ft.Icons.ARROW_FORWARD), ft.Text("Nächste Vokabel")],
@@ -111,10 +107,9 @@ class PracticeView(ft.Container):
             width=320,
             height=46,
             on_click=lambda e: self.advance_to_next(),
-            visible=False,
+            visible=False,  # Erst sichtbar, wenn geprüft wurde
         )
 
-        # Button: Quest-Abschluss
         self.btn_finish = ft.ElevatedButton(
             content=ft.Row(
                 controls=[ft.Icon(ft.Icons.HOME), ft.Text("Zurück zum Dashboard")],
@@ -127,7 +122,6 @@ class PracticeView(ft.Container):
             visible=False,
         )
 
-        # 3. Gesamt-Layout der Übungsansicht
         self.content = ft.Container(
             content=ft.Column(
                 alignment=ft.MainAxisAlignment.START,
@@ -146,17 +140,19 @@ class PracticeView(ft.Container):
             expand=True,
         )
 
+        # Startet die Logik und füllt die UI-Elemente mit dem ersten Wort
         self.load_next_card()
 
     def load_next_card(self):
-        """Lädt die nächste fällige Karte im Schreibmodus oder beendet die Quest."""
+        """Lädt die nächste fällige Karte oder beendet die Quest."""
         if self.current_index < len(self.due_words):
+            # Es gibt noch Karten zum Abfragen
             current_word = self.due_words[self.current_index]
             self.word_display.value = current_word.front
-            self.feedback_display.visible = False
-            self.attempts_left = self.profile.max_attempts
 
-            # Eingabefeld und Buttons für den Schreibmodus zurücksetzen
+            # Alles für den neuen Versuch auf Standard zurücksetzen
+            self.feedback_display.visible = False
+            self.attempts_left = getattr(self.profile, "max_attempts", 3)
             self.input_field.visible = True
             self.input_field.value = ""
             self.input_field.read_only = False
@@ -165,12 +161,14 @@ class PracticeView(ft.Container):
             self.btn_finish.visible = False
             self.btn_abort.visible = True
             self.status_text.value = f"{self.current_index + 1}/{len(self.due_words)}"
+            self.input_field.focus()  # Holt den Cursor zurück
         else:
-            # Daily Quest abgeschlossen: Wöchentliche Sessions erhöhen
+            # Daily Quest abgeschlossen
             if len(self.due_words) > 0:
                 self.profile.weekly_sessions += 1
                 save_app_data(self.all_profiles, active_profile_name=self.profile.name)
 
+            # Sieges-Bildschirm bauen (Eingabefeld verschwindet)
             self.word_display.value = "🏆 Quest gemeistert!"
             self.feedback_display.value = (
                 f"{len(self.due_words)} Vokabeln erfolgreich abgeschlossen."
@@ -190,7 +188,7 @@ class PracticeView(ft.Container):
         current_word = self.due_words[self.current_index]
         user_input = self.input_field.value.strip()
 
-        # Korrekte Eingabe (Groß-/Kleinschreibung wird ignoriert)
+        # Korrekte Eingabe
         if user_input.lower() == current_word.back.strip().lower():
             self.feedback_display.value = "✅ Richtig!"
             self.feedback_display.color = ft.Colors.GREEN_400
@@ -203,14 +201,17 @@ class PracticeView(ft.Container):
             review_word(current_word, "gewusst")
             save_app_data(self.all_profiles, active_profile_name=self.profile.name)
         else:
+            # Falsche Eingabe - Versuch abziehen
             self.attempts_left -= 1
+
             if self.attempts_left > 0:
                 self.feedback_display.value = f"❌ Falsch! Noch {self.attempts_left} Versuch{'e' if self.attempts_left > 1 else ''}."
                 self.feedback_display.color = ft.Colors.ORANGE_400
                 self.feedback_display.visible = True
                 self.input_field.value = ""
+                self.input_field.focus()
             else:
-                # 3 Fehlversuche: Lösung anzeigen und Karte zurück auf Kasten 1
+                # Alle Fehlversuche aufgebraucht
                 self.feedback_display.value = (
                     f"❌ Leider falsch! Richtige Lösung: {current_word.back}"
                 )
@@ -220,9 +221,12 @@ class PracticeView(ft.Container):
                 self.btn_check.visible = False
                 self.btn_next.visible = True
 
+                # Kasten-Strafaktion
                 review_word(current_word, "nicht_gewusst")
                 save_app_data(self.all_profiles, active_profile_name=self.profile.name)
 
+        # WICHTIG: Das UI muss manuell angewiesen werden, sich neu zu zeichnen,
+        # da wir visibility, texte und buttons im Hintergrund verändert haben.
         self.update()
 
     def advance_to_next(self):

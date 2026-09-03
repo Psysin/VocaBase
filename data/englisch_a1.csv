@@ -1,0 +1,453 @@
+Englisch,Deutsch,Kategorie
+hello,hallo,Begrüßung
+good morning,guten Morgen,Begrüßung
+good evening,guten Abend,Begrüßung
+good night,gute Nacht,Begrüßung
+goodbye,auf Wiedersehen,Begrüßung
+bye,tschüss,Begrüßung
+please,bitte,Begrüßung
+thank you,danke,Begrüßung
+thanks,danke,Begrüßung
+you are welcome,gern geschehen,Begrüßung
+sorry,Entschuldigung,Begrüßung
+excuse me,Entschuldigung,Begrüßung
+welcome,willkommen,Begrüßung
+yes,ja,Begrüßung
+no,nein,Begrüßung
+maybe,vielleicht,Begrüßung
+okay,in Ordnung,Begrüßung
+name,Name,Personen
+first name,Vorname,Personen
+surname,Nachname,Personen
+person,Person,Personen
+people,Leute,Personen
+friend,Freund,Personen
+boy,Junge,Personen
+girl,Mädchen,Personen
+man,Mann,Personen
+woman,Frau,Personen
+child,Kind,Personen
+children,Kinder,Personen
+baby,Baby,Personen
+mr,Herr,Personen
+mrs,Frau,Personen
+age,Alter,Personen
+birthday,Geburtstag,Personen
+family,Familie,Familie
+father,Vater,Familie
+mother,Mutter,Familie
+parents,Eltern,Familie
+son,Sohn,Familie
+daughter,Tochter,Familie
+brother,Bruder,Familie
+sister,Schwester,Familie
+grandfather,Großvater,Familie
+grandmother,Großmutter,Familie
+grandparents,Großeltern,Familie
+uncle,Onkel,Familie
+aunt,Tante,Familie
+cousin,Cousin,Familie
+husband,Ehemann,Familie
+wife,Ehefrau,Familie
+partner,Partner,Familie
+zero,null,Zahlen
+one,eins,Zahlen
+two,zwei,Zahlen
+three,drei,Zahlen
+four,vier,Zahlen
+five,fünf,Zahlen
+six,sechs,Zahlen
+seven,sieben,Zahlen
+eight,acht,Zahlen
+nine,neun,Zahlen
+ten,zehn,Zahlen
+eleven,elf,Zahlen
+twelve,zwölf,Zahlen
+thirteen,dreizehn,Zahlen
+fourteen,vierzehn,Zahlen
+fifteen,fünfzehn,Zahlen
+sixteen,sechzehn,Zahlen
+seventeen,siebzehn,Zahlen
+eighteen,achtzehn,Zahlen
+nineteen,neunzehn,Zahlen
+twenty,zwanzig,Zahlen
+thirty,dreißig,Zahlen
+forty,vierzig,Zahlen
+fifty,fünfzig,Zahlen
+sixty,sechzig,Zahlen
+seventy,siebzig,Zahlen
+eighty,achtzig,Zahlen
+ninety,neunzig,Zahlen
+hundred,hundert,Zahlen
+thousand,tausend,Zahlen
+first,erste,Zahlen
+second,zweite,Zahlen
+third,dritte,Zahlen
+number,Nummer,Zahlen
+half,Hälfte,Zahlen
+all,alle,Zahlen
+many,viele,Zahlen
+much,viel,Zahlen
+some,einige,Zahlen
+few,wenige,Zahlen
+more,mehr,Zahlen
+less,weniger,Zahlen
+total,gesamt,Zahlen
+time,Zeit,Zeit & Datum
+hour,Stunde,Zeit & Datum
+minute,Minute,Zeit & Datum
+second,Sekunde,Zeit & Datum
+day,Tag,Zeit & Datum
+today,heute,Zeit & Datum
+yesterday,gestern,Zeit & Datum
+tomorrow,morgen,Zeit & Datum
+week,Woche,Zeit & Datum
+weekend,Wochenende,Zeit & Datum
+month,Monat,Zeit & Datum
+year,Jahr,Zeit & Datum
+morning,Morgen,Zeit & Datum
+noon,Mittag,Zeit & Datum
+afternoon,Nachmittag,Zeit & Datum
+evening,Abend,Zeit & Datum
+night,Nacht,Zeit & Datum
+clock,Uhr,Zeit & Datum
+monday,Montag,Wochentage
+tuesday,Dienstag,Wochentage
+wednesday,Mittwoch,Wochentage
+thursday,Donnerstag,Wochentage
+friday,Freitag,Wochentage
+saturday,Samstag,Wochentage
+sunday,Sonntag,Wochentage
+january,Januar,Monate
+february,Februar,Monate
+march,März,Monate
+april,April,Monate
+may,Mai,Monate
+june,Juni,Monate
+july,Juli,Monate
+august,August,Monate
+september,September,Monate
+october,Oktober,Monate
+november,November,Monate
+december,Dezember,Monate
+spring,Frühling,Jahreszeiten
+summer,Sommer,Jahreszeiten
+autumn,Herbst,Jahreszeiten
+winter,Winter,Jahreszeiten
+now,jetzt,Zeitangaben
+later,später,Zeitangaben
+early,früh,Zeitangaben
+late,spät,Zeitangaben
+always,immer,Zeitangaben
+never,nie,Zeitangaben
+often,oft,Zeitangaben
+sometimes,manchmal,Zeitangaben
+house,Haus,Wohnen
+home,Zuhause,Wohnen
+apartment,Wohnung,Wohnen
+room,Zimmer,Wohnen
+kitchen,Küche,Wohnen
+bedroom,Schlafzimmer,Wohnen
+living room,Wohnzimmer,Wohnen
+bathroom,Badezimmer,Wohnen
+garden,Garten,Wohnen
+balcony,Balkon,Wohnen
+door,Tür,Wohnen
+window,Fenster,Wohnen
+wall,Wand,Wohnen
+floor,Boden,Wohnen
+roof,Dach,Wohnen
+stairs,Treppe,Wohnen
+table,Tisch,Möbel
+chair,Stuhl,Möbel
+bed,Bett,Möbel
+sofa,Sofa,Möbel
+closet,Schrank,Möbel
+shelf,Regal,Möbel
+lamp,Lampe,Möbel
+carpet,Teppich,Möbel
+mirror,Spiegel,Möbel
+key,Schlüssel,Wohnen
+food,Essen,Essen & Trinken
+drink,Getränk,Essen & Trinken
+breakfast,Frühstück,Essen & Trinken
+lunch,Mittagessen,Essen & Trinken
+dinner,Abendessen,Essen & Trinken
+bread,Brot,Essen & Trinken
+butter,Butter,Essen & Trinken
+cheese,Käse,Essen & Trinken
+egg,Ei,Essen & Trinken
+meat,Fleisch,Essen & Trinken
+chicken,Hähnchen,Essen & Trinken
+beef,Rindfleisch,Essen & Trinken
+pork,Schweinefleisch,Essen & Trinken
+fish,Fisch,Essen & Trinken
+soup,Suppe,Essen & Trinken
+salad,Salat,Essen & Trinken
+vegetables,Gemüse,Essen & Trinken
+fruit,Obst,Essen & Trinken
+apple,Apfel,Essen & Trinken
+banana,Banane,Essen & Trinken
+orange,Orange,Essen & Trinken
+tomato,Tomate,Essen & Trinken
+potato,Kartoffel,Essen & Trinken
+water,Wasser,Essen & Trinken
+milk,Milch,Essen & Trinken
+coffee,Kaffee,Essen & Trinken
+tea,Tee,Essen & Trinken
+juice,Saft,Essen & Trinken
+beer,Bier,Essen & Trinken
+wine,Wein,Essen & Trinken
+sugar,Zucker,Essen & Trinken
+salt,Salz,Essen & Trinken
+pepper,Pfeffer,Essen & Trinken
+rice,Reis,Essen & Trinken
+pasta,Nudeln,Essen & Trinken
+cake,Kuchen,Essen & Trinken
+ice cream,Eis,Essen & Trinken
+clothes,Kleidung,Kleidung
+shirt,Hemd,Kleidung
+t-shirt,T-Shirt,Kleidung
+pants,Hose,Kleidung
+jeans,Jeans,Kleidung
+skirt,Rock,Kleidung
+dress,Kleid,Kleidung
+jacket,Jacke,Kleidung
+coat,Mantel,Kleidung
+sweater,Pullover,Kleidung
+shoes,Schuhe,Kleidung
+boots,Stiefel,Kleidung
+socks,Socken,Kleidung
+hat,Hut,Kleidung
+cap,Mütze,Kleidung
+scarf,Schal,Kleidung
+gloves,Handschuhe,Kleidung
+belt,Gürtel,Kleidung
+bag,Tasche,Kleidung
+glasses,Brille,Kleidung
+body,Körper,Gesundheit
+head,Kopf,Gesundheit
+hair,Haar,Gesundheit
+face,Gesicht,Gesundheit
+eye,Auge,Gesundheit
+ear,Ohr,Gesundheit
+nose,Nase,Gesundheit
+mouth,Mund,Gesundheit
+tooth,Zahn,Gesundheit
+neck,Hals,Gesundheit
+shoulder,Schulter,Gesundheit
+arm,Arm,Gesundheit
+hand,Hand,Gesundheit
+finger,Finger,Gesundheit
+chest,Brust,Gesundheit
+stomach,Magen,Gesundheit
+leg,Bein,Gesundheit
+knee,Knie,Gesundheit
+foot,Fuß,Gesundheit
+toe,Zeh,Gesundheit
+back,Rücken,Gesundheit
+heart,Herz,Gesundheit
+pain,Schmerz,Gesundheit
+doctor,Arzt,Gesundheit
+hospital,Krankenhaus,Gesundheit
+medicine,Medikament,Gesundheit
+sick,krank,Gesundheit
+healthy,gesund,Gesundheit
+tired,müde,Gesundheit
+city,Stadt,Reisen & Stadt
+town,Kleinstadt,Reisen & Stadt
+village,Dorf,Reisen & Stadt
+street,Straße,Reisen & Stadt
+road,Weg,Reisen & Stadt
+square,Platz,Reisen & Stadt
+center,Zentrum,Reisen & Stadt
+station,Bahnhof,Reisen & Stadt
+airport,Flughafen,Reisen & Stadt
+bus stop,Haltestelle,Reisen & Stadt
+hotel,Hotel,Reisen & Stadt
+restaurant,Restaurant,Reisen & Stadt
+cafe,Café,Reisen & Stadt
+bank,Bank,Reisen & Stadt
+post office,Post,Reisen & Stadt
+supermarket,Supermarkt,Reisen & Stadt
+shop,Geschäft,Reisen & Stadt
+pharmacy,Apotheke,Reisen & Stadt
+museum,Museum,Reisen & Stadt
+park,Park,Reisen & Stadt
+church,Kirche,Reisen & Stadt
+car,Auto,Verkehr
+bus,Bus,Verkehr
+train,Zug,Verkehr
+subway,U-Bahn,Verkehr
+plane,Flugzeug,Verkehr
+bicycle,Fahrrad,Verkehr
+taxi,Taxi,Verkehr
+ticket,Fahrkarte,Verkehr
+trip,Reise,Reisen & Stadt
+holiday,Urlaub,Reisen & Stadt
+passport,Reisepass,Reisen & Stadt
+luggage,Gepäck,Reisen & Stadt
+map,Karte,Reisen & Stadt
+job,Beruf,Arbeit & Beruf
+work,Arbeit,Arbeit & Beruf
+office,Büro,Arbeit & Beruf
+company,Firma,Arbeit & Beruf
+boss,Chef,Arbeit & Beruf
+colleague,Kollege,Arbeit & Beruf
+teacher,Lehrer,Arbeit & Beruf
+student,Schüler,Arbeit & Beruf
+nurse,Krankenschwester,Arbeit & Beruf
+waiter,Kellner,Arbeit & Beruf
+police officer,Polizist,Arbeit & Beruf
+driver,Fahrer,Arbeit & Beruf
+engineer,Ingenieur,Arbeit & Beruf
+money,Geld,Finanzen
+price,Preis,Finanzen
+euro,Euro,Finanzen
+dollar,Dollar,Finanzen
+weather,Wetter,Natur & Wetter
+sun,Sonne,Natur & Wetter
+rain,Regen,Natur & Wetter
+snow,Schnee,Natur & Wetter
+wind,Wind,Natur & Wetter
+cloud,Wolke,Natur & Wetter
+sky,Himmel,Natur & Wetter
+sea,Meer,Natur & Wetter
+lake,See,Natur & Wetter
+river,Fluss,Natur & Wetter
+mountain,Berg,Natur & Wetter
+forest,Wald,Natur & Wetter
+tree,Baum,Natur & Wetter
+flower,Blume,Natur & Wetter
+animal,Tier,Tiere
+dog,Hund,Tiere
+cat,Katze,Tiere
+bird,Vogel,Tiere
+horse,Pferd,Tiere
+be,sein,Verben
+have,haben,Verben
+do,tun,Verben
+make,machen,Verben
+go,gehen,Verben
+come,kommen,Verben
+see,sehen,Verben
+look,schauen,Verben
+hear,hören,Verben
+listen,zuhören,Verben
+speak,sprechen,Verben
+talk,reden,Verben
+say,sagen,Verben
+tell,erzählen,Verben
+ask,fragen,Verben
+answer,antworten,Verben
+read,lesen,Verben
+write,schreiben,Verben
+learn,lernen,Verben
+teach,unterrichten,Verben
+understand,verstehen,Verben
+know,wissen,Verben
+think,denken,Verben
+want,wollen,Verben
+like,mögen,Verben
+love,lieben,Verben
+eat,essen,Verben
+drink,trinken,Verben
+sleep,schlafen,Verben
+wake up,aufwachen,Verben
+buy,kaufen,Verben
+sell,verkaufen,Verben
+pay,bezahlen,Verben
+help,helfen,Verben
+give,geben,Verben
+take,nehmen,Verben
+bring,bringen,Verben
+open,öffnen,Verben
+close,schließen,Verben
+start,anfangen,Verben
+stop,anhalten,Verben
+finish,beenden,Verben
+wait,warten,Verben
+work,arbeiten,Verben
+live,leben,Verben
+travel,reisen,Verben
+drive,fahren,Verben
+walk,spazieren,Verben
+run,rennen,Verben
+swim,schwimmen,Verben
+play,spielen,Verben
+sing,singen,Verben
+meet,treffen,Verben
+find,finden,Verben
+search,suchen,Verben
+stay,bleiben,Verben
+leave,verlassen,Verben
+put,legen,Verben
+stand,stehen,Verben
+sit,sitzen,Verben
+call,anrufen,Verben
+need,brauchen,Verben
+try,versuchen,Verben
+cost,kosten,Verben
+good,gut,Adjektive
+bad,schlecht,Adjektive
+big,groß,Adjektive
+small,klein,Adjektive
+new,neu,Adjektive
+old,alt,Adjektive
+young,jung,Adjektive
+fast,schnell,Adjektive
+slow,langsam,Adjektive
+hot,heiß,Adjektive
+cold,kalt,Adjektive
+warm,warm,Adjektive
+clean,sauber,Adjektive
+dirty,schmutzig,Adjektive
+easy,einfach,Adjektive
+difficult,schwierig,Adjektive
+cheap,billig,Adjektive
+expensive,teuer,Adjektive
+beautiful,schön,Adjektive
+ugly,hässlich,Adjektive
+happy,glücklich,Adjektive
+sad,traurig,Adjektive
+tired,müde,Adjektive
+hungry,hungrig,Adjektive
+thirsty,durstig,Adjektive
+full,voll,Adjektive
+empty,leer,Adjektive
+light,hell,Adjektive
+dark,dunkel,Adjektive
+heavy,schwer,Adjektive
+strong,stark,Adjektive
+weak,schwach,Adjektive
+loud,laut,Adjektive
+quiet,leise,Adjektive
+right,richtig,Adjektive
+wrong,falsch,Adjektive
+important,wichtig,Adjektive
+free,frei,Adjektive
+ready,fertig,Adjektive
+what,was,Fragewörter
+who,wer,Fragewörter
+where,wo,Fragewörter
+when,wann,Fragewörter
+why,warum,Fragewörter
+how,wie,Fragewörter
+how much,wie viel,Fragewörter
+how many,wie viele,Fragewörter
+which,welche,Fragewörter
+here,hier,Ortsangaben
+there,dort,Ortsangaben
+left,links,Ortsangaben
+right,rechts,Ortsangaben
+straight ahead,geradeaus,Ortsangaben
+up,oben,Ortsangaben
+down,unten,Ortsangaben
+inside,drinnen,Ortsangaben
+outside,draußen,Ortsangaben
+in front of,vor,Ortsangaben
+behind,hinter,Ortsangaben
+between,zwischen,Ortsangaben
+next to,neben,Ortsangaben
+near,nah,Ortsangaben
+far,weit,Ortsangaben

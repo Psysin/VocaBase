@@ -1,0 +1,208 @@
+Italienisch,Deutsch,Kategorie
+ciao,hallo,Begrüßung
+buongiorno,guten Tag,Begrüßung
+buonasera,guten Abend,Begrüßung
+buonanotte,gute Nacht,Begrüßung
+arrivederci,auf Wiedersehen,Begrüßung
+per favore,bitte,Begrüßung
+grazie,danke,Begrüßung
+grazie mille,vielen Dank,Begrüßung
+prego,gern geschehen,Begrüßung
+scusa,Entschuldigung,Begrüßung
+scusi,entschuldigen Sie,Begrüßung
+benvenuto,willkommen,Begrüßung
+sì,ja,Begrüßung
+no,nein,Begrüßung
+forse,vielleicht,Begrüßung
+va bene,in Ordnung,Begrüßung
+nome,Name,Personen
+cognome,Nachname,Personen
+persona,Person,Personen
+uomo,Mann,Personen
+donna,Frau,Personen
+bambino,Kind,Personen
+ragazzo,Junge,Personen
+ragazza,Mädchen,Personen
+amico,Freund,Personen
+amica,Freundin,Personen
+signore,Herr,Personen
+signora,Frau,Personen
+età,Alter,Personen
+famiglia,Familie,Familie
+padre,Vater,Familie
+madre,Mutter,Familie
+genitori,Eltern,Familie
+figlio,Sohn,Familie
+figlia,Tochter,Familie
+fratello,Bruder,Familie
+sorella,Schwester,Familie
+nonno,Großvater,Familie
+nonna,Großmutter,Familie
+zio,Onkel,Familie
+zia,Tante,Familie
+cugino,Cousin,Familie
+marito,Ehemann,Familie
+moglie,Ehefrau,Familie
+zero,null,Zahlen
+uno,eins,Zahlen
+due,zwei,Zahlen
+tre,drei,Zahlen
+quattro,vier,Zahlen
+cinque,fünf,Zahlen
+sei,sechs,Zahlen
+sette,sieben,Zahlen
+otto,acht,Zahlen
+nove,neun,Zahlen
+dieci,zehn,Zahlen
+venti,zwanzig,Zahlen
+trenta,dreißig,Zahlen
+cento,hundert,Zahlen
+mille,tausend,Zahlen
+primo,erste,Zahlen
+tutto,alle,Zahlen
+molto,viel,Zahlen
+poco,wenig,Zahlen
+più,mehr,Zahlen
+meno,weniger,Zahlen
+tempo,Zeit,Zeit & Datum
+ora,Stunde,Zeit & Datum
+minuto,Minute,Zeit & Datum
+giorno,Tag,Zeit & Datum
+oggi,heute,Zeit & Datum
+ieri,gestern,Zeit & Datum
+domani,morgen,Zeit & Datum
+settimana,Woche,Zeit & Datum
+fine settimana,Wochenende,Zeit & Datum
+mese,Monat,Zeit & Datum
+anno,Jahr,Zeit & Datum
+mattina,Morgen,Zeit & Datum
+mezzogiorno,Mittag,Zeit & Datum
+sera,Abend,Zeit & Datum
+notte,Nacht,Zeit & Datum
+lunedì,Montag,Wochentage
+martedì,Dienstag,Wochentage
+mercoledì,Mittwoch,Wochentage
+giovedì,Donnerstag,Wochentage
+venerdì,Freitag,Wochentage
+sabato,Samstag,Wochentage
+domenica,Sonntag,Wochentage
+primavera,Frühling,Jahreszeiten
+estate,Sommer,Jahreszeiten
+autunno,Herbst,Jahreszeiten
+inverno,Winter,Jahreszeiten
+adesso,jetzt,Zeitangaben
+dopo,später,Zeitangaben
+sempre,immer,Zeitangaben
+mai,nie,Zeitangaben
+spesso,oft,Zeitangaben
+a volte,manchmal,Zeitangaben
+casa,Haus,Wohnen
+appartamento,Wohnung,Wohnen
+stanza,Zimmer,Wohnen
+cucina,Küche,Wohnen
+soggiorno,Wohnzimmer,Wohnen
+bagno,Badezimmer,Wohnen
+giardino,Garten,Wohnen
+porta,Tür,Wohnen
+finestra,Fenster,Wohnen
+tavolo,Tisch,Möbel
+sedia,Stuhl,Möbel
+letto,Bett,Möbel
+divano,Sofa,Möbel
+armadio,Schrank,Möbel
+lampada,Lampe,Möbel
+cibo,Essen,Essen & Trinken
+bevanda,Getränk,Essen & Trinken
+pane,Brot,Essen & Trinken
+burro,Butter,Essen & Trinken
+formaggio,Käse,Essen & Trinken
+uovo,Ei,Essen & Trinken
+carne,Fleisch,Essen & Trinken
+pesce,Fisch,Essen & Trinken
+acqua,Wasser,Essen & Trinken
+latte,Milch,Essen & Trinken
+caffè,Kaffee,Essen & Trinken
+tè,Tee,Essen & Trinken
+birra,Bier,Essen & Trinken
+vino,Wein,Essen & Trinken
+mela,Apfel,Essen & Trinken
+pasta,Nudeln,Essen & Trinken
+pizza,Pizza,Essen & Trinken
+vestiti,Kleidung,Kleidung
+camicia,Hemd,Kleidung
+pantaloni,Hose,Kleidung
+vestito,Kleid,Kleidung
+giacca,Jacke,Kleidung
+scarpe,Schuhe,Kleidung
+corpo,Körper,Gesundheit
+testa,Kopf,Gesundheit
+occhi,Augen,Gesundheit
+mano,Hand,Gesundheit
+piede,Fuß,Gesundheit
+medico,Arzt,Gesundheit
+città,Stadt,Reisen & Stadt
+strada,Straße,Reisen & Stadt
+piazza,Platz,Reisen & Stadt
+stazione,Bahnhof,Reisen & Stadt
+albergo,Hotel,Reisen & Stadt
+ristorante,Restaurant,Reisen & Stadt
+macchina,Auto,Verkehr
+autobus,Bus,Verkehr
+treno,Zug,Verkehr
+aereo,Flugzeug,Verkehr
+bicicletta,Fahrrad,Verkehr
+biglietto,Fahrkarte,Verkehr
+lavoro,Arbeit,Arbeit & Beruf
+soldi,Geld,Finanzen
+sole,Sonne,Natur & Wetter
+pioggia,Regen,Natur & Wetter
+cane,Hund,Tiere
+gatto,Katze,Tiere
+essere,sein,Verben
+avere,haben,Verben
+fare,machen,Verben
+andare,gehen,Verben
+venire,kommen,Verben
+vedere,sehen,Verben
+ascoltare,zuhören,Verben
+parlare,sprechen,Verben
+dire,sagen,Verben
+chiedere,fragen,Verben
+leggere,lesen,Verben
+scrivere,schreiben,Verben
+capire,verstehen,Verben
+sapere,wissen,Verben
+volere,wollen,Verben
+potere,können,Verben
+mangiare,essen,Verben
+bere,trinken,Verben
+dormire,schlafen,Verben
+comprare,kaufen,Verben
+pagare,bezahlen,Verben
+lavorare,arbeiten,Verben
+abitare,wohnen,Verben
+amare,lieben,Verben
+piacere,gefallen,Verben
+buono,gut,Adjektive
+cattivo,schlecht,Adjektive
+grande,groß,Adjektive
+piccolo,klein,Adjektive
+nuovo,neu,Adjektive
+vecchio,alt,Adjektive
+caldo,warm,Adjektive
+freddo,kalt,Adjektive
+facile,einfach,Adjektive
+difficile,schwierig,Adjektive
+caro,teuer,Adjektive
+bello,schön,Adjektive
+chi,wer,Fragewörter
+che cosa,was,Fragewörter
+dove,wo,Fragewörter
+quando,wann,Fragewörter
+perché,warum,Fragewörter
+come,wie,Fragewörter
+quanto,wie viel,Fragewörter
+qui,hier,Ortsangaben
+lì,dort,Ortsangaben
+a sinistra,links,Ortsangaben
+a destra,rechts,Ortsangaben
