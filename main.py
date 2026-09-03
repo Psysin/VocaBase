@@ -100,6 +100,12 @@ def main(page: ft.Page):
             ],
             dense=True,
         )
+        attempts_dropdown = ft.Dropdown(
+            label="Fehlversuche beim Schreiben",
+            value=str(getattr(active_profile, "max_attempts", 3)),
+            options=[ft.dropdown.Option(str(i)) for i in range(1, 6)],
+            width=280,
+        )
 
         theme_switch = ft.Switch(
             label="Dark Mode",
@@ -108,6 +114,7 @@ def main(page: ft.Page):
 
         def save_settings(e):
             active_profile.daily_quest_size = int(quest_dropdown.value or 30)
+            active_profile.max_attempts = int(attempts_dropdown.value or 3)
             active_profile.dark_mode = theme_switch.value
             page.theme_mode = (
                 ft.ThemeMode.DARK if active_profile.dark_mode else ft.ThemeMode.LIGHT
@@ -127,6 +134,7 @@ def main(page: ft.Page):
             content=ft.Column(
                 controls=[
                     quest_dropdown,
+                    attempts_dropdown,
                     theme_switch,
                     ft.Divider(),
                     ft.Text("App-Informationen:", weight=ft.FontWeight.BOLD, size=13),

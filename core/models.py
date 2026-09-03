@@ -57,6 +57,7 @@ class UserProfile:
         daily_quest_size: int = 30,  # Anzahl der Wörter pro Daily Quest
         dark_mode: bool = True,  # Design-Einstellung: Dunkel (True) / Hell (False)
         words: list[Word] | None = None,
+        max_attempts: int = 3,
     ):
         self.name = name
         self.language = language
@@ -65,6 +66,7 @@ class UserProfile:
         self.dark_mode = dark_mode
         # Startet mit einer leeren Liste, falls keine Vokabelliste übergeben wurde
         self.words: list[Word] = [] if words is None else words
+        self.max_attempts = max_attempts
 
     def to_dict(self) -> dict:
         """Wandelt das gesamte Profil inklusive Einstellungen und Vokabeln in ein Dictionary um."""
@@ -76,6 +78,7 @@ class UserProfile:
             "dark_mode": self.dark_mode,
             # Wandelt jedes enthaltene Word-Objekt rekursiv in ein Dictionary um
             "words": [word.to_dict() for word in self.words],
+            "max_attempts": self.max_attempts,
         }
 
     @classmethod
@@ -93,6 +96,7 @@ class UserProfile:
             daily_quest_size=data.get("daily_quest_size", 30),
             dark_mode=data.get("dark_mode", True),
             words=words_list,
+            max_attempts=data.get("max_attempts", 3),
         )
 
     def __str__(self) -> str:

@@ -152,9 +152,9 @@ class PracticeView(ft.Container):
         """Lädt die nächste fällige Karte im Schreibmodus oder beendet die Quest."""
         if self.current_index < len(self.due_words):
             current_word = self.due_words[self.current_index]
-            self.attempts_left = 3
             self.word_display.value = current_word.front
             self.feedback_display.visible = False
+            self.attempts_left = self.profile.max_attempts
 
             # Eingabefeld und Buttons für den Schreibmodus zurücksetzen
             self.input_field.visible = True
