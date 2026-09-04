@@ -11,7 +11,7 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * Individuelle Zielsprachen pro Profil (Englisch, Spanisch, Französisch, Italienisch).
   * Vordefinierte A1-Starter-Wortschätze (100+ Grundvokabeln bzw. 1500+ kuratierte Buchvokabeln) mit optionaler Startauswahl via Checkbox.
   * Vokabellisten wurde per CSV im /data Ordner abgelegt, der Zugriff auf die Vokabeln erfolgt über
-  starter_words.py
+  starter_words.py das laden der CSV wurde für Flet und IOS angepasst, wegen der Sandbox.
   * Vokabeln liegen zusätzlich als Tabelle in Google Drive ab
   * Vollständig getrennte Vokabeldaten, Einstellungen und Lernstatistiken pro Nutzer.
 * **Intelligenter Spaced-Repetition-Algorithmus (Leitner-System):**

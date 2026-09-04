@@ -7,9 +7,17 @@ Es regelt das Speichern und Laden aller Python-Objekte
 
 import json
 import os
+import pathlib
 from core.models import UserProfile
 
-DATA_FILE = "app_data.json"
+# Dynamischen Dokumenten-Ordner für Mac und die iOS-Sandbox ermitteln
+DOCUMENTS_DIR = pathlib.Path.home() / "Documents"
+
+# Erstellt den Ordner sicherheitshalber, falls er auf einem neuen Gerät noch nicht existiert
+os.makedirs(DOCUMENTS_DIR, exist_ok=True)
+
+# Der neue absolute Pfad zur Speicherdatei
+DATA_FILE = str(DOCUMENTS_DIR / "app_data.json")
 
 
 def save_app_data(
@@ -21,7 +29,7 @@ def save_app_data(
 
     :param profiles: Die Liste aller UserProfile-Objekte im Arbeitsspeicher
     :param active_profile_name: Der Name des Nutzers, der zuletzt eingeloggt war
-    :param filepath: Der Pfad zur Speicherdatei (Standard: 'app_data.json')
+    :param filepath: Der Pfad zur Speicherdatei (Standard: dynamischer Dokumenten-Ordner)
     """
 
     # Wir bauen ein großes Dictionary auf, das alle Daten enthält.
