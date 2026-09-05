@@ -17,8 +17,6 @@ DATA_DIR = pathlib.Path(__file__).parent
 PAKET_DATEIEN = {
     "Spanisch Basis A1": "spanisch_a1.csv",
     "Englisch Basis A1": "englisch_a1.csv",
-    "Französisch Basis A1": "franzoesisch_a1.csv",
-    "Italienisch Basis A1": "italienisch_a1.csv",
 }
 
 STARTER_PACKS: dict[str, list[tuple[str, str]]] = {}

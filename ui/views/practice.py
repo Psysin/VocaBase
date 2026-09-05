@@ -1,18 +1,16 @@
 """ui/views/practice.py
 
-Setzt die Leitner-Logik visuell in einer Schreibübung (Daily Quest) um.
+Setzt die Leitner-Logik visuell in einer Schreibübung um.
 """
-
-import random
 
 import flet as ft
 from core.models import UserProfile, Word
-from core.spaced_rep import get_due_words, review_word
+from core.spaced_rep import build_practice_session, review_word
 from data.storage import save_app_data
 
 
 class PracticeView(ft.Container):
-    """Übungsansicht für die Daily Quest: Reines Schreib-Training mit Eingabeprüfung."""
+    """Übungsansicht: Reines Schreib-Training mit Eingabeprüfung."""
 
     def __init__(
         self, profile: UserProfile, all_profiles: list[UserProfile], on_finish
@@ -24,12 +22,13 @@ class PracticeView(ft.Container):
         self.on_finish = on_finish
 
         # 1. SPIELLOGIK (State / Zustand)
-        all_due = get_due_words(self.profile.words)
-        random.shuffle(all_due)  # Zufällige Abfragereihenfolge statt Listen-Reihenfolge
         quest_limit = getattr(self.profile, "daily_quest_size", 30)
 
-        # Beschneidet die Liste auf das Tageslimit
-        self.due_words: list[Word] = all_due[:quest_limit]
+        # Fällige Karten zuerst, bei Bedarf mit weiteren Vokabeln aufgefüllt,
+        # damit immer eine volle, gemischte Session zustande kommt.
+        self.due_words: list[Word] = build_practice_session(
+            self.profile.words, quest_limit
+        )
         self.current_index: int = 0
         self.attempts_left: int = 3  # Wird in load_next_card überschrieben
 
@@ -166,7 +165,7 @@ class PracticeView(ft.Container):
             self.status_text.value = f"{self.current_index + 1}/{len(self.due_words)}"
             self.input_field.focus()  # Holt den Cursor zurück
         else:
-            # Daily Quest abgeschlossen
+            # Übung abgeschlossen
             if len(self.due_words) > 0:
                 self.profile.weekly_sessions += 1
                 save_app_data(self.all_profiles, active_profile_name=self.profile.name)

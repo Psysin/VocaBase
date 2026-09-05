@@ -120,15 +120,9 @@ def main(page: ft.Page):
     def open_settings_dialog():
         """Baut und öffnet den Einstellungsdialog (Fehlversuche, Dark Mode, etc.)."""
         quest_dropdown = ft.Dropdown(
-            label="Daily Quest Umfang (Wörter)",
+            label="Vokabeln pro Durchgang",
             value=str(getattr(active_profile, "daily_quest_size", 30)),
-            options=[
-                ft.dropdown.Option("10"),
-                ft.dropdown.Option("20"),
-                ft.dropdown.Option("30"),
-                ft.dropdown.Option("50"),
-                ft.dropdown.Option("100"),
-            ],
+            options=[ft.dropdown.Option(str(i)) for i in range(10, 101, 10)],
             dense=True,
         )
         attempts_dropdown = ft.Dropdown(
@@ -173,7 +167,7 @@ def main(page: ft.Page):
                     theme_switch,
                     ft.Divider(),
                     ft.Text("App-Informationen:", weight=ft.FontWeight.BOLD, size=13),
-                    ft.Text("Version: 1.0.0", size=12, color=ft.Colors.GREY_500),
+                    ft.Text("Version: 1.0.1", size=12, color=ft.Colors.GREY_500),
                     ft.Text(
                         "Entwickler: Philipp Edelbrock",
                         size=12,
@@ -296,8 +290,6 @@ def main(page: ft.Page):
             options=[
                 ft.dropdown.Option("Spanisch Basis A1"),
                 ft.dropdown.Option("Englisch Basis A1"),
-                ft.dropdown.Option("Französisch Basis A1"),
-                ft.dropdown.Option("Italienisch Basis A1"),
             ],
             dense=True,
         )

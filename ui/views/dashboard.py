@@ -39,8 +39,11 @@ class DashboardView(ft.Container):
 
         quest_size = getattr(self.profile, "daily_quest_size", 30)
 
-        # Wenn nur 5 Wörter fällig sind, ist die Quest auch nur 5 Wörter groß, nicht 30.
-        actual_quest_words = min(due_words_count, quest_size)
+        # Fällige Karten werden bei Bedarf mit weiteren Vokabeln aus dem Pool
+        # aufgefüllt (siehe build_practice_session), daher entspricht die
+        # tatsächliche Session-Größe stets dem Minimum aus Durchgangsgröße
+        # und der Gesamtzahl vorhandener Vokabeln.
+        actual_quest_words = min(quest_size, total_words)
 
         # -------------------------------------------------------------
         # UI-AUFBAU IN BÖCKEN
@@ -107,7 +110,7 @@ class DashboardView(ft.Container):
                 controls=[
                     ft.Icon(ft.Icons.PLAY_ARROW_ROUNDED, color=ft.Colors.WHITE),
                     ft.Text(
-                        f"Daily Quest ({actual_quest_words} Vokabeln)",
+                        f"Übung ({actual_quest_words} Vokabeln)",
                         weight=ft.FontWeight.BOLD,
                     ),
                 ],
@@ -116,8 +119,10 @@ class DashboardView(ft.Container):
             ),
             width=340,
             height=48,
-            # Button wird gesperrt (ausgegraut), wenn es heute nichts zu lernen gibt
-            disabled=due_words_count == 0,
+            # Nur gesperrt, wenn das Profil überhaupt keine Vokabeln hat.
+            # Sind alle fälligen Karten erledigt, wird aus dem Gesamtpool
+            # aufgefüllt, damit beliebig oft geübt werden kann.
+            disabled=total_words == 0,
             on_click=lambda e: self.on_start_practice(),
         )
 

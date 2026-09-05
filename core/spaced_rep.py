@@ -4,6 +4,7 @@ Dieses Modul bündelt die eigenständige Anwendungslogik.
 Es steuert das Leitner-Lernsystem und kümmert sich um die Suche in Vokabellisten.
 """
 
+import random
 from datetime import date, timedelta
 from core.models import Word
 
@@ -41,6 +42,26 @@ def get_due_words(words: list[Word]) -> list[Word]:
     # Da das Datum als ISO-String (JJJJ-MM-TT) formatiert ist, funktioniert
     # der einfache lexikografische String-Vergleich (<=) perfekt!
     return [word for word in words if word.due_date <= heute]
+
+
+def build_practice_session(words: list[Word], size: int) -> list[Word]:
+    """Stellt eine Übungs-Session zusammen, damit immer beliebig oft geübt werden kann.
+
+    Zuerst werden alle fälligen Karten genommen. Reichen die nicht für die
+    gewünschte Durchgangsgröße, wird mit zufälligen weiteren (noch nicht
+    fälligen) Vokabeln aus dem Gesamtpool aufgefüllt. Am Ende wird gemischt,
+    damit die Abfragereihenfolge nicht vorhersehbar ist.
+    """
+    session = get_due_words(words)
+
+    if len(session) < size:
+        due_ids = {word.id for word in session}
+        extra_pool = [word for word in words if word.id not in due_ids]
+        random.shuffle(extra_pool)
+        session = session + extra_pool[: size - len(session)]
+
+    random.shuffle(session)
+    return session[:size]
 
 
 def review_word(word: Word, rating: str) -> None:

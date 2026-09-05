@@ -1,4 +1,4 @@
-# 📚 Vokabeltrainer (Spaced Repetition App)
+# 📚 VocaBase (Spaced Repetition App)
 
 Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwickelt mit **Python 3** und dem UI-Framework **Flet**. Die Anwendung basiert auf dem bewährten **Leitner-Karteikastensystem** (Spaced Repetition) und bietet eine Mehrbenutzer-Verwaltung für unterschiedliche Lernende und Zielsprachen.
 
@@ -8,8 +8,8 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
 
 * **Mehrbenutzer- & Mehrsprachen-Verwaltung:**
   * Dynamisches Anlegen und Löschen von Profilen direkt in der Benutzeroberfläche.
-  * Individuelle Zielsprachen pro Profil (Englisch, Spanisch, Französisch, Italienisch).
-  * Vordefinierte A1-Starter-Wortschätze (100+ Grundvokabeln bzw. 1500+ kuratierte Buchvokabeln) mit optionaler Startauswahl via Checkbox.
+  * Individuelle Zielsprachen pro Profil (Englisch, Spanisch).
+  * Vordefinierte A1-Starter-Wortschätze (kuratierte Buchvokabeln, ca. 450 für Englisch und 1600 für Spanisch) mit optionaler Startauswahl via Checkbox.
   * Vokabellisten wurde per CSV im /data Ordner abgelegt, der Zugriff auf die Vokabeln erfolgt über
   starter_words.py das laden der CSV wurde für Flet und IOS angepasst, wegen der Sandbox.
   * Vokabeln liegen zusätzlich als Tabelle in Google Drive ab
@@ -17,10 +17,10 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
 * **Intelligenter Spaced-Repetition-Algorithmus (Leitner-System):**
   * Automatisches 5-Kästen-Intervallsystem (1, 3, 7, 14 und 30 Tage) zur nachhaltigen Langzeitverankerung.
   * Automatische Berechnung der nächsten Fälligkeit (`due_date`) im ISO-Format (`JJJJ-MM-TT`).
-* **Interaktiver Übungs- & Daily-Quest-Modus:**
+* **Interaktiver Übungsmodus:**
   * **Gewichteter Modus-Mix:**  100 % Schreib-Modus (Aktives Eintippen mit automatischer Prüfung).
   * **Fehlertoleranz beim Schreiben:** Bis zu 5 (variabel einstellbar) Versuche pro Vokabel. Erst nach dem letzten  Fehlversuch wird aufgelöst und die Karte auf Kasten 1 zurückgestuft.
-  * **Daily Quest Portionierung:** Frei konfigurierbare Session-Größe (10, 20, 30, 50 oder 100 Vokabeln pro Durchgang), um große Vokabelmengen portionsweise zu bewältigen.
+  * **Frei konfigurierbare Vokabeln pro Durchgang:** Session-Größe in Zehnerschritten von 10 bis 100 Vokabeln pro Durchgang, um große Vokabelmengen portionsweise zu bewältigen. Sind weniger Karten fällig als die gewählte Größe, werden zufällige weitere Vokabeln aufgefüllt – so lässt sich beliebig oft üben.
   * **Jederzeit abbrechbar:** Bereits geübte Wörter werden sofort persistent gespeichert.
   * Zähler für wöchentlich gemeisterte Lerneinheiten.
 * **Vokabelverwaltung & Live-Suche:**
@@ -29,7 +29,7 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * Ein-Klick-Löschfunktion für einzelne Einträge.
   * Schnelle Erfassungsmaske mit automatischem Duplikatschutz.
 * **Einstellungen & Design:**
-  * Einstellungs-Dialog (Zahnrad-Menü) zur Anpassung der Daily-Quest-Größe.
+  * Einstellungs-Dialog (Zahnrad-Menü) zur Anpassung der Vokabeln pro Durchgang.
   * Nahtlose Umschaltung zwischen Dark Mode und Light Mode pro Profil.
   * Anpassung der Fehlversuche zwischen 1 und 5
   * Mobil-optimiertes Layout mit Safe-Area-Padding für iOS.
@@ -54,15 +54,20 @@ Vokabel_App/
 │
 ├── ui/                          # Grafische Benutzeroberfläche (Flet)
 │   └── views/
-│       ├── dashboard.py         # Startseite mit Statistiken, Daily Quest & Header
+│       ├── dashboard.py         # Startseite mit Statistiken, Übung-Button & Header
 │       ├── practice.py          # Interaktive Übungsansicht (Lesen/Schreiben-Mix)
 │       ├── add_word.py          # Formular zum Erfassen neuer Vokabeln
 │       └── word_list.py         # Durchsuchbare & editierbare Vokabelliste
 │
+├── assets/                      # App-Icon (icon.png) für den Build
 ├── main.py                      # App-Einstiegspunkt, View-Manager & Dialogsteuerung
-├── app_data.json                # Lokale JSON-Datenbank (automatisch generiert)
+├── pyproject.toml               # Projektmetadaten (Name "VocaBase") für flet build/run
 └── README.md                    # Technische Projektdokumentation
 ```
+
+Die Nutzerdaten (`app_data.json`) werden **nicht** im Projektordner abgelegt, sondern
+automatisch im `Documents`-Ordner des jeweiligen Geräts erzeugt (siehe `data/storage.py`) –
+das funktioniert dadurch auch innerhalb der iOS-Sandbox.
 
 ---
 

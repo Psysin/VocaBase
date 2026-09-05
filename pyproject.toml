@@ -1,0 +1,7 @@
+[project]
+name = "VocaBase"
+version = "1.0.1"
+description = "Spaced-Repetition Vokabeltrainer"
+
+[tool.flet]
+product = "VocaBase"
