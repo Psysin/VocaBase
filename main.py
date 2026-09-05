@@ -9,6 +9,7 @@ from datetime import date
 import flet as ft
 
 # Import der eigenen Logik- und Daten-Module
+from core.i18n import SPRACHEN, t
 from core.models import UserProfile, Word
 from data.starter_words import STARTER_PACKS
 from data.storage import load_app_data, save_app_data
@@ -119,21 +120,30 @@ def main(page: ft.Page):
     # 5. DIALOGE (Popups)
     def open_settings_dialog():
         """Baut und öffnet den Einstellungsdialog (Fehlversuche, Dark Mode, etc.)."""
+        lang = getattr(active_profile, "ui_language", "Deutsch")
+
         quest_dropdown = ft.Dropdown(
-            label="Vokabeln pro Durchgang",
+            label=t("vokabeln_pro_durchgang", lang),
             value=str(getattr(active_profile, "daily_quest_size", 30)),
             options=[ft.dropdown.Option(str(i)) for i in range(10, 101, 10)],
             dense=True,
         )
         attempts_dropdown = ft.Dropdown(
-            label="Fehlversuche beim Schreiben",
+            label=t("fehlversuche_label", lang),
             value=str(getattr(active_profile, "max_attempts", 3)),
             options=[ft.dropdown.Option(str(i)) for i in range(1, 6)],
             width=280,
         )
 
+        sprache_dropdown = ft.Dropdown(
+            label=t("app_sprache_label", lang),
+            value=lang,
+            options=[ft.dropdown.Option(s) for s in SPRACHEN],
+            dense=True,
+        )
+
         theme_switch = ft.Switch(
-            label="Dark Mode",
+            label=t("dark_mode", lang),
             value=getattr(active_profile, "dark_mode", True),
         )
 
@@ -142,6 +152,7 @@ def main(page: ft.Page):
             active_profile.daily_quest_size = int(quest_dropdown.value or 30)
             active_profile.max_attempts = int(attempts_dropdown.value or 3)
             active_profile.dark_mode = theme_switch.value
+            active_profile.ui_language = sprache_dropdown.value or "Deutsch"
 
             page.theme_mode = (
                 ft.ThemeMode.DARK if active_profile.dark_mode else ft.ThemeMode.LIGHT
@@ -159,22 +170,29 @@ def main(page: ft.Page):
 
         # Aufbau des Popups
         settings_dialog = ft.AlertDialog(
-            title=ft.Text("⚙️ Einstellungen"),
+            title=ft.Text(t("einstellungen_titel", lang)),
             content=ft.Column(
                 controls=[
                     quest_dropdown,
                     attempts_dropdown,
+                    sprache_dropdown,
                     theme_switch,
                     ft.Divider(),
-                    ft.Text("App-Informationen:", weight=ft.FontWeight.BOLD, size=13),
-                    ft.Text("Version: 1.0.1", size=12, color=ft.Colors.GREY_500),
                     ft.Text(
-                        "Entwickler: Philipp Edelbrock",
+                        t("app_informationen", lang), weight=ft.FontWeight.BOLD, size=13
+                    ),
+                    ft.Text(
+                        t("version_zeile", lang, version="1.0.1"),
                         size=12,
                         color=ft.Colors.GREY_500,
                     ),
                     ft.Text(
-                        "© 2026 Alle Rechte vorbehalten",
+                        t("entwickler_zeile", lang, name="Philipp Edelbrock"),
+                        size=12,
+                        color=ft.Colors.GREY_500,
+                    ),
+                    ft.Text(
+                        t("copyright_zeile", lang, jahr="2026"),
                         size=11,
                         color=ft.Colors.GREY_600,
                     ),
@@ -182,8 +200,12 @@ def main(page: ft.Page):
                 tight=True,
             ),
             actions=[
-                ft.TextButton(content=ft.Text("Abbrechen"), on_click=close_settings),
-                ft.ElevatedButton(content=ft.Text("Speichern"), on_click=save_settings),
+                ft.TextButton(
+                    content=ft.Text(t("abbrechen", lang)), on_click=close_settings
+                ),
+                ft.ElevatedButton(
+                    content=ft.Text(t("speichern", lang)), on_click=save_settings
+                ),
             ],
         )
 
@@ -195,6 +217,7 @@ def main(page: ft.Page):
         """Baut und öffnet den Dialog zum Wechseln und Anlegen von Profilen."""
         # nonlocal erlaubt es uns, die Variable 'active_profile' aus der main-Funktion zu verändern
         nonlocal active_profile
+        lang = getattr(active_profile, "ui_language", "Deutsch")
 
         def select_profile(selected_profile: UserProfile):
             nonlocal active_profile
@@ -265,13 +288,18 @@ def main(page: ft.Page):
                 leading=ft.Icon(ft.Icons.PERSON),
                 title=ft.Text(p.name, weight=ft.FontWeight.BOLD),
                 subtitle=ft.Text(
-                    f"Zielsprache: {p.language} ({len(p.words)} Vokabeln)"
+                    t(
+                        "profil_subtitle",
+                        lang,
+                        sprache=p.language,
+                        anzahl=len(p.words),
+                    )
                 ),
                 on_click=lambda e, prof=p: select_profile(prof),
                 trailing=ft.IconButton(
                     icon=ft.Icons.DELETE_OUTLINE,
                     icon_color=ft.Colors.RED_400,
-                    tooltip="Profil löschen",
+                    tooltip=t("profil_loeschen_tooltip", lang),
                     on_click=lambda e, prof=p: delete_profile(prof),
                     visible=len(profiles) > 1,
                 ),
@@ -280,12 +308,14 @@ def main(page: ft.Page):
         ]
 
         new_name_input = ft.TextField(
-            label="Neuer Profilname", hint_text="z. B. Nadine", dense=True
+            label=t("neuer_profilname_label", lang),
+            hint_text=t("neuer_profilname_hint", lang),
+            dense=True,
         )
 
         # HIER SIND DIE NEUEN SPRACH-PAKETE HINTERLEGT
         lang_dropdown = ft.Dropdown(
-            label="Zielsprache / Startpaket",
+            label=t("zielsprache_startpaket_label", lang),
             value="Spanisch Basis A1",
             options=[
                 ft.dropdown.Option("Spanisch Basis A1"),
@@ -294,24 +324,30 @@ def main(page: ft.Page):
             dense=True,
         )
         default_vocab_checkbox = ft.Checkbox(
-            label="Mit ausgewählten Vokabeln starten",
+            label=t("mit_starter_vokabeln", lang),
             value=True,
         )
 
         btn_create = ft.ElevatedButton(
-            content=ft.Text("Profil anlegen"),
+            content=ft.Text(t("profil_anlegen_btn", lang)),
             on_click=create_new_profile,
         )
 
         dialog = ft.AlertDialog(
-            title=ft.Text("Profile & Sprachen"),
+            title=ft.Text(t("profile_sprachen_titel", lang)),
             content=ft.Column(
                 controls=[
-                    ft.Text("Vorhandene Profile:", weight=ft.FontWeight.BOLD, size=14),
+                    ft.Text(
+                        t("vorhandene_profile", lang),
+                        weight=ft.FontWeight.BOLD,
+                        size=14,
+                    ),
                     *profile_controls,
                     ft.Divider(),
                     ft.Text(
-                        "Neues Profil anlegen:", weight=ft.FontWeight.BOLD, size=14
+                        t("neues_profil_anlegen", lang),
+                        weight=ft.FontWeight.BOLD,
+                        size=14,
                     ),
                     new_name_input,
                     lang_dropdown,

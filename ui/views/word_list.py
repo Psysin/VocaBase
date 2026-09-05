@@ -5,6 +5,7 @@ bearbeiten und löschen.
 """
 
 import flet as ft
+from core.i18n import t
 from core.models import UserProfile, Word
 from data.storage import save_app_data
 
@@ -17,11 +18,12 @@ class WordListView(ft.Container):
         self.profile = profile
         self.all_profiles = all_profiles
         self.on_back = on_back
+        self.lang = getattr(profile, "ui_language", "Deutsch")
 
         # 1. SUCHFELD (Live-Filter)
         # on_change triggert bei jedem einzelnen Tastenanschlag sofort filter_words
         self.search_input = ft.TextField(
-            hint_text="Vokabel suchen (Deutsch oder Fremdsprache)...",
+            hint_text=t("suche_hint", self.lang),
             prefix_icon=ft.Icons.SEARCH,
             dense=True,
             width=340,
@@ -43,7 +45,7 @@ class WordListView(ft.Container):
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.ARROW_BACK),
-                    ft.Text("Zurück zum Hauptmenü"),
+                    ft.Text(t("zurueck_hauptmenue", self.lang)),
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
@@ -80,14 +82,16 @@ class WordListView(ft.Container):
         """Baut die visuelle Liste (UI) basierend auf einer Vokabelliste neu auf."""
         # Löscht alle alten Kacheln vom Bildschirm
         self.words_column.controls.clear()
-        self.header_text.value = f"Alle Vokabeln ({len(self.profile.words)})"
+        self.header_text.value = t(
+            "alle_vokabeln_titel", self.lang, anzahl=len(self.profile.words)
+        )
 
         if not words_to_show:
             # Fallback, wenn Liste leer oder Suche erfolglos
             self.words_column.controls.append(
                 ft.Container(
                     content=ft.Text(
-                        "Keine passenden Vokabeln gefunden.",
+                        t("keine_treffer", self.lang),
                         italic=True,
                         color=ft.Colors.GREY_600,
                         text_align=ft.TextAlign.CENTER,
@@ -117,7 +121,7 @@ class WordListView(ft.Container):
                             f"{word.front} ➔ {word.back}", weight=ft.FontWeight.W_500
                         ),
                         subtitle=ft.Text(
-                            f"Fällig: {word.due_date}",
+                            t("faellig_am", self.lang, datum=word.due_date),
                             size=12,
                             color=ft.Colors.GREY_600,
                         ),
@@ -128,7 +132,7 @@ class WordListView(ft.Container):
                                 ft.IconButton(
                                     icon=ft.Icons.EDIT_OUTLINED,
                                     icon_color=ft.Colors.BLUE_300,
-                                    tooltip="Vokabel bearbeiten",
+                                    tooltip=t("vokabel_bearbeiten_tooltip", self.lang),
                                     # Der w=word Trick ist extrem wichtig, damit jeder Button
                                     # sich exakt sein eigenes Wort merkt und nicht das letzte der Schleife!
                                     on_click=lambda e, w=word: self.open_edit_dialog(w),
@@ -136,7 +140,7 @@ class WordListView(ft.Container):
                                 ft.IconButton(
                                     icon=ft.Icons.DELETE_OUTLINE,
                                     icon_color=ft.Colors.RED_400,
-                                    tooltip="Vokabel löschen",
+                                    tooltip=t("vokabel_loeschen_tooltip", self.lang),
                                     on_click=lambda e, w=word: self.delete_word(w),
                                 ),
                             ],
@@ -165,12 +169,16 @@ class WordListView(ft.Container):
         """Erstellt und öffnet das Popup zum Bearbeiten einer Vokabel."""
 
         # Eingabefelder werden mit den aktuellen Werten des Wortes vorbefüllt
-        edit_front = ft.TextField(label="Deutsches Wort", value=word.front, dense=True)
+        edit_front = ft.TextField(
+            label=t("deutsches_wort", self.lang), value=word.front, dense=True
+        )
         edit_back = ft.TextField(
-            label=f"Übersetzung ({self.profile.language})", value=word.back, dense=True
+            label=t("uebersetzung_sprache", self.lang, sprache=self.profile.language),
+            value=word.back,
+            dense=True,
         )
         edit_box = ft.Dropdown(
-            label="Kasten (Stufe)",
+            label=t("kasten_stufe", self.lang),
             value=str(word.box),
             dense=True,
             options=[ft.dropdown.Option(str(i)) for i in range(1, 6)],
@@ -205,11 +213,15 @@ class WordListView(ft.Container):
 
         # Das Popup Fenster
         edit_dialog = ft.AlertDialog(
-            title=ft.Text("Vokabel bearbeiten"),
+            title=ft.Text(t("vokabel_bearbeiten_titel", self.lang)),
             content=ft.Column(controls=[edit_front, edit_back, edit_box], tight=True),
             actions=[
-                ft.TextButton(content=ft.Text("Abbrechen"), on_click=close_dialog),
-                ft.ElevatedButton(content=ft.Text("Speichern"), on_click=save_changes),
+                ft.TextButton(
+                    content=ft.Text(t("abbrechen", self.lang)), on_click=close_dialog
+                ),
+                ft.ElevatedButton(
+                    content=ft.Text(t("speichern", self.lang)), on_click=save_changes
+                ),
             ],
         )
 

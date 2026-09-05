@@ -5,6 +5,7 @@ und bietet Navigation zu allen anderen Bereichen.
 """
 
 import flet as ft
+from core.i18n import t
 from core.models import UserProfile
 from core.spaced_rep import get_due_words
 
@@ -29,6 +30,8 @@ class DashboardView(ft.Container):
         self.on_open_list = on_open_list
         self.on_switch_profile = on_switch_profile
         self.on_open_settings = on_open_settings
+
+        lang = getattr(profile, "ui_language", "Deutsch")
 
         # 1. LIVE-DATEN BERECHNEN
         total_words = len(self.profile.words)
@@ -55,7 +58,7 @@ class DashboardView(ft.Container):
             controls=[
                 ft.IconButton(
                     icon=ft.Icons.SETTINGS,
-                    tooltip="Einstellungen",
+                    tooltip=t("einstellungen_tooltip", lang),
                     icon_size=22,
                     on_click=lambda e: self.on_open_settings(),
                 ),
@@ -70,13 +73,13 @@ class DashboardView(ft.Container):
             spacing=4,
             controls=[
                 ft.Text(
-                    f"Hallo, {self.profile.name}! 👋",
+                    t("begruessung", lang, name=self.profile.name),
                     size=24,
                     weight=ft.FontWeight.BOLD,
                     text_align=ft.TextAlign.CENTER,
                 ),
                 ft.Text(
-                    f"Zielsprache: {self.profile.language}",
+                    t("zielsprache_zeile", lang, sprache=self.profile.language),
                     size=14,
                     color=ft.Colors.GREY_500,
                     text_align=ft.TextAlign.CENTER,
@@ -88,13 +91,19 @@ class DashboardView(ft.Container):
         # ABSCHNITT 3: Dashboard-Statistiken (3 Kacheln nebeneinander)
         # Nutzt eine Hilfsfunktion (unten definiert), um Code-Wiederholungen zu vermeiden
         stat_sessions = self._build_stat_card(
-            "🔥 Einheiten", str(self.profile.weekly_sessions), "diese Woche"
+            t("stat_einheiten_titel", lang),
+            str(self.profile.weekly_sessions),
+            t("stat_einheiten_sub", lang),
         )
         stat_learned = self._build_stat_card(
-            "🧠 Gelernt", f"{learned_count}/{total_words}", "Kasten 4 & 5"
+            t("stat_gelernt_titel", lang),
+            f"{learned_count}/{total_words}",
+            t("stat_gelernt_sub", lang),
         )
         stat_due = self._build_stat_card(
-            "📅 Fällig", str(due_words_count), "gesamt offen"
+            t("stat_faellig_titel", lang),
+            str(due_words_count),
+            t("stat_faellig_sub", lang),
         )
 
         stats_row = ft.Row(
@@ -110,7 +119,7 @@ class DashboardView(ft.Container):
                 controls=[
                     ft.Icon(ft.Icons.PLAY_ARROW_ROUNDED, color=ft.Colors.WHITE),
                     ft.Text(
-                        f"Übung ({actual_quest_words} Vokabeln)",
+                        t("btn_uebung", lang, anzahl=actual_quest_words),
                         weight=ft.FontWeight.BOLD,
                     ),
                 ],
@@ -128,7 +137,7 @@ class DashboardView(ft.Container):
 
         btn_add = ft.ElevatedButton(
             content=ft.Row(
-                controls=[ft.Icon(ft.Icons.ADD), ft.Text("Neue Vokabel erfassen")],
+                controls=[ft.Icon(ft.Icons.ADD), ft.Text(t("btn_neue_vokabel", lang))],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
             ),
@@ -141,7 +150,7 @@ class DashboardView(ft.Container):
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.LIST_ALT),
-                    ft.Text(f"Vokabeln verwalten ({total_words})"),
+                    ft.Text(t("btn_vokabeln_verwalten", lang, anzahl=total_words)),
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
@@ -155,7 +164,7 @@ class DashboardView(ft.Container):
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.SWITCH_ACCOUNT_OUTLINED, size=18),
-                    ft.Text("Profil / Sprache wechseln"),
+                    ft.Text(t("btn_profil_wechseln", lang)),
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,

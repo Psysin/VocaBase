@@ -74,6 +74,7 @@ class UserProfile:
         dark_mode: bool = True,
         words: list[Word] | None = None,
         max_attempts: int = 3,
+        ui_language: str = "Deutsch",
     ):
         self.name = name
         self.language = language
@@ -81,6 +82,9 @@ class UserProfile:
         self.daily_quest_size = daily_quest_size
         self.dark_mode = dark_mode
         self.max_attempts = max_attempts
+        # Sprache der Bedienoberfläche (Buttons, Labels, Dialoge) - unabhängig
+        # von 'language', der Zielsprache der Vokabelkarten.
+        self.ui_language = ui_language
 
         # Wenn keine Wörter übergeben werden, starte mit einer leeren Liste.
         # Dies verhindert den berüchtigten "Mutable Default Argument"-Fehler in Python,
@@ -96,6 +100,7 @@ class UserProfile:
             "daily_quest_size": self.daily_quest_size,
             "dark_mode": self.dark_mode,
             "max_attempts": self.max_attempts,
+            "ui_language": self.ui_language,
             # Hier greift eine 'List Comprehension': Sie ruft to_dict() für jedes einzelne Wort auf
             "words": [word.to_dict() for word in self.words],
         }
@@ -113,12 +118,13 @@ class UserProfile:
             daily_quest_size=data.get("daily_quest_size", 30),
             dark_mode=data.get("dark_mode", True),
             max_attempts=data.get("max_attempts", 3),
+            ui_language=data.get("ui_language", "Deutsch"),
             words=words_list,
         )
 
     def __str__(self) -> str:
         return (
             f"Profil '{self.name}' | Sprache: {self.language} | "
-            f"Vokabeln: {len(self.words)} | Quest: {self.daily_quest_size} Wörter | "
+            f"Vokabeln: {len(self.words)} | Pro Durchgang: {self.daily_quest_size} Wörter | "
             f"Versuche: {self.max_attempts} | Dark Mode: {self.dark_mode}"
         )

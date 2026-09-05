@@ -4,6 +4,7 @@ Setzt die Leitner-Logik visuell in einer Schreibübung um.
 """
 
 import flet as ft
+from core.i18n import t
 from core.models import UserProfile, Word
 from core.spaced_rep import build_practice_session, review_word
 from data.storage import save_app_data
@@ -20,6 +21,7 @@ class PracticeView(ft.Container):
         self.profile = profile
         self.all_profiles = all_profiles
         self.on_finish = on_finish
+        self.lang = getattr(profile, "ui_language", "Deutsch")
 
         # 1. SPIELLOGIK (State / Zustand)
         quest_limit = getattr(self.profile, "daily_quest_size", 30)
@@ -41,7 +43,7 @@ class PracticeView(ft.Container):
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.CLOSE, size=16, color=ft.Colors.RED_400),
-                    ft.Text("Abbrechen", color=ft.Colors.RED_400, size=13),
+                    ft.Text(t("abbrechen", self.lang), color=ft.Colors.RED_400, size=13),
                 ],
                 tight=True,
             ),
@@ -81,8 +83,8 @@ class PracticeView(ft.Container):
         # Eingabefeld
         # on_submit triggert, wenn der Nutzer auf dem Handy oder PC "Enter"/"Return" drückt
         self.input_field = ft.TextField(
-            label=f"Übersetzung ({self.profile.language})",
-            hint_text="Antwort eintippen...",
+            label=t("uebersetzung_sprache", self.lang, sprache=self.profile.language),
+            hint_text=t("antwort_eintippen", self.lang),
             dense=True,
             width=320,
             autofocus=True,
@@ -91,7 +93,7 @@ class PracticeView(ft.Container):
 
         self.btn_check = ft.ElevatedButton(
             content=ft.Row(
-                controls=[ft.Icon(ft.Icons.CHECK), ft.Text("Prüfen")],
+                controls=[ft.Icon(ft.Icons.CHECK), ft.Text(t("pruefen", self.lang))],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
             ),
@@ -102,7 +104,10 @@ class PracticeView(ft.Container):
 
         self.btn_next = ft.ElevatedButton(
             content=ft.Row(
-                controls=[ft.Icon(ft.Icons.ARROW_FORWARD), ft.Text("Nächste Vokabel")],
+                controls=[
+                    ft.Icon(ft.Icons.ARROW_FORWARD),
+                    ft.Text(t("naechste_vokabel", self.lang)),
+                ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
             ),
@@ -114,7 +119,10 @@ class PracticeView(ft.Container):
 
         self.btn_finish = ft.ElevatedButton(
             content=ft.Row(
-                controls=[ft.Icon(ft.Icons.HOME), ft.Text("Zurück zum Dashboard")],
+                controls=[
+                    ft.Icon(ft.Icons.HOME),
+                    ft.Text(t("zurueck_hauptmenue", self.lang)),
+                ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
             ),
@@ -146,7 +154,7 @@ class PracticeView(ft.Container):
         self.load_next_card()
 
     def load_next_card(self):
-        """Lädt die nächste fällige Karte oder beendet die Quest."""
+        """Lädt die nächste fällige Karte oder beendet die Übung."""
         if self.current_index < len(self.due_words):
             # Es gibt noch Karten zum Abfragen
             current_word = self.due_words[self.current_index]
@@ -171,9 +179,9 @@ class PracticeView(ft.Container):
                 save_app_data(self.all_profiles, active_profile_name=self.profile.name)
 
             # Sieges-Bildschirm bauen (Eingabefeld verschwindet)
-            self.word_display.value = "🏆 Quest gemeistert!"
-            self.feedback_display.value = (
-                f"{len(self.due_words)} Vokabeln erfolgreich abgeschlossen."
+            self.word_display.value = t("uebung_gemeistert", self.lang)
+            self.feedback_display.value = t(
+                "vokabeln_abgeschlossen", self.lang, anzahl=len(self.due_words)
             )
             self.feedback_display.color = ft.Colors.GREEN_400
             self.feedback_display.visible = True
@@ -183,7 +191,7 @@ class PracticeView(ft.Container):
             self.btn_next.visible = False
             self.btn_abort.visible = False
             self.btn_finish.visible = True
-            self.status_text.value = "Fertig"
+            self.status_text.value = t("fertig", self.lang)
 
     def check_typed_answer(self, e):
         """Prüft die eingegebene Übersetzung gegen das hinterlegte Lösungswort."""
@@ -192,7 +200,7 @@ class PracticeView(ft.Container):
 
         # Korrekte Eingabe
         if user_input.lower() == current_word.back.strip().lower():
-            self.feedback_display.value = "✅ Richtig!"
+            self.feedback_display.value = t("richtig", self.lang)
             self.feedback_display.color = ft.Colors.GREEN_400
             self.feedback_display.visible = True
             self.input_field.read_only = True
@@ -207,15 +215,20 @@ class PracticeView(ft.Container):
             self.attempts_left -= 1
 
             if self.attempts_left > 0:
-                self.feedback_display.value = f"❌ Falsch! Noch {self.attempts_left} Versuch{'e' if self.attempts_left > 1 else ''}."
+                if self.attempts_left == 1:
+                    self.feedback_display.value = t("falsch_1_versuch", self.lang)
+                else:
+                    self.feedback_display.value = t(
+                        "falsch_n_versuche", self.lang, n=self.attempts_left
+                    )
                 self.feedback_display.color = ft.Colors.ORANGE_400
                 self.feedback_display.visible = True
                 self.input_field.value = ""
                 self.input_field.focus()
             else:
                 # Alle Fehlversuche aufgebraucht
-                self.feedback_display.value = (
-                    f"❌ Leider falsch! Richtige Lösung: {current_word.back}"
+                self.feedback_display.value = t(
+                    "falsch_endgueltig", self.lang, loesung=current_word.back
                 )
                 self.feedback_display.color = ft.Colors.RED_400
                 self.feedback_display.visible = True
