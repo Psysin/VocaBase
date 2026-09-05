@@ -5,3 +5,7 @@ description = "Spaced-Repetition Vokabeltrainer"
 
 [tool.flet]
 product = "VocaBase"
+
+[tool.flet.splash]
+color = "#1565C0"
+dark_color = "#1565C0"
