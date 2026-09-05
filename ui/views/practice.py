@@ -3,6 +3,8 @@
 Setzt die Leitner-Logik visuell in einer Schreibübung (Daily Quest) um.
 """
 
+import random
+
 import flet as ft
 from core.models import UserProfile, Word
 from core.spaced_rep import get_due_words, review_word
@@ -23,6 +25,7 @@ class PracticeView(ft.Container):
 
         # 1. SPIELLOGIK (State / Zustand)
         all_due = get_due_words(self.profile.words)
+        random.shuffle(all_due)  # Zufällige Abfragereihenfolge statt Listen-Reihenfolge
         quest_limit = getattr(self.profile, "daily_quest_size", 30)
 
         # Beschneidet die Liste auf das Tageslimit
