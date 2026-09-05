@@ -208,6 +208,11 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "No matching words found.",
         "Spanisch": "No se encontraron palabras coincidentes.",
     },
+    "treffer_begrenzt": {
+        "Deutsch": "Zeige {angezeigt} von {gesamt} Treffern – Suche weiter eingrenzen.",
+        "Englisch": "Showing {angezeigt} of {gesamt} matches – refine your search.",
+        "Spanisch": "Mostrando {angezeigt} de {gesamt} resultados – afina tu búsqueda.",
+    },
     "faellig_am": {
         "Deutsch": "Fällig: {datum}",
         "Englisch": "Due: {datum}",
