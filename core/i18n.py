@@ -261,6 +261,61 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "© {jahr} All rights reserved",
         "Spanisch": "© {jahr} Todos los derechos reservados",
     },
+    "backup_button": {
+        "Deutsch": "Vokabeln & Fortschritt sichern",
+        "Englisch": "Back up words & progress",
+        "Spanisch": "Copiar vocabulario y progreso",
+    },
+    "backup_erfolgreich": {
+        "Deutsch": "Sicherung gespeichert: {dateiname}\nZu finden in der Dateien-App unter „Auf meinem iPhone“ → „VocaBase“.",
+        "Englisch": "Backup saved: {dateiname}\nFind it in the Files app under “On My iPhone” → “VocaBase”.",
+        "Spanisch": "Copia de seguridad guardada: {dateiname}\nDisponible en la app Archivos, en “En mi iPhone” → “VocaBase”.",
+    },
+    "tab_allgemein": {
+        "Deutsch": "Allgemein",
+        "Englisch": "General",
+        "Spanisch": "General",
+    },
+    "tab_erweitert": {
+        "Deutsch": "Erweitert",
+        "Englisch": "Advanced",
+        "Spanisch": "Avanzado",
+    },
+    "backup_import_button": {
+        "Deutsch": "Sicherung importieren",
+        "Englisch": "Import backup",
+        "Spanisch": "Importar copia de seguridad",
+    },
+    "import_dialog_titel": {
+        "Deutsch": "VocaBase-Sicherung auswählen",
+        "Englisch": "Select VocaBase backup",
+        "Spanisch": "Seleccionar copia de seguridad de VocaBase",
+    },
+    "import_bestaetigung_titel": {
+        "Deutsch": "Sicherung wirklich importieren?",
+        "Englisch": "Really import this backup?",
+        "Spanisch": "¿Importar esta copia de seguridad?",
+    },
+    "import_bestaetigung_text": {
+        "Deutsch": "Die Datei enthält {anzahl_profile} Profil(e): {namen} mit insgesamt {anzahl_vokabeln} Vokabeln.\n\nAlle aktuellen Profile, Vokabeln und der Fortschritt auf diesem Gerät werden dabei unwiderruflich überschrieben.",
+        "Englisch": "The file contains {anzahl_profile} profile(s): {namen} with {anzahl_vokabeln} words in total.\n\nAll current profiles, words, and progress on this device will be permanently overwritten.",
+        "Spanisch": "El archivo contiene {anzahl_profile} perfil(es): {namen} con un total de {anzahl_vokabeln} palabras.\n\nSe sobrescribirán de forma permanente todos los perfiles, palabras y el progreso actuales de este dispositivo.",
+    },
+    "import_erfolgreich": {
+        "Deutsch": "Sicherung erfolgreich importiert.",
+        "Englisch": "Backup imported successfully.",
+        "Spanisch": "Copia de seguridad importada con éxito.",
+    },
+    "import_fehler_ungueltig": {
+        "Deutsch": "Diese Datei ist keine gültige VocaBase-Sicherung.",
+        "Englisch": "This file is not a valid VocaBase backup.",
+        "Spanisch": "Este archivo no es una copia de seguridad de VocaBase válida.",
+    },
+    "import_keine_dateien_gefunden": {
+        "Deutsch": "Keine Sicherungsdatei gefunden. Lege deine .json-Sicherung zuerst über die Dateien-App ab: „Auf meinem iPhone“ → „VocaBase“.",
+        "Englisch": "No backup file found. First place your .json backup via the Files app: “On My iPhone” → “VocaBase”.",
+        "Spanisch": "No se encontró ninguna copia de seguridad. Primero coloca tu archivo .json mediante la app Archivos: “En mi iPhone” → “VocaBase”.",
+    },
 
     # --- Profildialog (main.py) ---
     "profile_sprachen_titel": {
