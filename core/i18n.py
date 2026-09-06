@@ -266,30 +266,10 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "Back up words & progress",
         "Spanisch": "Copiar vocabulario y progreso",
     },
-    "backup_titel": {
-        "Deutsch": "VocaBase Sicherung",
-        "Englisch": "VocaBase Backup",
-        "Spanisch": "Copia de seguridad de VocaBase",
-    },
-    "backup_text": {
-        "Deutsch": "Deine VocaBase-Sicherung (alle Profile, Vokabeln und Fortschritt).",
-        "Englisch": "Your VocaBase backup (all profiles, words, and progress).",
-        "Spanisch": "Tu copia de seguridad de VocaBase (todos los perfiles, palabras y progreso).",
-    },
     "backup_erfolgreich": {
-        "Deutsch": "Sicherung geteilt.",
-        "Englisch": "Backup shared.",
-        "Spanisch": "Copia de seguridad compartida.",
-    },
-    "backup_abgebrochen": {
-        "Deutsch": "Sicherung abgebrochen.",
-        "Englisch": "Backup cancelled.",
-        "Spanisch": "Copia de seguridad cancelada.",
-    },
-    "backup_nicht_verfuegbar": {
-        "Deutsch": "Teilen ist auf diesem Gerät nicht verfügbar.",
-        "Englisch": "Sharing is not available on this device.",
-        "Spanisch": "Compartir no está disponible en este dispositivo.",
+        "Deutsch": "Sicherung gespeichert: {dateiname}\nZu finden in der Dateien-App unter „Auf meinem iPhone“ → „VocaBase“.",
+        "Englisch": "Backup saved: {dateiname}\nFind it in the Files app under “On My iPhone” → “VocaBase”.",
+        "Spanisch": "Copia de seguridad guardada: {dateiname}\nDisponible en la app Archivos, en “En mi iPhone” → “VocaBase”.",
     },
     "tab_allgemein": {
         "Deutsch": "Allgemein",

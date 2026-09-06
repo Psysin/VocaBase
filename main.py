@@ -68,12 +68,6 @@ def main(page: ft.Page):
     # Das aktive Profil aus der Liste heraussuchen (oder das erste nehmen)
     active_profile = next((p for p in profiles if p.name == active_name), profiles[0])
 
-    # Service für den nativen "Teilen"-Dialog (Mail, AirDrop, In Dateien
-    # sichern, ...), genutzt vom "Vokabeln & Fortschritt sichern"-Button in
-    # den Einstellungen. Muss einmalig auf der Seite registriert werden.
-    share_service = ft.Share()
-    page.overlay.append(share_service)
-
     # 3. DESIGN FESTLEGEN (Hell oder Dunkel)
     page.theme_mode = (
         ft.ThemeMode.DARK
@@ -155,37 +149,29 @@ def main(page: ft.Page):
             value=getattr(active_profile, "dark_mode", True),
         )
 
-        async def export_backup(e):
-            """Teilt app_data.json über den nativen Teilen-Dialog (Mail, AirDrop,
-            In Dateien sichern, ...), z. B. um vor einem größeren Umbau der App
-            eine Sicherung von Vokabeln und Fortschritt auf einen anderen
-            Rechner zu übertragen."""
-            # Sicherstellen, dass die Datei den aktuellsten Stand enthält
-            save_app_data(profiles, active_profile_name=active_profile.name)
+        def export_backup(e):
+            """Speichert eine datierte Kopie von app_data.json direkt im
+            Dokumente-Ordner der App - dank UIFileSharingEnabled (siehe
+            pyproject.toml) bereits in der iOS Dateien-App sichtbar.
 
+            Nutzt bewusst kein ft.Share: dessen native Umsetzung reagiert auf
+            iOS aktuell nicht (dauerhafter 10-Sekunden-Timeout bei
+            share_files, auch mit gesetztem share_position_origin - ein
+            offenbar noch offener Flet-Bug). Von hier aus kann der Nutzer die
+            Datei über den nativen Teilen-Button der Dateien-App selbst
+            weiterleiten (Mail, AirDrop, ...) oder sie direkt wieder über
+            'Sicherung importieren' einspielen."""
             dateiname = f"vocabase_sicherung_{date.today()}.json"
-            result = await share_service.share_files(
-                [ft.ShareFile.from_path(DATA_FILE, name=dateiname)],
-                title=t("backup_titel", lang),
-                text=t("backup_text", lang),
-                subject=t("backup_titel", lang),
-                # Ohne einen (nicht-null) Anker-Punkt validiert das native iOS
-                # Teilen-Menü seit neueren iOS-Versionen die Anfrage nicht mehr
-                # und antwortet gar nicht - das führt sonst zu einem
-                # 10-Sekunden-Timeout, statt den Dialog zu öffnen.
-                share_position_origin=ft.Offset(
-                    x=page.window.width / 2, y=page.window.height / 2
-                ),
+            save_app_data(
+                profiles,
+                active_profile_name=active_profile.name,
+                filepath=str(pathlib.Path(DOCUMENTS_DIR) / dateiname),
             )
 
-            if result.status == ft.ShareResultStatus.SUCCESS:
-                meldung = t("backup_erfolgreich", lang)
-            elif result.status == ft.ShareResultStatus.DISMISSED:
-                meldung = t("backup_abgebrochen", lang)
-            else:
-                meldung = t("backup_nicht_verfuegbar", lang)
-
-            snackbar = ft.SnackBar(content=ft.Text(meldung), open=True)
+            snackbar = ft.SnackBar(
+                content=ft.Text(t("backup_erfolgreich", lang, dateiname=dateiname)),
+                open=True,
+            )
             page.overlay.append(snackbar)
             page.update()
 
@@ -384,7 +370,7 @@ def main(page: ft.Page):
                     ft.OutlinedButton(
                         content=ft.Row(
                             controls=[
-                                ft.Icon(ft.Icons.IOS_SHARE),
+                                ft.Icon(ft.Icons.SAVE_ALT),
                                 ft.Text(t("backup_button", lang)),
                             ],
                             alignment=ft.MainAxisAlignment.CENTER,
