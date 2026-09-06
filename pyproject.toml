@@ -9,3 +9,11 @@ product = "VocaBase"
 [tool.flet.splash]
 color = "#1565C0"
 dark_color = "#1565C0"
+
+# Macht den Documents-Ordner der App (dort liegt app_data.json) in der
+# iOS Files-App sichtbar ("Auf meinem iPhone" -> VocaBase), damit sich die
+# Datei per AirDrop/Files-App auf den Mac sichern und wieder zurückspielen
+# lässt - z.B. vor einem größeren Architektur-Umbau der App.
+[tool.flet.ios.info]
+UIFileSharingEnabled = true
+LSSupportsOpeningDocumentsInPlace = true
