@@ -254,7 +254,11 @@ def main(page: ft.Page):
             durchsuchbar ist."""
             eigener_dateiname = pathlib.Path(DATA_FILE).name
             gefundene_dateien = sorted(
-                (p for p in pathlib.Path(DOCUMENTS_DIR).glob("*.json") if p.name != eigener_dateiname),
+                (
+                    p
+                    for p in pathlib.Path(DOCUMENTS_DIR).glob("*.json")
+                    if p.name != eigener_dateiname
+                ),
                 key=lambda p: p.stat().st_mtime,
                 reverse=True,
             )
@@ -317,7 +321,8 @@ def main(page: ft.Page):
                 ),
                 actions=[
                     ft.TextButton(
-                        content=ft.Text(t("abbrechen", lang)), on_click=close_file_dialog
+                        content=ft.Text(t("abbrechen", lang)),
+                        on_click=close_file_dialog,
                     ),
                 ],
             )
