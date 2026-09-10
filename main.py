@@ -5,15 +5,17 @@ Sie steuert das Flet-Fenster, lädt die gespeicherten Profile und
 verwaltet die Navigation zwischen den einzelnen Bildschirmen (Views).
 """
 
+import asyncio
 import json
 import pathlib
 from datetime import date, datetime
 import flet as ft
 
 # Import der eigenen Logik- und Daten-Module
-from core.audio import has_audio
+from core.audio import has_audio, save_downloaded_audio
 from core.i18n import SPRACHEN, t
 from core.models import UserProfile, Word
+from core.tts_client import TTSFehler, load_tts_config, save_tts_config, synthesize
 from data.starter_words import STARTER_PACKS
 from data.storage import DATA_FILE, DOCUMENTS_DIR, load_app_data, save_app_data
 
@@ -333,9 +335,9 @@ def main(page: ft.Page):
 
         def berechne_sprachdaten_status() -> str:
             """Zählt, für wie viele Vokabeln des aktiven Profils bereits eine
-            Aussprache-Audiodatei vorbereitet ist (aktuell nur Englisch
-            Basis A1 - andere Sprachen/eigene Vokabeln liefern hier absichtlich
-            0, da has_audio() für unbekannte Wörter False zurückgibt)."""
+            Aussprache-Audiodatei vorbereitet ist - deckt sowohl die
+            ausgelieferten Basispakete (Englisch/Spanisch) als auch per
+            ElevenLabs nachgeladene eigene Vokabeln ab (siehe has_audio())."""
             vorhandene = sum(
                 1 for w in active_profile.words if has_audio(active_profile.language, w.back)
             )
@@ -350,12 +352,98 @@ def main(page: ft.Page):
             berechne_sprachdaten_status(), size=12, color=ft.Colors.GREY_500
         )
 
-        def sprachdaten_laden(e):
-            """Aktualisiert die Übersicht. Da alle Aussprache-Dateien bereits
-            mit der App ausgeliefert werden, muss hier (noch) nichts aus dem
-            Netz geladen werden - das ist die richtige Stelle für einen
-            späteren echten Nachlade-Mechanismus (z. B. für eigene Vokabeln)."""
-            sprachdaten_status_text.value = berechne_sprachdaten_status()
+        # ElevenLabs-Zugangsdaten: API-Key + je eine Voice-ID pro Sprache,
+        # vorbefüllt aus tts_config.json (siehe core/tts_client.py). Wird
+        # zusammen mit den übrigen Einstellungen über den "Speichern"-Button
+        # des Dialogs persistiert (siehe save_settings unten).
+        # autocorrect=False + capitalization=NONE: API-Keys/Voice-IDs sind
+        # exakte, groß-/kleinschreibungsempfindliche Zeichenfolgen - ohne das
+        # kann iOS' Autokorrektur/Großschreibung unbemerkt ein Zeichen
+        # verändern (bei einem passwortmaskierten Feld sieht man das nicht).
+        tts_config = load_tts_config()
+        tts_key_field = ft.TextField(
+            label=t("tts_api_key_label", lang),
+            value=tts_config["api_key"],
+            password=True,
+            can_reveal_password=False,
+            autocorrect=False,
+            capitalization=ft.TextCapitalization.NONE,
+            dense=True,
+        )
+        tts_voice_en_field = ft.TextField(
+            label=t("tts_voice_id_englisch_label", lang),
+            value=tts_config["voice_ids"]["Englisch Basis A1"],
+            autocorrect=False,
+            capitalization=ft.TextCapitalization.NONE,
+            dense=True,
+        )
+        tts_voice_es_field = ft.TextField(
+            label=t("tts_voice_id_spanisch_label", lang),
+            value=tts_config["voice_ids"]["Spanisch Basis A1"],
+            autocorrect=False,
+            capitalization=ft.TextCapitalization.NONE,
+            dense=True,
+        )
+
+        async def sprachdaten_laden(e):
+            """Lädt Aussprache für alle Vokabeln des aktiven Profils nach, die
+            noch keine haben - in der Praxis betrifft das nur selbst
+            hinzugefügte Vokabeln, das Basispaket ist bereits vollständig
+            abgedeckt (has_audio() liefert dafür schon True). Aktualisiert
+            die Übersicht nach JEDEM Wort live, nicht erst am Ende."""
+            fehlende = [
+                w for w in active_profile.words if not has_audio(active_profile.language, w.back)
+            ]
+
+            if not fehlende:
+                snackbar = ft.SnackBar(
+                    content=ft.Text(t("sprachdaten_nichts_fehlt", lang)), open=True
+                )
+                page.overlay.append(snackbar)
+                page.update()
+                return
+
+            api_key = tts_key_field.value.strip()
+            voice_id = {
+                "Englisch Basis A1": tts_voice_en_field.value.strip(),
+                "Spanisch Basis A1": tts_voice_es_field.value.strip(),
+            }.get(active_profile.language, "")
+
+            if not api_key or not voice_id:
+                snackbar = ft.SnackBar(
+                    content=ft.Text(t("sprachdaten_kein_key", lang)), open=True
+                )
+                page.overlay.append(snackbar)
+                page.update()
+                return
+
+            erfolgreich = 0
+            fehlgeschlagen = 0
+            for word in fehlende:
+                try:
+                    audio_bytes = await asyncio.to_thread(
+                        synthesize, word.back, active_profile.language, api_key, voice_id
+                    )
+                    save_downloaded_audio(active_profile.language, word.back, audio_bytes)
+                    erfolgreich += 1
+                except TTSFehler:
+                    fehlgeschlagen += 1
+
+                # Live-Aktualisierung nach jedem Wort statt nur am Ende.
+                sprachdaten_status_text.value = berechne_sprachdaten_status()
+                page.update()
+
+            if fehlgeschlagen:
+                meldung = t(
+                    "sprachdaten_teilweise",
+                    lang,
+                    erfolgreich=erfolgreich,
+                    fehlgeschlagen=fehlgeschlagen,
+                )
+            else:
+                meldung = t("sprachdaten_erfolgreich", lang, anzahl=erfolgreich)
+            snackbar = ft.SnackBar(content=ft.Text(meldung), open=True)
+            page.overlay.append(snackbar)
             page.update()
 
         def save_settings(e):
@@ -371,6 +459,13 @@ def main(page: ft.Page):
 
             # Daten sofort auf der Festplatte sichern
             save_app_data(profiles, active_profile_name=active_profile.name)
+            save_tts_config(
+                tts_key_field.value.strip(),
+                {
+                    "Englisch Basis A1": tts_voice_en_field.value.strip(),
+                    "Spanisch Basis A1": tts_voice_es_field.value.strip(),
+                },
+            )
             settings_dialog.open = False
             page.update()
             show_view("dashboard")
@@ -436,10 +531,17 @@ def main(page: ft.Page):
                     sprachdaten_status_text,
                     ft.Divider(),
                     ft.Text(
+                        t("tts_config_titel", lang), weight=ft.FontWeight.BOLD, size=13
+                    ),
+                    tts_key_field,
+                    tts_voice_en_field,
+                    tts_voice_es_field,
+                    ft.Divider(),
+                    ft.Text(
                         t("app_informationen", lang), weight=ft.FontWeight.BOLD, size=13
                     ),
                     ft.Text(
-                        t("version_zeile", lang, version="1.1.0"),
+                        t("version_zeile", lang, version="1.2.0"),
                         size=12,
                         color=ft.Colors.GREY_500,
                     ),

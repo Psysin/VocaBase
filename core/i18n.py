@@ -301,6 +301,46 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "{vorhanden} of {gesamt} words with pronunciation",
         "Spanisch": "{vorhanden} de {gesamt} palabras con pronunciación",
     },
+    "sprachdaten_nichts_fehlt": {
+        "Deutsch": "Alle Vokabeln haben bereits eine Aussprache.",
+        "Englisch": "All words already have pronunciation.",
+        "Spanisch": "Todas las palabras ya tienen pronunciación.",
+    },
+    "sprachdaten_kein_key": {
+        "Deutsch": "Bitte zuerst ElevenLabs API-Key und Voice-ID eintragen und speichern.",
+        "Englisch": "Please enter and save an ElevenLabs API key and voice ID first.",
+        "Spanisch": "Introduce y guarda primero una clave de API y un ID de voz de ElevenLabs.",
+    },
+    "sprachdaten_erfolgreich": {
+        "Deutsch": "{anzahl} Vokabeln erfolgreich geladen.",
+        "Englisch": "{anzahl} words loaded successfully.",
+        "Spanisch": "{anzahl} palabras cargadas con éxito.",
+    },
+    "sprachdaten_teilweise": {
+        "Deutsch": "{erfolgreich} geladen, {fehlgeschlagen} fehlgeschlagen.",
+        "Englisch": "{erfolgreich} loaded, {fehlgeschlagen} failed.",
+        "Spanisch": "{erfolgreich} cargadas, {fehlgeschlagen} fallidas.",
+    },
+    "tts_config_titel": {
+        "Deutsch": "ElevenLabs-Zugangsdaten (für neue eigene Vokabeln):",
+        "Englisch": "ElevenLabs credentials (for new custom words):",
+        "Spanisch": "Credenciales de ElevenLabs (para palabras propias nuevas):",
+    },
+    "tts_api_key_label": {
+        "Deutsch": "ElevenLabs API-Key",
+        "Englisch": "ElevenLabs API key",
+        "Spanisch": "Clave de API de ElevenLabs",
+    },
+    "tts_voice_id_englisch_label": {
+        "Deutsch": "Voice-ID (Englisch)",
+        "Englisch": "Voice ID (English)",
+        "Spanisch": "ID de voz (inglés)",
+    },
+    "tts_voice_id_spanisch_label": {
+        "Deutsch": "Voice-ID (Spanisch)",
+        "Englisch": "Voice ID (Spanish)",
+        "Spanisch": "ID de voz (español)",
+    },
     "import_dialog_titel": {
         "Deutsch": "VocaBase-Sicherung auswählen",
         "Englisch": "Select VocaBase backup",

@@ -2,11 +2,13 @@
 
 Ordnet Vokabeltexten vorab erzeugte Aussprache-Audiodateien zu.
 
-Die eigentlichen .m4a-Dateien werden nicht zur Laufzeit erzeugt (das
-bräuchte Internet oder ein natives TTS-Plugin), sondern einmalig am Mac
-über scripts/generate_audio.py per macOS "say" generiert und als
-Projektdateien mit ausgeliefert - genau wie die CSV-Vokabelpakete in
-data/starter_words.py.
+Die Basispaket-Audiodateien (.mp3) werden nicht zur Laufzeit erzeugt,
+sondern einmalig am Mac über scripts/generate_audio.py (ElevenLabs- oder
+macOS-"say"-Backend) generiert und als Projektdateien mit ausgeliefert -
+genau wie die CSV-Vokabelpakete in data/starter_words.py. Für selbst
+hinzugefügte Vokabeln, die nicht im Basispaket stehen, kann die
+Aussprache zusätzlich zur Laufzeit per ElevenLabs nachgeladen werden
+(siehe AUDIO_DOWNLOADED_DIR, save_downloaded_audio, core/tts_client.py).
 """
 
 import json
@@ -25,7 +27,14 @@ DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
 # siehe core/audio.py Docstring-Hinweis zu get_or_cache_audio_path().
 AUDIO_CACHE_DIR = DOCUMENTS_DIR / "audio_cache"
 
-# Pro Sprachpaket: Unterordner mit den .m4a-Dateien und die zugehörige
+# Für Wörter, die NICHT im festen (mit der App ausgelieferten) Manifest
+# stehen - typischerweise selbst hinzugefügte Vokabeln, deren Aussprache
+# zur Laufzeit per ElevenLabs nachgeladen wurde (siehe core/tts_client.py
+# und main.py: sprachdaten_laden). Liegt bereits beschreibbar, muss also
+# im Gegensatz zu AUDIO_CACHE_DIR nicht zusätzlich kopiert werden.
+AUDIO_DOWNLOADED_DIR = DOCUMENTS_DIR / "audio_downloaded"
+
+# Pro Sprachpaket: Unterordner mit den .mp3-Dateien und die zugehörige
 # Manifest-Datei (Liste der Original-Wörter, für die Audio existiert).
 # Weitere Sprachen werden hier künftig einfach ergänzt.
 SPRACH_AUDIO_KONFIG: dict[str, dict[str, str]] = {
@@ -76,9 +85,25 @@ def _lade_manifest(language: str) -> set[str]:
     return woerter
 
 
+def _downloaded_pfad(language: str, word: str) -> pathlib.Path | None:
+    """Pfad einer per ElevenLabs nachgeladenen Audiodatei, falls konfiguriert
+    und vorhanden - siehe AUDIO_DOWNLOADED_DIR."""
+    konfig = SPRACH_AUDIO_KONFIG.get(language)
+    if not konfig:
+        return None
+    return AUDIO_DOWNLOADED_DIR / konfig["ordner"] / f"{slugify_word(word)}.mp3"
+
+
 def has_audio(language: str, word: str) -> bool:
-    """Prüft, ob für dieses Wort in dieser Sprache eine Aussprache existiert."""
-    return word.strip().lower() in {w.strip().lower() for w in _lade_manifest(language)}
+    """Prüft, ob für dieses Wort in dieser Sprache eine Aussprache existiert -
+    entweder mit der App ausgeliefert (Manifest) oder zur Laufzeit
+    nachgeladen (AUDIO_DOWNLOADED_DIR)."""
+    im_manifest = word.strip().lower() in {w.strip().lower() for w in _lade_manifest(language)}
+    if im_manifest:
+        return True
+
+    pfad = _downloaded_pfad(language, word)
+    return pfad is not None and pfad.exists()
 
 
 def get_audio_bytes(language: str, word: str) -> bytes | None:
@@ -87,7 +112,7 @@ def get_audio_bytes(language: str, word: str) -> bytes | None:
     if not konfig or not has_audio(language, word):
         return None
 
-    dateipfad = DATA_DIR / konfig["ordner"] / f"{slugify_word(word)}.m4a"
+    dateipfad = DATA_DIR / konfig["ordner"] / f"{slugify_word(word)}.mp3"
     if not dateipfad.exists():
         return None
 
@@ -112,16 +137,36 @@ def get_or_cache_audio_path(language: str, word: str) -> str | None:
     if not konfig or not has_audio(language, word):
         return None
 
-    quelle = DATA_DIR / konfig["ordner"] / f"{slugify_word(word)}.m4a"
+    # Nachgeladene Datei liegt schon beschreibbar - kein Kopieren nötig.
+    downloaded = _downloaded_pfad(language, word)
+    if downloaded is not None and downloaded.exists():
+        return str(downloaded)
+
+    quelle = DATA_DIR / konfig["ordner"] / f"{slugify_word(word)}.mp3"
     if not quelle.exists():
         return None
 
     # Nach Sprachordner getrennt (z. B. audio_cache/audio/en/...), da sich
     # Slugs zwischen Sprachen überschneiden können (z. B. "no", "total" -
     # existieren sowohl im Englisch- als auch im Spanisch-Paket).
-    ziel = AUDIO_CACHE_DIR / konfig["ordner"] / f"{slugify_word(word)}.m4a"
+    ziel = AUDIO_CACHE_DIR / konfig["ordner"] / f"{slugify_word(word)}.mp3"
     if not ziel.exists():
         ziel.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(quelle, ziel)
 
+    return str(ziel)
+
+
+def save_downloaded_audio(language: str, word: str, audio_bytes: bytes) -> str:
+    """Speichert per ElevenLabs erzeugte Audiodaten dauerhaft in
+    AUDIO_DOWNLOADED_DIR und gibt den Dateipfad zurück.
+
+    Wirft KeyError, falls 'language' nicht in SPRACH_AUDIO_KONFIG steht -
+    das wäre ein Programmierfehler des Aufrufers, kein erwarteter Fall.
+    """
+    konfig = SPRACH_AUDIO_KONFIG[language]
+    ziel = AUDIO_DOWNLOADED_DIR / konfig["ordner"] / f"{slugify_word(word)}.mp3"
+    ziel.parent.mkdir(parents=True, exist_ok=True)
+    with open(ziel, "wb") as datei:
+        datei.write(audio_bytes)
     return str(ziel)
