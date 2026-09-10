@@ -121,6 +121,11 @@ _TEXTE: dict[str, dict[str, str]] = {
     },
 
     # --- Übungsansicht (practice.py) ---
+    "aussprache_abspielen_tooltip": {
+        "Deutsch": "Aussprache abspielen",
+        "Englisch": "Play pronunciation",
+        "Spanisch": "Reproducir pronunciación",
+    },
     "antwort_eintippen": {
         "Deutsch": "Antwort eintippen...",
         "Englisch": "Type your answer...",
@@ -285,6 +290,16 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Deutsch": "Sicherung importieren",
         "Englisch": "Import backup",
         "Spanisch": "Importar copia de seguridad",
+    },
+    "sprachdaten_laden_button": {
+        "Deutsch": "Sprachdaten laden",
+        "Englisch": "Load speech data",
+        "Spanisch": "Cargar datos de voz",
+    },
+    "sprachdaten_status": {
+        "Deutsch": "{vorhanden} von {gesamt} Vokabeln mit Aussprache",
+        "Englisch": "{vorhanden} of {gesamt} words with pronunciation",
+        "Spanisch": "{vorhanden} de {gesamt} palabras con pronunciación",
     },
     "import_dialog_titel": {
         "Deutsch": "VocaBase-Sicherung auswählen",

@@ -11,6 +11,7 @@ from datetime import date, datetime
 import flet as ft
 
 # Import der eigenen Logik- und Daten-Module
+from core.audio import has_audio
 from core.i18n import SPRACHEN, t
 from core.models import UserProfile, Word
 from data.starter_words import STARTER_PACKS
@@ -330,6 +331,33 @@ def main(page: ft.Page):
             file_dialog.open = True
             page.update()
 
+        def berechne_sprachdaten_status() -> str:
+            """Zählt, für wie viele Vokabeln des aktiven Profils bereits eine
+            Aussprache-Audiodatei vorbereitet ist (aktuell nur Englisch
+            Basis A1 - andere Sprachen/eigene Vokabeln liefern hier absichtlich
+            0, da has_audio() für unbekannte Wörter False zurückgibt)."""
+            vorhandene = sum(
+                1 for w in active_profile.words if has_audio(active_profile.language, w.back)
+            )
+            return t(
+                "sprachdaten_status",
+                lang,
+                vorhanden=vorhandene,
+                gesamt=len(active_profile.words),
+            )
+
+        sprachdaten_status_text = ft.Text(
+            berechne_sprachdaten_status(), size=12, color=ft.Colors.GREY_500
+        )
+
+        def sprachdaten_laden(e):
+            """Aktualisiert die Übersicht. Da alle Aussprache-Dateien bereits
+            mit der App ausgeliefert werden, muss hier (noch) nichts aus dem
+            Netz geladen werden - das ist die richtige Stelle für einen
+            späteren echten Nachlade-Mechanismus (z. B. für eigene Vokabeln)."""
+            sprachdaten_status_text.value = berechne_sprachdaten_status()
+            page.update()
+
         def save_settings(e):
             """Speichert die neuen Einstellungen direkt im aktiven Profil-Objekt."""
             active_profile.daily_quest_size = int(quest_dropdown.value or 30)
@@ -394,12 +422,24 @@ def main(page: ft.Page):
                         ),
                         on_click=import_backup,
                     ),
+                    ft.OutlinedButton(
+                        content=ft.Row(
+                            controls=[
+                                ft.Icon(ft.Icons.VOLUME_UP_OUTLINED),
+                                ft.Text(t("sprachdaten_laden_button", lang)),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            tight=True,
+                        ),
+                        on_click=sprachdaten_laden,
+                    ),
+                    sprachdaten_status_text,
                     ft.Divider(),
                     ft.Text(
                         t("app_informationen", lang), weight=ft.FontWeight.BOLD, size=13
                     ),
                     ft.Text(
-                        t("version_zeile", lang, version="1.0.1"),
+                        t("version_zeile", lang, version="1.1.0"),
                         size=12,
                         color=ft.Colors.GREY_500,
                     ),

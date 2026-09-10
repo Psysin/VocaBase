@@ -1,10 +1,16 @@
 [project]
 name = "VocaBase"
-version = "1.0.1"
+version = "1.1.0"
 description = "Spaced-Repetition Vokabeltrainer"
+dependencies = ["flet-audio==0.86.5"]
 
 [tool.flet]
 product = "VocaBase"
+
+# scripts/ ist ein reines Entwickler-Tool (Audio-Generierung am Mac) und
+# soll nicht mit ins gebaute App-Paket wandern.
+[tool.flet.app]
+exclude = ["scripts"]
 
 [tool.flet.splash]
 color = "#1565C0"

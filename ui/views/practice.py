@@ -4,6 +4,9 @@ Setzt die Leitner-Logik visuell in einer Schreibübung um.
 """
 
 import flet as ft
+from flet_audio import Audio
+
+from core.audio import get_or_cache_audio_path, has_audio
 from core.i18n import t
 from core.models import UserProfile, Word
 from core.spaced_rep import build_practice_session, review_word
@@ -33,6 +36,7 @@ class PracticeView(ft.Container):
         )
         self.current_index: int = 0
         self.attempts_left: int = 3  # Wird in load_next_card überschrieben
+        self._aktueller_player: Audio | None = None  # siehe play_pronunciation()
 
         # 2. UI-ELEMENTE
         self.status_text = ft.Text(
@@ -61,6 +65,16 @@ class PracticeView(ft.Container):
             value="", size=26, weight=ft.FontWeight.BOLD, text_align=ft.TextAlign.CENTER
         )
 
+        # Lautsprecher-Button: spielt die Aussprache der Zielsprachen-Antwort ab.
+        # Nur sichtbar, wenn dafür eine vorbereitete Audiodatei existiert
+        # (aktuell nur Englisch Basis A1) - siehe load_next_card().
+        self.speaker_btn = ft.IconButton(
+            icon=ft.Icons.VOLUME_UP_OUTLINED,
+            tooltip=t("aussprache_abspielen_tooltip", self.lang),
+            visible=False,
+            on_click=self.play_pronunciation,
+        )
+
         # Feedback-Text (Richtig / Falsch / Lösung) - Unsichtbar zu Beginn!
         self.feedback_display = ft.Text(
             value="", size=15, text_align=ft.TextAlign.CENTER, visible=False
@@ -72,7 +86,14 @@ class PracticeView(ft.Container):
                     alignment=ft.MainAxisAlignment.CENTER,
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     spacing=10,
-                    controls=[self.word_display, self.feedback_display],
+                    controls=[
+                        ft.Row(
+                            controls=[self.word_display, self.speaker_btn],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            tight=True,
+                        ),
+                        self.feedback_display,
+                    ],
                 ),
                 width=320,
                 height=150,
@@ -159,6 +180,7 @@ class PracticeView(ft.Container):
             # Es gibt noch Karten zum Abfragen
             current_word = self.due_words[self.current_index]
             self.word_display.value = current_word.front
+            self.speaker_btn.visible = has_audio(self.profile.language, current_word.back)
 
             # Alles für den neuen Versuch auf Standard zurücksetzen
             self.feedback_display.visible = False
@@ -186,6 +208,7 @@ class PracticeView(ft.Container):
             self.feedback_display.color = ft.Colors.GREEN_400
             self.feedback_display.visible = True
 
+            self.speaker_btn.visible = False
             self.input_field.visible = False
             self.btn_check.visible = False
             self.btn_next.visible = False
@@ -249,3 +272,23 @@ class PracticeView(ft.Container):
         self.current_index += 1
         self.load_next_card()
         self.update()
+
+    def play_pronunciation(self, e):
+        """Spielt die Aussprache der aktuellen Zielsprachen-Antwort ab.
+
+        Frische Audio(src=Dateipfad, autoplay=True)-Instanz pro Wiedergabe
+        (siehe main.py-Testaufbau) - rohe Bytes bleiben auf iOS lautlos, ein
+        echter Dateipfad aus get_or_cache_audio_path() funktioniert zuverlässig."""
+        current_word = self.due_words[self.current_index]
+        audio_pfad = get_or_cache_audio_path(self.profile.language, current_word.back)
+        if audio_pfad is None:
+            return
+
+        # Vorherige Wiedergabe-Instanz entfernen, damit page.services über eine
+        # lange Übungssitzung nicht unbegrenzt anwächst.
+        if self._aktueller_player is not None and self._aktueller_player in self.page.services:
+            self.page.services.remove(self._aktueller_player)
+
+        self._aktueller_player = Audio(src=audio_pfad, autoplay=True)
+        self.page.services.append(self._aktueller_player)
+        self.page.update()
