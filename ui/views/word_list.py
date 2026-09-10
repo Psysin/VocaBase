@@ -7,6 +7,9 @@ bearbeiten und löschen.
 import asyncio
 
 import flet as ft
+from flet_audio import Audio
+
+from core.audio import get_or_cache_audio_path, has_audio
 from core.i18n import t
 from core.models import UserProfile, Word
 from data.storage import save_app_data
@@ -33,6 +36,7 @@ class WordListView(ft.Container):
         self.on_back = on_back
         self.lang = getattr(profile, "ui_language", "Deutsch")
         self._filter_token = 0
+        self._aktueller_player: Audio | None = None  # siehe play_pronunciation()
 
         # 1. SUCHFELD (Live-Filter)
         # on_change wartet erst SUCH_VERZOEGERUNG ab (Debounce), bevor gefiltert wird
@@ -241,6 +245,25 @@ class WordListView(ft.Container):
             dense=True,
             options=[ft.dropdown.Option(str(i)) for i in range(1, 6)],
         )
+        # Lautsprecher-Zeile: nur zum Prüfen, ob für dieses Wort bereits
+        # Aussprache vorliegt (z. B. nach "Sprachdaten laden") - spielt den
+        # gespeicherten Stand von word.back ab, nicht ungespeicherte Eingaben.
+        # Eigene Zeile unterhalb der übrigen Felder, damit sie bei schmalen
+        # Bildschirmen nicht mit dem Übersetzungsfeld/dessen Rand kollidiert.
+        edit_speaker_btn = ft.IconButton(
+            icon=ft.Icons.VOLUME_UP_OUTLINED,
+            tooltip=t("aussprache_abspielen_tooltip", self.lang),
+            on_click=lambda e: self.play_pronunciation(word.back),
+        )
+        edit_speaker_row = ft.Row(
+            controls=[
+                ft.Text(t("aussprache_abspielen_tooltip", self.lang), size=12, color=ft.Colors.GREY_600),
+                edit_speaker_btn,
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+            tight=True,
+            visible=has_audio(self.profile.language, word.back),
+        )
 
         def save_changes(e):
             new_front = edit_front.value.strip()
@@ -272,7 +295,10 @@ class WordListView(ft.Container):
         # Das Popup Fenster
         edit_dialog = ft.AlertDialog(
             title=ft.Text(t("vokabel_bearbeiten_titel", self.lang)),
-            content=ft.Column(controls=[edit_front, edit_back, edit_box], tight=True),
+            content=ft.Column(
+                controls=[edit_front, edit_back, edit_box, edit_speaker_row],
+                tight=True,
+            ),
             actions=[
                 ft.TextButton(
                     content=ft.Text(t("abbrechen", self.lang)), on_click=close_dialog
@@ -289,6 +315,22 @@ class WordListView(ft.Container):
             self.page.overlay.append(edit_dialog)
             edit_dialog.open = True
             self.page.update()
+
+    def play_pronunciation(self, word_back: str):
+        """Spielt die vorhandene Aussprache eines Wortes ab (Prüfung im
+        Bearbeiten-Dialog, z. B. nach "Sprachdaten laden"). Gleiches Muster
+        wie ui/views/practice.py: frische Audio(src=Dateipfad)-Instanz pro
+        Wiedergabe, da rohe Bytes auf iOS lautlos bleiben."""
+        audio_pfad = get_or_cache_audio_path(self.profile.language, word_back)
+        if audio_pfad is None or not self.page:
+            return
+
+        if self._aktueller_player is not None and self._aktueller_player in self.page.services:
+            self.page.services.remove(self._aktueller_player)
+
+        self._aktueller_player = Audio(src=audio_pfad, autoplay=True)
+        self.page.services.append(self._aktueller_player)
+        self.page.update()
 
     def delete_word(self, word_to_delete: Word):
         """Entfernt eine Vokabel und aktualisiert sofort die Ansicht."""
