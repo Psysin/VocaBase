@@ -9,7 +9,7 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
 * **Mehrbenutzer- & Mehrsprachen-Verwaltung:**
   * Dynamisches Anlegen und Löschen von Profilen direkt in der Benutzeroberfläche.
   * Individuelle Zielsprachen pro Profil (Englisch, Spanisch).
-  * Vordefinierte A1-Starter-Wortschätze (kuratierte Buchvokabeln, ca. 450 für Englisch und 1600 für Spanisch) mit optionaler Startauswahl via Checkbox.
+  * Vordefinierte A1-Starter-Wortschätze (ca. 450 für Englisch und ca. 1700 für Spanisch) mit optionaler Startauswahl via Checkbox.
   * Vokabellisten wurde per CSV im /data Ordner abgelegt, der Zugriff auf die Vokabeln erfolgt über
   starter_words.py das laden der CSV wurde für Flet und IOS angepasst, wegen der Sandbox.
   * Vokabeln liegen zusätzlich als Tabelle in Google Drive ab
@@ -28,8 +28,13 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * Bearbeiten-Dialog für bestehende Einträge (Wortkorrekturen und manuelle Kastenanpassung).
   * Ein-Klick-Löschfunktion für einzelne Einträge.
   * Schnelle Erfassungsmaske mit automatischem Duplikatschutz.
+* **Aussprache (Englisch & Spanisch):**
+  * Lautsprecher-Button in der Übungsansicht spielt die korrekte Aussprache der Zielsprachen-Antwort ab.
+  * Läuft komplett offline: Audiodateien werden einmalig am Mac per macOS-Sprachausgabe (`say`, Stimme Samantha/Mónica) erzeugt und mit der App ausgeliefert – keine Internetverbindung, kein externer Dienst zur Laufzeit nötig (siehe `core/audio.py`, `scripts/generate_audio.py`).
+  * Übersicht in den Einstellungen ("Erweitert"-Tab) zeigt, für wie viele Vokabeln des aktiven Profils bereits eine Aussprache vorliegt.
 * **Einstellungen & Design:**
-  * Einstellungs-Dialog (Zahnrad-Menü) zur Anpassung der Vokabeln pro Durchgang.
+  * Einstellungs-Dialog (Zahnrad-Menü, zwei Reiter "Allgemein"/"Erweitert") zur Anpassung der Vokabeln pro Durchgang, App-Sprache und mehr.
+  * Manuelle Sicherung: Export/Import aller Profile & Vokabeln als JSON über die iOS Dateien-App (siehe `data/storage.py`).
   * Nahtlose Umschaltung zwischen Dark Mode und Light Mode pro Profil.
   * Anpassung der Fehlversuche zwischen 1 und 5
   * Mobil-optimiertes Layout mit Safe-Area-Padding für iOS.
@@ -46,11 +51,18 @@ Vokabel_App/
 │
 ├── core/                        # Kernmodelle & Anwendungslogik (Pure Python)
 │   ├── models.py                # Klassen 'Word' und 'UserProfile' (inkl. Settings)
-│   └── spaced_rep.py            # Leitner-Algorithmus, Intervalle & Duplikatsprüfung
+│   ├── spaced_rep.py            # Leitner-Algorithmus, Intervalle & Duplikatsprüfung
+│   ├── i18n.py                  # Übersetzungen der Bedienoberfläche (DE/EN/ES)
+│   └── audio.py                 # Ordnet Vokabeln vorab erzeugte Aussprache-Dateien zu
 │
 ├── data/                        # Datenhaltung, Persistenz & Stammdaten
 │   ├── starter_words.py         # Kuratierte Startvokabelpakete nach Sprachen
-│   └── storage.py               # JSON-Speicher- und Laderoutinen (app_data.json)
+│   ├── storage.py               # JSON-Speicher- und Laderoutinen (app_data.json)
+│   ├── audio/en/, audio/es/     # Vorab erzeugte Aussprache-Audiodateien (.m4a)
+│   └── audio_manifest_*.json    # Liste der Wörter mit vorhandener Aussprache
+│
+├── scripts/                     # Entwickler-Tools (laufen nie auf dem Handy)
+│   └── generate_audio.py        # Erzeugt Aussprache-Audio per macOS "say"
 │
 ├── ui/                          # Grafische Benutzeroberfläche (Flet)
 │   └── views/
@@ -117,7 +129,7 @@ python -m venv .venv
 ### 3. Abhängigkeiten installieren
 
 ```bash
-pip install flet
+pip install flet flet-audio==0.86.5
 ```
 
 ### 4. Anwendung starten
@@ -148,5 +160,5 @@ Folgende Module sind für zukünftige Releases vorgesehen:
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.0.1
+* **Version:** 1.1.0
 * **Lizenz:** © 2026 Alle Rechte vorbehalten
