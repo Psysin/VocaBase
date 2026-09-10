@@ -28,10 +28,11 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * Bearbeiten-Dialog für bestehende Einträge (Wortkorrekturen und manuelle Kastenanpassung).
   * Ein-Klick-Löschfunktion für einzelne Einträge.
   * Schnelle Erfassungsmaske mit automatischem Duplikatschutz.
-* **Aussprache (Englisch & Spanisch):**
-  * Lautsprecher-Button in der Übungsansicht spielt die korrekte Aussprache der Zielsprachen-Antwort ab.
-  * Läuft komplett offline: Audiodateien werden einmalig am Mac per macOS-Sprachausgabe (`say`, Stimme Samantha/Mónica) erzeugt und mit der App ausgeliefert – keine Internetverbindung, kein externer Dienst zur Laufzeit nötig (siehe `core/audio.py`, `scripts/generate_audio.py`).
-  * Übersicht in den Einstellungen ("Erweitert"-Tab) zeigt, für wie viele Vokabeln des aktiven Profils bereits eine Aussprache vorliegt.
+* **Aussprache (Englisch & Spanisch), erzeugt mit ElevenLabs-Stimmen:**
+  * Lautsprecher-Button in der Übungsansicht spielt die korrekte Aussprache der Zielsprachen-Antwort ab; im Bearbeiten-Dialog der Vokabelliste steht derselbe Button zur gezielten Prüfung einzelner Wörter.
+  * Basispakete laufen komplett offline: Die Audiodateien für die Startvokabeln (Englisch + Spanisch, je eine eigene, feste ElevenLabs-Stimme) werden einmalig am Mac erzeugt und mit der App ausgeliefert – keine Internetverbindung zur Laufzeit nötig (siehe `core/audio.py`, `scripts/generate_audio.py`).
+  * Für selbst hinzugefügte Vokabeln kann Aussprache direkt auf dem Gerät nachgeladen werden: In den Einstellungen ("Erweitert"-Tab) einmalig den eigenen ElevenLabs-API-Key hinterlegen (nie im Code oder Repo gespeichert, rein lokal pro Gerät) und "Sprachdaten laden" antippen – die Übersicht aktualisiert sich dabei live (siehe `core/tts_client.py`).
+  * Übersicht in den Einstellungen zeigt, für wie viele Vokabeln des aktiven Profils bereits eine Aussprache vorliegt (Basispaket + nachgeladene eigene Vokabeln zusammen).
 * **Einstellungen & Design:**
   * Einstellungs-Dialog (Zahnrad-Menü, zwei Reiter "Allgemein"/"Erweitert") zur Anpassung der Vokabeln pro Durchgang, App-Sprache und mehr.
   * Manuelle Sicherung: Export/Import aller Profile & Vokabeln als JSON über die iOS Dateien-App (siehe `data/storage.py`).
@@ -53,16 +54,17 @@ Vokabel_App/
 │   ├── models.py                # Klassen 'Word' und 'UserProfile' (inkl. Settings)
 │   ├── spaced_rep.py            # Leitner-Algorithmus, Intervalle & Duplikatsprüfung
 │   ├── i18n.py                  # Übersetzungen der Bedienoberfläche (DE/EN/ES)
-│   └── audio.py                 # Ordnet Vokabeln vorab erzeugte Aussprache-Dateien zu
+│   ├── audio.py                 # Ordnet Vokabeln vorab erzeugte/nachgeladene Aussprache-Dateien zu
+│   └── tts_client.py            # ElevenLabs-Anbindung zum Nachladen von Aussprache auf dem Gerät
 │
 ├── data/                        # Datenhaltung, Persistenz & Stammdaten
 │   ├── starter_words.py         # Kuratierte Startvokabelpakete nach Sprachen
 │   ├── storage.py               # JSON-Speicher- und Laderoutinen (app_data.json)
-│   ├── audio/en/, audio/es/     # Vorab erzeugte Aussprache-Audiodateien (.m4a)
+│   ├── audio/en/, audio/es/     # Vorab erzeugte Aussprache-Audiodateien (.mp3, ElevenLabs)
 │   └── audio_manifest_*.json    # Liste der Wörter mit vorhandener Aussprache
 │
 ├── scripts/                     # Entwickler-Tools (laufen nie auf dem Handy)
-│   └── generate_audio.py        # Erzeugt Aussprache-Audio per macOS "say"
+│   └── generate_audio.py        # Erzeugt Basispaket-Aussprache per ElevenLabs (oder macOS "say")
 │
 ├── ui/                          # Grafische Benutzeroberfläche (Flet)
 │   └── views/
@@ -79,7 +81,9 @@ Vokabel_App/
 
 Die Nutzerdaten (`app_data.json`) werden **nicht** im Projektordner abgelegt, sondern
 automatisch im `Documents`-Ordner des jeweiligen Geräts erzeugt (siehe `data/storage.py`) –
-das funktioniert dadurch auch innerhalb der iOS-Sandbox.
+das funktioniert dadurch auch innerhalb der iOS-Sandbox. Im selben Ordner liegen außerdem
+`tts_config.json` (ElevenLabs-API-Key + Voice-IDs, rein lokal, nie im Repo) und
+`audio_downloaded/` (nachgeladene Aussprache für eigene Vokabeln).
 
 ---
 
@@ -160,5 +164,5 @@ Folgende Module sind für zukünftige Releases vorgesehen:
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.1.0
+* **Version:** 1.2.0
 * **Lizenz:** © 2026 Alle Rechte vorbehalten
