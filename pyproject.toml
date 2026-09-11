@@ -23,3 +23,6 @@ dark_color = "#1565C0"
 [tool.flet.ios.info]
 UIFileSharingEnabled = true
 LSSupportsOpeningDocumentsInPlace = true
+
+# App ist nicht für Querformat ausgelegt - Ausrichtung auf Hochformat sperren.
+UISupportedInterfaceOrientations = ["UIInterfaceOrientationPortrait"]
