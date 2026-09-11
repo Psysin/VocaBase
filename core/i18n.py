@@ -59,6 +59,11 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "Settings",
         "Spanisch": "Ajustes",
     },
+    "btn_einstellungen": {
+        "Deutsch": "Einstellungen",
+        "Englisch": "Settings",
+        "Spanisch": "Ajustes",
+    },
     "begruessung": {
         "Deutsch": "Hallo, {name}! 👋",
         "Englisch": "Hello, {name}! 👋",
@@ -114,12 +119,6 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "Manage words ({anzahl})",
         "Spanisch": "Gestionar palabras ({anzahl})",
     },
-    "btn_profil_wechseln": {
-        "Deutsch": "Profil / Sprache wechseln",
-        "Englisch": "Switch profile / language",
-        "Spanisch": "Cambiar perfil / idioma",
-    },
-
     # --- Übungsansicht (practice.py) ---
     "aussprache_abspielen_tooltip": {
         "Deutsch": "Aussprache abspielen",
@@ -285,6 +284,11 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Deutsch": "Erweitert",
         "Englisch": "Advanced",
         "Spanisch": "Avanzado",
+    },
+    "tab_profile": {
+        "Deutsch": "Profile",
+        "Englisch": "Profiles",
+        "Spanisch": "Perfiles",
     },
     "backup_import_button": {
         "Deutsch": "Sicherung importieren",

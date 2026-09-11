@@ -34,11 +34,11 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * Für selbst hinzugefügte Vokabeln kann Aussprache direkt auf dem Gerät nachgeladen werden: In den Einstellungen ("Erweitert"-Tab) einmalig den eigenen ElevenLabs-API-Key hinterlegen (nie im Code oder Repo gespeichert, rein lokal pro Gerät) und "Sprachdaten laden" antippen – die Übersicht aktualisiert sich dabei live (siehe `core/tts_client.py`).
   * Übersicht in den Einstellungen zeigt, für wie viele Vokabeln des aktiven Profils bereits eine Aussprache vorliegt (Basispaket + nachgeladene eigene Vokabeln zusammen).
 * **Einstellungen & Design:**
-  * Einstellungs-Dialog (Zahnrad-Menü, zwei Reiter "Allgemein"/"Erweitert") zur Anpassung der Vokabeln pro Durchgang, App-Sprache und mehr.
+  * Einstellungs-Button im Hauptmenü mit drei Reitern: "Allgemein" (Vokabeln pro Durchgang, App-Sprache, Dark Mode), "Erweitert" (Sicherung, Sprachdaten, ElevenLabs-Zugangsdaten – standardmäßig eingeklappt) und "Profile" (Profil wechseln, anlegen, löschen).
   * Manuelle Sicherung: Export/Import aller Profile & Vokabeln als JSON über die iOS Dateien-App (siehe `data/storage.py`).
   * Nahtlose Umschaltung zwischen Dark Mode und Light Mode pro Profil.
   * Anpassung der Fehlversuche zwischen 1 und 5
-  * Mobil-optimiertes Layout mit Safe-Area-Padding für iOS.
+  * Mobil-optimiertes Layout mit automatischem Safe-Area-Abstand zur Notch/Dynamic Island; Ausrichtung fest auf Hochformat gesperrt.
   * Versions- und Entwicklerinformationen.
 
 ---

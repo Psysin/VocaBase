@@ -19,7 +19,6 @@ class DashboardView(ft.Container):
         on_start_practice,
         on_add_word,
         on_open_list,
-        on_switch_profile,
         on_open_settings,
     ):
         super().__init__()
@@ -28,7 +27,6 @@ class DashboardView(ft.Container):
         self.on_start_practice = on_start_practice
         self.on_add_word = on_add_word
         self.on_open_list = on_open_list
-        self.on_switch_profile = on_switch_profile
         self.on_open_settings = on_open_settings
 
         lang = getattr(profile, "ui_language", "Deutsch")
@@ -51,20 +49,6 @@ class DashboardView(ft.Container):
         # -------------------------------------------------------------
         # UI-AUFBAU IN BÖCKEN
         # -------------------------------------------------------------
-
-        # ABSCHNITT 1: Zahnrad-Zeile ganz oben (rechtsbündig)
-        settings_row = ft.Row(
-            alignment=ft.MainAxisAlignment.END,
-            controls=[
-                ft.IconButton(
-                    icon=ft.Icons.SETTINGS,
-                    tooltip=t("einstellungen_tooltip", lang),
-                    icon_size=22,
-                    on_click=lambda e: self.on_open_settings(),
-                ),
-            ],
-            width=340,
-        )
 
         # ABSCHNITT 2: Begrüßungs-Bereich (zentriert untereinander)
         greeting_block = ft.Column(
@@ -160,42 +144,53 @@ class DashboardView(ft.Container):
             on_click=lambda e: self.on_open_list(),
         )
 
-        btn_profile = ft.TextButton(
+        btn_settings = ft.ElevatedButton(
             content=ft.Row(
                 controls=[
-                    ft.Icon(ft.Icons.SWITCH_ACCOUNT_OUTLINED, size=18),
-                    ft.Text(t("btn_profil_wechseln", lang)),
+                    ft.Icon(ft.Icons.SETTINGS),
+                    ft.Text(t("btn_einstellungen", lang)),
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 tight=True,
             ),
-            on_click=lambda e: self.on_switch_profile(),
+            width=340,
+            height=44,
+            on_click=lambda e: self.on_open_settings(),
         )
 
         buttons_block = ft.Column(
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=12,
-            controls=[btn_quest, btn_add, btn_list, btn_profile],
+            controls=[btn_quest, btn_add, btn_list, btn_settings],
             width=340,
         )
 
         # ZUSAMMENBAU DES GESAMTLAYOUTS
-        self.content = ft.Container(
-            content=ft.Column(
-                alignment=ft.MainAxisAlignment.START,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                spacing=16,
-                controls=[settings_row, greeting_block, stats_row, buttons_block],
+        # SafeArea statt fester top-Padding: berechnet den nötigen Abstand zur
+        # Notch/Dynamic Island automatisch pro Gerät, anstatt eine feste Zahl zu
+        # raten (die auf einem iPhone zu knapp und auf einem anderen zu großzügig war).
+        self.content = ft.SafeArea(
+            content=ft.Container(
+                content=ft.Column(
+                    alignment=ft.MainAxisAlignment.START,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    spacing=16,
+                    controls=[greeting_block, stats_row, buttons_block],
+                ),
+                padding=ft.Padding(left=20, top=36, right=20, bottom=20),
+                expand=True,
             ),
-            # top=48 sorgt dafür, dass die App auf dem iPhone nicht unter der Notch/Kamera klebt!
-            padding=ft.Padding(left=20, top=48, right=20, bottom=20),
             expand=True,
         )
 
     def _build_stat_card(self, title: str, main_val: str, subtitle: str) -> ft.Card:
         """Hilfsfunktion: Erzeugt eine gleichmäßig formatierte Statistik-Kachel."""
         return ft.Card(
+            # margin=0, da Card sonst per Default ringsum 4px Außenabstand
+            # addiert - bei 3 Karten mit fixer Breite in der stats_row führte
+            # das auf echten Geräten zu einem RenderFlex-Overflow von 12px.
+            margin=0,
             content=ft.Container(
                 content=ft.Column(
                     alignment=ft.MainAxisAlignment.CENTER,

@@ -91,7 +91,6 @@ def main(page: ft.Page):
                     on_start_practice=lambda: show_view("practice"),
                     on_add_word=lambda: show_view("add_word"),
                     on_open_list=lambda: show_view("word_list"),
-                    on_switch_profile=open_profile_dialog,
                     on_open_settings=open_settings_dialog,
                 )
             )
@@ -190,8 +189,8 @@ def main(page: ft.Page):
                 imported_profiles = [UserProfile.from_dict(p) for p in rohe_profile]
 
                 # In-Place-Mutation statt Neuzuweisung: Andere Closures (show_view,
-                # open_profile_dialog, ...) halten dieselbe Listen-Referenz und
-                # sehen die neuen Daten dadurch automatisch.
+                # der Profile-Tab im Einstellungsdialog, ...) halten dieselbe
+                # Listen-Referenz und sehen die neuen Daten dadurch automatisch.
                 profiles.clear()
                 profiles.extend(imported_profiles)
 
@@ -339,7 +338,9 @@ def main(page: ft.Page):
             ausgelieferten Basispakete (Englisch/Spanisch) als auch per
             ElevenLabs nachgeladene eigene Vokabeln ab (siehe has_audio())."""
             vorhandene = sum(
-                1 for w in active_profile.words if has_audio(active_profile.language, w.back)
+                1
+                for w in active_profile.words
+                if has_audio(active_profile.language, w.back)
             )
             return t(
                 "sprachdaten_status",
@@ -392,7 +393,9 @@ def main(page: ft.Page):
             abgedeckt (has_audio() liefert dafür schon True). Aktualisiert
             die Übersicht nach JEDEM Wort live, nicht erst am Ende."""
             fehlende = [
-                w for w in active_profile.words if not has_audio(active_profile.language, w.back)
+                w
+                for w in active_profile.words
+                if not has_audio(active_profile.language, w.back)
             ]
 
             if not fehlende:
@@ -422,9 +425,15 @@ def main(page: ft.Page):
             for word in fehlende:
                 try:
                     audio_bytes = await asyncio.to_thread(
-                        synthesize, word.back, active_profile.language, api_key, voice_id
+                        synthesize,
+                        word.back,
+                        active_profile.language,
+                        api_key,
+                        voice_id,
                     )
-                    save_downloaded_audio(active_profile.language, word.back, audio_bytes)
+                    save_downloaded_audio(
+                        active_profile.language, word.back, audio_bytes
+                    )
                     erfolgreich += 1
                 except TTSFehler:
                     fehlgeschlagen += 1
@@ -474,141 +483,8 @@ def main(page: ft.Page):
             settings_dialog.open = False
             page.update()
 
-        # Reiter "Allgemein": die bisherigen, direkt speicherbaren Einstellungen
-        allgemein_tab_content = ft.Container(
-            padding=ft.Padding(left=0, top=16, right=0, bottom=0),
-            content=ft.Column(
-                controls=[
-                    quest_dropdown,
-                    attempts_dropdown,
-                    sprache_dropdown,
-                    theme_switch,
-                ],
-                spacing=14,
-                tight=True,
-                scroll=ft.ScrollMode.AUTO,
-            ),
-        )
-
-        # Reiter "Erweitert": Datenverwaltung (Export/Import) + App-Infos
-        erweitert_tab_content = ft.Container(
-            padding=ft.Padding(left=0, top=16, right=0, bottom=0),
-            content=ft.Column(
-                controls=[
-                    ft.OutlinedButton(
-                        content=ft.Row(
-                            controls=[
-                                ft.Icon(ft.Icons.SAVE_ALT),
-                                ft.Text(t("backup_button", lang)),
-                            ],
-                            alignment=ft.MainAxisAlignment.CENTER,
-                            tight=True,
-                        ),
-                        on_click=export_backup,
-                    ),
-                    ft.OutlinedButton(
-                        content=ft.Row(
-                            controls=[
-                                ft.Icon(ft.Icons.FILE_OPEN_OUTLINED),
-                                ft.Text(t("backup_import_button", lang)),
-                            ],
-                            alignment=ft.MainAxisAlignment.CENTER,
-                            tight=True,
-                        ),
-                        on_click=import_backup,
-                    ),
-                    ft.OutlinedButton(
-                        content=ft.Row(
-                            controls=[
-                                ft.Icon(ft.Icons.VOLUME_UP_OUTLINED),
-                                ft.Text(t("sprachdaten_laden_button", lang)),
-                            ],
-                            alignment=ft.MainAxisAlignment.CENTER,
-                            tight=True,
-                        ),
-                        on_click=sprachdaten_laden,
-                    ),
-                    sprachdaten_status_text,
-                    ft.Divider(),
-                    ft.Text(
-                        t("tts_config_titel", lang), weight=ft.FontWeight.BOLD, size=13
-                    ),
-                    tts_key_field,
-                    tts_voice_en_field,
-                    tts_voice_es_field,
-                    ft.Divider(),
-                    ft.Text(
-                        t("app_informationen", lang), weight=ft.FontWeight.BOLD, size=13
-                    ),
-                    ft.Text(
-                        t("version_zeile", lang, version="1.2.0"),
-                        size=12,
-                        color=ft.Colors.GREY_500,
-                    ),
-                    ft.Text(
-                        t("entwickler_zeile", lang, name="Philipp Edelbrock"),
-                        size=12,
-                        color=ft.Colors.GREY_500,
-                    ),
-                    ft.Text(
-                        t("copyright_zeile", lang, jahr="2026"),
-                        size=11,
-                        color=ft.Colors.GREY_600,
-                    ),
-                ],
-                spacing=10,
-                tight=True,
-                scroll=ft.ScrollMode.AUTO,
-            ),
-        )
-
-        # Tabs brauchen eine begrenzte Höhe im Elternbaum (siehe unten der
-        # umschließende Container mit fester Höhe), da TabBarView mit
-        # expand=True sonst einen "unbounded height"-Layout-Fehler auslöst.
-        settings_tabs = ft.Tabs(
-            length=2,
-            expand=True,
-            content=ft.Column(
-                expand=True,
-                controls=[
-                    ft.TabBar(
-                        tabs=[
-                            ft.Tab(label=t("tab_allgemein", lang)),
-                            ft.Tab(label=t("tab_erweitert", lang)),
-                        ],
-                    ),
-                    ft.TabBarView(
-                        expand=True,
-                        controls=[allgemein_tab_content, erweitert_tab_content],
-                    ),
-                ],
-            ),
-        )
-
-        # Aufbau des Popups
-        settings_dialog = ft.AlertDialog(
-            title=ft.Text(t("einstellungen_titel", lang)),
-            content=ft.Container(width=320, height=430, content=settings_tabs),
-            actions=[
-                ft.TextButton(
-                    content=ft.Text(t("abbrechen", lang)), on_click=close_settings
-                ),
-                ft.ElevatedButton(
-                    content=ft.Text(t("speichern", lang)), on_click=save_settings
-                ),
-            ],
-        )
-
-        page.overlay.append(settings_dialog)
-        settings_dialog.open = True
-        page.update()
-
-    def open_profile_dialog():
-        """Baut und öffnet den Dialog zum Wechseln und Anlegen von Profilen."""
-        # nonlocal erlaubt es uns, die Variable 'active_profile' aus der main-Funktion zu verändern
-        nonlocal active_profile
-        lang = getattr(active_profile, "ui_language", "Deutsch")
-
+        # Reiter "Profile": Profil wechseln/löschen/anlegen (früher ein eigener
+        # Dialog, siehe open_profile_dialog in einer älteren Version dieser Datei).
         def select_profile(selected_profile: UserProfile):
             nonlocal active_profile
             active_profile = selected_profile
@@ -618,7 +494,7 @@ def main(page: ft.Page):
                 else ft.ThemeMode.LIGHT
             )
             save_app_data(profiles, active_profile_name=active_profile.name)
-            dialog.open = False
+            settings_dialog.open = False
             page.update()
             show_view("dashboard")
 
@@ -634,7 +510,7 @@ def main(page: ft.Page):
                 active_profile = profiles[0]
 
             save_app_data(profiles, active_profile_name=active_profile.name)
-            dialog.open = False
+            settings_dialog.open = False
             page.update()
             show_view("dashboard")
 
@@ -668,7 +544,7 @@ def main(page: ft.Page):
                     else ft.ThemeMode.LIGHT
                 )
                 save_app_data(profiles, active_profile_name=active_profile.name)
-                dialog.open = False
+                settings_dialog.open = False
                 page.update()
                 show_view("dashboard")
 
@@ -723,8 +599,8 @@ def main(page: ft.Page):
             on_click=create_new_profile,
         )
 
-        dialog = ft.AlertDialog(
-            title=ft.Text(t("profile_sprachen_titel", lang)),
+        profile_tab_content = ft.Container(
+            padding=ft.Padding(left=0, top=16, right=0, bottom=0),
             content=ft.Column(
                 controls=[
                     ft.Text(
@@ -744,13 +620,167 @@ def main(page: ft.Page):
                     default_vocab_checkbox,
                     btn_create,
                 ],
+                spacing=10,
                 tight=True,
                 scroll=ft.ScrollMode.AUTO,
             ),
         )
 
-        page.overlay.append(dialog)
-        dialog.open = True
+        # Reiter "Allgemein": die bisherigen, direkt speicherbaren Einstellungen
+        allgemein_tab_content = ft.Container(
+            padding=ft.Padding(left=0, top=16, right=0, bottom=0),
+            content=ft.Column(
+                controls=[
+                    quest_dropdown,
+                    attempts_dropdown,
+                    sprache_dropdown,
+                    theme_switch,
+                ],
+                spacing=14,
+                tight=True,
+                scroll=ft.ScrollMode.AUTO,
+            ),
+        )
+
+        # Reiter "Erweitert": Datenverwaltung (Export/Import) + App-Infos
+        erweitert_tab_content = ft.Container(
+            padding=ft.Padding(left=0, top=16, right=0, bottom=0),
+            content=ft.Column(
+                controls=[
+                    ft.OutlinedButton(
+                        content=ft.Row(
+                            controls=[
+                                ft.Icon(ft.Icons.SAVE_ALT),
+                                ft.Text(
+                                    t("backup_button", lang),
+                                    text_align=ft.TextAlign.CENTER,
+                                    expand=True,
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                        ),
+                        # width=280 + expand=True auf dem Text: der lange Label-Text
+                        # ("Vokabeln & Fortschritt sichern") passte bei "tight"-Row
+                        # sonst auf echten Geräten nicht in die 320px-Dialogbreite
+                        # (RenderFlex-Overflow) - jetzt bricht er stattdessen um.
+                        width=280,
+                        on_click=export_backup,
+                    ),
+                    ft.OutlinedButton(
+                        content=ft.Row(
+                            controls=[
+                                ft.Icon(ft.Icons.FILE_OPEN_OUTLINED),
+                                ft.Text(
+                                    t("backup_import_button", lang),
+                                    text_align=ft.TextAlign.CENTER,
+                                    expand=True,
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                        ),
+                        width=280,
+                        on_click=import_backup,
+                    ),
+                    ft.OutlinedButton(
+                        content=ft.Row(
+                            controls=[
+                                ft.Icon(ft.Icons.VOLUME_UP_OUTLINED),
+                                ft.Text(
+                                    t("sprachdaten_laden_button", lang),
+                                    text_align=ft.TextAlign.CENTER,
+                                    expand=True,
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                        ),
+                        width=280,
+                        on_click=sprachdaten_laden,
+                    ),
+                    sprachdaten_status_text,
+                    ft.Divider(),
+                    ft.ExpansionTile(
+                        title=ft.Text(
+                            t("tts_config_titel", lang),
+                            weight=ft.FontWeight.BOLD,
+                            size=13,
+                        ),
+                        controls=[
+                            tts_key_field,
+                            tts_voice_en_field,
+                            tts_voice_es_field,
+                        ],
+                        expanded=False,
+                    ),
+                    ft.Divider(),
+                    ft.Text(
+                        t("app_informationen", lang), weight=ft.FontWeight.BOLD, size=13
+                    ),
+                    ft.Text(
+                        t("version_zeile", lang, version="1.2.1"),
+                        size=12,
+                        color=ft.Colors.GREY_500,
+                    ),
+                    ft.Text(
+                        t("entwickler_zeile", lang, name="Philipp Edelbrock"),
+                        size=12,
+                        color=ft.Colors.GREY_500,
+                    ),
+                    ft.Text(
+                        t("copyright_zeile", lang, jahr="2026"),
+                        size=11,
+                        color=ft.Colors.GREY_600,
+                    ),
+                ],
+                spacing=10,
+                tight=True,
+                scroll=ft.ScrollMode.AUTO,
+            ),
+        )
+
+        # Tabs brauchen eine begrenzte Höhe im Elternbaum (siehe unten der
+        # umschließende Container mit fester Höhe), da TabBarView mit
+        # expand=True sonst einen "unbounded height"-Layout-Fehler auslöst.
+        settings_tabs = ft.Tabs(
+            length=3,
+            expand=True,
+            content=ft.Column(
+                expand=True,
+                controls=[
+                    ft.TabBar(
+                        tabs=[
+                            ft.Tab(label=t("tab_allgemein", lang)),
+                            ft.Tab(label=t("tab_erweitert", lang)),
+                            ft.Tab(label=t("tab_profile", lang)),
+                        ],
+                    ),
+                    ft.TabBarView(
+                        expand=True,
+                        controls=[
+                            allgemein_tab_content,
+                            erweitert_tab_content,
+                            profile_tab_content,
+                        ],
+                    ),
+                ],
+            ),
+        )
+
+        # Aufbau des Popups
+        settings_dialog = ft.AlertDialog(
+            title=ft.Text(t("einstellungen_titel", lang)),
+            content=ft.Container(width=320, height=430, content=settings_tabs),
+            actions=[
+                ft.TextButton(
+                    content=ft.Text(t("abbrechen", lang)), on_click=close_settings
+                ),
+                ft.ElevatedButton(
+                    content=ft.Text(t("speichern", lang)), on_click=save_settings
+                ),
+            ],
+        )
+
+        page.overlay.append(settings_dialog)
+        settings_dialog.open = True
         page.update()
 
     # Nach App-Start direkt das Dashboard anzeigen
