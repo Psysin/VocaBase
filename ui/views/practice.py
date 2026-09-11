@@ -62,7 +62,11 @@ class PracticeView(ft.Container):
 
         # Wortanzeige (Deutsches Wort)
         self.word_display = ft.Text(
-            value="", size=26, weight=ft.FontWeight.BOLD, text_align=ft.TextAlign.CENTER
+            value="",
+            size=26,
+            weight=ft.FontWeight.BOLD,
+            text_align=ft.TextAlign.CENTER,
+            width=260,
         )
 
         # Lautsprecher-Button: spielt die Aussprache der Zielsprachen-Antwort ab.
@@ -82,17 +86,18 @@ class PracticeView(ft.Container):
 
         self.card_container = ft.Card(
             content=ft.Container(
-                content=ft.Column(
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                    spacing=10,
+                content=ft.Stack(
                     controls=[
-                        ft.Row(
-                            controls=[self.word_display, self.speaker_btn],
+                        ft.Column(
                             alignment=ft.MainAxisAlignment.CENTER,
-                            tight=True,
+                            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                            spacing=10,
+                            controls=[self.word_display, self.feedback_display],
                         ),
-                        self.feedback_display,
+                        ft.Container(
+                            content=self.speaker_btn,
+                            alignment=ft.Alignment.TOP_RIGHT,
+                        ),
                     ],
                 ),
                 width=320,
