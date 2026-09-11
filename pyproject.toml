@@ -1,6 +1,6 @@
 [project]
 name = "VocaBase"
-version = "1.2.0"
+version = "1.2.1"
 description = "Spaced-Repetition Vokabeltrainer"
 dependencies = ["flet-audio==0.86.5"]
 

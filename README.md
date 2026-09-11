@@ -164,5 +164,5 @@ Folgende Module sind für zukünftige Releases vorgesehen:
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.2.0
+* **Version:** 1.2.1
 * **Lizenz:** © 2026 Alle Rechte vorbehalten
