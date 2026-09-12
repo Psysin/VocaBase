@@ -177,21 +177,26 @@ class PracticeView(ft.Container):
             visible=False,
         )
 
-        self.content = ft.Container(
-            content=ft.Column(
-                alignment=ft.MainAxisAlignment.START,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                spacing=16,
-                controls=[
-                    header_row,
-                    self.card_container,
-                    self.input_field,
-                    self.btn_check,
-                    self.btn_next,
-                    self.btn_finish,
-                ],
+        # SafeArea statt fester top-Padding: berechnet den nötigen Abstand zur
+        # Notch/Dynamic Island automatisch pro Gerät (siehe dashboard.py).
+        self.content = ft.SafeArea(
+            content=ft.Container(
+                content=ft.Column(
+                    alignment=ft.MainAxisAlignment.START,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    spacing=16,
+                    controls=[
+                        header_row,
+                        self.card_container,
+                        self.input_field,
+                        self.btn_check,
+                        self.btn_next,
+                        self.btn_finish,
+                    ],
+                ),
+                padding=ft.Padding(left=20, top=36, right=20, bottom=20),
+                expand=True,
             ),
-            padding=ft.Padding(left=20, top=48, right=20, bottom=20),
             expand=True,
         )
 
