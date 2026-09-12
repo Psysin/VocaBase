@@ -24,6 +24,10 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * **Jederzeit abbrechbar:** Bereits geübte Wörter werden sofort persistent gespeichert.
   * **Abschluss-Screen mit Ergebnis:** Zeigt die Erfolgsquote der Runde (z. B. "22 von 30 korrekt") sowie einen dazu passenden Motivationsspruch (fünf Stufen je nach Trefferquote).
   * Zähler für wöchentlich gemeisterte Lerneinheiten.
+* **Übersetzer:**
+  * Eigener "Übersetzer"-Button im Hauptmenü: deutsches Wort oder Satz eingeben, "Go" antippen – Haupttreffer plus (sofern vorhanden) weitere zutreffende Übersetzungen werden angezeigt.
+  * Nutzt die kostenlose MyMemory Translation API (kein API-Key nötig, siehe `core/translate_client.py`); Zielsprache richtet sich automatisch nach der Zielsprache des aktiven Profils.
+  * Aktuell reine Nachschlagefunktion – das direkte Speichern eines Übersetzungstreffers als neue Vokabel ist als nächster Ausbauschritt geplant.
 * **Vokabelverwaltung & Live-Suche:**
   * Durchsuchbare Listenansicht mit Schnellfilter beim Tippen.
   * Bearbeiten-Dialog für bestehende Einträge (Wortkorrekturen und manuelle Kastenanpassung).
@@ -56,7 +60,8 @@ Vokabel_App/
 │   ├── spaced_rep.py            # Leitner-Algorithmus, Intervalle & Duplikatsprüfung
 │   ├── i18n.py                  # Übersetzungen der Bedienoberfläche (DE/EN/ES)
 │   ├── audio.py                 # Ordnet Vokabeln vorab erzeugte/nachgeladene Aussprache-Dateien zu
-│   └── tts_client.py            # ElevenLabs-Anbindung zum Nachladen von Aussprache auf dem Gerät
+│   ├── tts_client.py            # ElevenLabs-Anbindung zum Nachladen von Aussprache auf dem Gerät
+│   └── translate_client.py      # MyMemory-Anbindung für den Übersetzer (kein API-Key nötig)
 │
 ├── data/                        # Datenhaltung, Persistenz & Stammdaten
 │   ├── starter_words.py         # Kuratierte Startvokabelpakete nach Sprachen
@@ -72,7 +77,8 @@ Vokabel_App/
 │       ├── dashboard.py         # Startseite mit Statistiken, Übung-Button & Header
 │       ├── practice.py          # Interaktive Übungsansicht (Lesen/Schreiben-Mix)
 │       ├── add_word.py          # Formular zum Erfassen neuer Vokabeln
-│       └── word_list.py         # Durchsuchbare & editierbare Vokabelliste
+│       ├── word_list.py         # Durchsuchbare & editierbare Vokabelliste
+│       └── translator.py        # Übersetzer (Eingabe -> Haupttreffer + weitere Übersetzungen)
 │
 ├── assets/                      # App-Icon (icon.png) für den Build
 ├── main.py                      # App-Einstiegspunkt, View-Manager & Dialogsteuerung
@@ -159,11 +165,13 @@ Folgende Module sind für zukünftige Releases vorgesehen:
   * Gezieltes Training von Verbtabellen und Zeitformen (z. B. spanische Konjugationen *yo / tú / él / nosotros* für Verben auf *-ar*, *-er*, *-ir*).
 * [ ] **Issue #3: Lückentext-Modus**
   * Übungen für typische Grammatik-Stolpersteine und Präpositionen (z. B. Unterscheidung *por* vs. *para* oder *ser* vs. *estar*) über Inline-Eingabefelder.
+* [ ] **Issue #4: Übersetzer – Treffer als Vokabel speichern**
+  * Button im Übersetzer, um einen angezeigten Übersetzungstreffer direkt als neue Vokabel im aktiven Profil zu übernehmen (inkl. Duplikatsprüfung wie bei der manuellen Erfassung).
 
 ---
 
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.2.2
+* **Version:** 1.3.0
 * **Lizenz:** © 2026 Alle Rechte vorbehalten
