@@ -22,6 +22,7 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * **Fehlertoleranz beim Schreiben:** Bis zu 5 (variabel einstellbar) Versuche pro Vokabel. Erst nach dem letzten  Fehlversuch wird aufgelöst und die Karte auf Kasten 1 zurückgestuft.
   * **Frei konfigurierbare Vokabeln pro Durchgang:** Session-Größe in Zehnerschritten von 10 bis 100 Vokabeln pro Durchgang, um große Vokabelmengen portionsweise zu bewältigen. Sind weniger Karten fällig als die gewählte Größe, werden zufällige weitere Vokabeln aufgefüllt – so lässt sich beliebig oft üben.
   * **Jederzeit abbrechbar:** Bereits geübte Wörter werden sofort persistent gespeichert.
+  * **Abschluss-Screen mit Ergebnis:** Zeigt die Erfolgsquote der Runde (z. B. "22 von 30 korrekt") sowie einen dazu passenden Motivationsspruch (fünf Stufen je nach Trefferquote).
   * Zähler für wöchentlich gemeisterte Lerneinheiten.
 * **Vokabelverwaltung & Live-Suche:**
   * Durchsuchbare Listenansicht mit Schnellfilter beim Tippen.

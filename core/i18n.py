@@ -157,17 +157,46 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "🏆 Practice complete!",
         "Spanisch": "🏆 ¡Ejercicio superado!",
     },
-    "vokabeln_abgeschlossen": {
-        "Deutsch": "{anzahl} Vokabeln erfolgreich abgeschlossen.",
-        "Englisch": "{anzahl} words completed successfully.",
-        "Spanisch": "{anzahl} palabras completadas con éxito.",
+    "vokabeln_ergebnis": {
+        "Deutsch": "{richtig} von {gesamt} korrekt",
+        "Englisch": "{richtig} out of {gesamt} correct",
+        "Spanisch": "{richtig} de {gesamt} correctas",
+    },
+    "motivation_perfekt": {
+        "Deutsch": "Perfekt! Alle Vokabeln sitzen! 🎯",
+        "Englisch": "Perfect! You nailed every word! 🎯",
+        "Spanisch": "¡Perfecto! Dominas todas las palabras! 🎯",
+    },
+    "motivation_sehr_gut": {
+        "Deutsch": "Stark! Nur ein paar Ausrutscher. 💪",
+        "Englisch": "Great job! Just a few slip-ups. 💪",
+        "Spanisch": "¡Genial! Solo algunos deslices. 💪",
+    },
+    "motivation_gut": {
+        "Deutsch": "Gut gemacht, weiter so! 👍",
+        "Englisch": "Good work, keep it up! 👍",
+        "Spanisch": "¡Bien hecho, sigue así! 👍",
+    },
+    "motivation_dabeibleiben": {
+        "Deutsch": "Dran bleiben, das wird noch! 🙂",
+        "Englisch": "Keep at it, you'll get there! 🙂",
+        "Spanisch": "Sigue practicando, ¡ya casi! 🙂",
+    },
+    "motivation_weiter_ueben": {
+        "Deutsch": "Nicht aufgeben – Übung macht den Meister! 🌱",
+        "Englisch": "Don't give up – practice makes perfect! 🌱",
+        "Spanisch": "No te rindas – la práctica hace al maestro! 🌱",
     },
     "zurueck_zum_hauptmenue_btn": {
         "Deutsch": "Zurück zum Hauptmenü",
         "Englisch": "Back to main menu",
         "Spanisch": "Volver al menú principal",
     },
-    "fertig": {"Deutsch": "Fertig", "Englisch": "Done", "Spanisch": "Listo"},
+    "ergebnis_anzeigen": {
+        "Deutsch": "Ergebnis anzeigen",
+        "Englisch": "Show result",
+        "Spanisch": "Ver resultado",
+    },
 
     # --- Vokabel hinzufügen (add_word.py) ---
     "neue_vokabel_titel": {
