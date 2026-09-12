@@ -49,7 +49,7 @@ class AddWordView(ft.Container):
             on_click=self.handle_save,  # Ruft die Speicher-Funktion auf
         )
 
-        self.back_btn = ft.TextButton(
+        self.back_btn = ft.OutlinedButton(
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.ARROW_BACK),

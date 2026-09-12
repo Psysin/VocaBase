@@ -59,7 +59,7 @@ class WordListView(ft.Container):
             value="", size=20, weight=ft.FontWeight.BOLD, text_align=ft.TextAlign.CENTER
         )
 
-        self.back_btn = ft.TextButton(
+        self.back_btn = ft.OutlinedButton(
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.ARROW_BACK),

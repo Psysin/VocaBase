@@ -44,13 +44,17 @@ class PracticeView(ft.Container):
             value="", size=14, weight=ft.FontWeight.W_500, color=ft.Colors.GREY_600
         )
 
-        self.btn_abort = ft.TextButton(
+        self.btn_abort = ft.OutlinedButton(
             content=ft.Row(
                 controls=[
                     ft.Icon(ft.Icons.CLOSE, size=16, color=ft.Colors.RED_400),
                     ft.Text(t("abbrechen", self.lang), color=ft.Colors.RED_400, size=13),
                 ],
                 tight=True,
+            ),
+            style=ft.ButtonStyle(
+                side=ft.BorderSide(1, ft.Colors.RED_400),
+                padding=ft.Padding(left=10, top=4, right=10, bottom=4),
             ),
             on_click=lambda e: self.on_finish(),
         )
