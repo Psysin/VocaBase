@@ -17,6 +17,7 @@ class DashboardView(ft.Container):
         self,
         profile: UserProfile,
         on_start_practice,
+        on_open_translator,
         on_add_word,
         on_open_list,
         on_open_settings,
@@ -25,6 +26,7 @@ class DashboardView(ft.Container):
         self.expand = True  # Container nimmt den gesamten verfügbaren Platz ein
         self.profile = profile
         self.on_start_practice = on_start_practice
+        self.on_open_translator = on_open_translator
         self.on_add_word = on_add_word
         self.on_open_list = on_open_list
         self.on_open_settings = on_open_settings
@@ -119,6 +121,17 @@ class DashboardView(ft.Container):
             on_click=lambda e: self.on_start_practice(),
         )
 
+        btn_translate = ft.ElevatedButton(
+            content=ft.Row(
+                controls=[ft.Icon(ft.Icons.TRANSLATE), ft.Text(t("btn_translate", lang))],
+                alignment=ft.MainAxisAlignment.CENTER,
+                tight=True,
+            ),
+            width=340,
+            height=44,
+            on_click=lambda e: self.on_open_translator(),
+        )
+
         btn_add = ft.ElevatedButton(
             content=ft.Row(
                 controls=[ft.Icon(ft.Icons.ADD), ft.Text(t("btn_neue_vokabel", lang))],
@@ -162,7 +175,7 @@ class DashboardView(ft.Container):
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=12,
-            controls=[btn_quest, btn_add, btn_list, btn_settings],
+            controls=[btn_quest, btn_translate, btn_add, btn_list, btn_settings],
             width=340,
         )
 

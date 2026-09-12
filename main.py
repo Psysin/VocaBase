@@ -23,6 +23,7 @@ from data.storage import DATA_FILE, DOCUMENTS_DIR, load_app_data, save_app_data
 from ui.views.add_word import AddWordView
 from ui.views.dashboard import DashboardView
 from ui.views.practice import PracticeView
+from ui.views.translator import TranslatorView
 from ui.views.word_list import WordListView
 
 
@@ -89,9 +90,17 @@ def main(page: ft.Page):
                 DashboardView(
                     profile=active_profile,
                     on_start_practice=lambda: show_view("practice"),
+                    on_open_translator=lambda: show_view("translator"),
                     on_add_word=lambda: show_view("add_word"),
                     on_open_list=lambda: show_view("word_list"),
                     on_open_settings=open_settings_dialog,
+                )
+            )
+        elif view_name == "translator":
+            page.add(
+                TranslatorView(
+                    profile=active_profile,
+                    on_back=lambda: show_view("dashboard"),
                 )
             )
         elif view_name == "practice":

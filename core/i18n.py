@@ -119,6 +119,52 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "Manage words ({anzahl})",
         "Spanisch": "Gestionar palabras ({anzahl})",
     },
+    "btn_translate": {
+        "Deutsch": "Übersetzer",
+        "Englisch": "Translator",
+        "Spanisch": "Traductor",
+    },
+    # --- Übersetzer (translator.py) ---
+    "translator_titel": {
+        "Deutsch": "Übersetzer",
+        "Englisch": "Translator",
+        "Spanisch": "Traductor",
+    },
+    "translator_eingabe_hint": {
+        "Deutsch": "Deutsches Wort eingeben",
+        "Englisch": "Enter a German word",
+        "Spanisch": "Introduce una palabra en alemán",
+    },
+    "translator_go_button": {
+        "Deutsch": "Go",
+        "Englisch": "Go",
+        "Spanisch": "Go",
+    },
+    "translator_ergebnis_label": {
+        "Deutsch": "Übersetzung",
+        "Englisch": "Translation",
+        "Spanisch": "Traducción",
+    },
+    "translator_weitere_label": {
+        "Deutsch": "Weitere Übersetzungen",
+        "Englisch": "More translations",
+        "Spanisch": "Más traducciones",
+    },
+    "translator_lade_text": {
+        "Deutsch": "Übersetze …",
+        "Englisch": "Translating …",
+        "Spanisch": "Traduciendo …",
+    },
+    "translator_fehler": {
+        "Deutsch": "Übersetzung fehlgeschlagen: {grund}",
+        "Englisch": "Translation failed: {grund}",
+        "Spanisch": "Error al traducir: {grund}",
+    },
+    "translator_leere_eingabe": {
+        "Deutsch": "Bitte zuerst ein Wort eingeben.",
+        "Englisch": "Please enter a word first.",
+        "Spanisch": "Introduce primero una palabra.",
+    },
     # --- Übungsansicht (practice.py) ---
     "aussprache_abspielen_tooltip": {
         "Deutsch": "Aussprache abspielen",
