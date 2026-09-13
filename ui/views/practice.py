@@ -13,6 +13,13 @@ from core.spaced_rep import build_practice_session, review_word
 from data.storage import save_app_data
 
 
+def _ohne_leerzeichen(text: str) -> str:
+    """Entfernt jegliche Leerzeichen (nicht nur am Rand) für den Antwort-
+    Vergleich, damit z.B. bei kombinierten Vokabeln ('wort, wort') ein
+    fehlendes/zusätzliches Leerzeichen nach dem Komma nicht als falsch zählt."""
+    return "".join(text.split())
+
+
 class PracticeView(ft.Container):
     """Übungsansicht: Reines Schreib-Training mit Eingabeprüfung."""
 
@@ -300,7 +307,7 @@ class PracticeView(ft.Container):
         user_input = self.input_field.value.strip()
 
         # Korrekte Eingabe
-        if user_input.lower() == current_word.back.strip().lower():
+        if _ohne_leerzeichen(user_input.lower()) == _ohne_leerzeichen(current_word.back.lower()):
             self.feedback_display.value = t("richtig", self.lang)
             self.feedback_display.color = ft.Colors.GREEN_400
             self.feedback_display.visible = True
