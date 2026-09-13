@@ -27,7 +27,7 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
 * **Übersetzer:**
   * Eigener "Übersetzer"-Button im Hauptmenü: deutsches Wort oder Satz eingeben, "Go" antippen – Haupttreffer plus (sofern vorhanden) weitere zutreffende Übersetzungen werden angezeigt.
   * Nutzt die kostenlose MyMemory Translation API (kein API-Key nötig, siehe `core/translate_client.py`); Zielsprache richtet sich automatisch nach der Zielsprache des aktiven Profils.
-  * Aktuell reine Nachschlagefunktion – das direkte Speichern eines Übersetzungstreffers als neue Vokabel ist als nächster Ausbauschritt geplant.
+  * **Treffer als Vokabel speichern:** Eigene Seite mit vorausgefüllter, editierbarer Maske für den Haupttreffer sowie Checkboxen für weitere gefundene Übersetzungen (standardmäßig nur der Haupttreffer ausgewählt); inklusive Duplikatsprüfung wie bei der manuellen Erfassung (siehe `ui/views/translator_save.py`).
 * **Vokabelverwaltung & Live-Suche:**
   * Durchsuchbare Listenansicht mit Schnellfilter beim Tippen.
   * Bearbeiten-Dialog für bestehende Einträge (Wortkorrekturen und manuelle Kastenanpassung).
@@ -78,7 +78,8 @@ Vokabel_App/
 │       ├── practice.py          # Interaktive Übungsansicht (Lesen/Schreiben-Mix)
 │       ├── add_word.py          # Formular zum Erfassen neuer Vokabeln
 │       ├── word_list.py         # Durchsuchbare & editierbare Vokabelliste
-│       └── translator.py        # Übersetzer (Eingabe -> Haupttreffer + weitere Übersetzungen)
+│       ├── translator.py        # Übersetzer (Eingabe -> Haupttreffer + weitere Übersetzungen)
+│       └── translator_save.py   # Übersetzer-Treffer als Vokabel speichern (vorausgefüllt)
 │
 ├── assets/                      # App-Icon (icon.png) für den Build
 ├── main.py                      # App-Einstiegspunkt, View-Manager & Dialogsteuerung
@@ -165,13 +166,11 @@ Folgende Module sind für zukünftige Releases vorgesehen:
   * Gezieltes Training von Verbtabellen und Zeitformen (z. B. spanische Konjugationen *yo / tú / él / nosotros* für Verben auf *-ar*, *-er*, *-ir*).
 * [ ] **Issue #3: Lückentext-Modus**
   * Übungen für typische Grammatik-Stolpersteine und Präpositionen (z. B. Unterscheidung *por* vs. *para* oder *ser* vs. *estar*) über Inline-Eingabefelder.
-* [ ] **Issue #4: Übersetzer – Treffer als Vokabel speichern**
-  * Button im Übersetzer, um einen angezeigten Übersetzungstreffer direkt als neue Vokabel im aktiven Profil zu übernehmen (inkl. Duplikatsprüfung wie bei der manuellen Erfassung).
 
 ---
 
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.3.0
+* **Version:** 1.3.1
 * **Lizenz:** © 2026 Alle Rechte vorbehalten

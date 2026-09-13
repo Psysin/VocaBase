@@ -739,7 +739,7 @@ def main(page: ft.Page):
                         t("app_informationen", lang), weight=ft.FontWeight.BOLD, size=13
                     ),
                     ft.Text(
-                        t("version_zeile", lang, version="1.3.0"),
+                        t("version_zeile", lang, version="1.3.1"),
                         size=12,
                         color=ft.Colors.GREY_500,
                     ),
