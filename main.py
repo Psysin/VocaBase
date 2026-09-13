@@ -102,8 +102,12 @@ def main(page: ft.Page):
                 TranslatorView(
                     profile=active_profile,
                     on_back=lambda: show_view("dashboard"),
-                    on_save_word=lambda front_text, result: show_view(
-                        "translator_save", front_text=front_text, result=result
+                    on_save_word=lambda front_primary, front_alternatives, back_primary, back_alternatives: show_view(
+                        "translator_save",
+                        front_primary=front_primary,
+                        front_alternatives=front_alternatives,
+                        back_primary=back_primary,
+                        back_alternatives=back_alternatives,
                     ),
                 )
             )
@@ -112,8 +116,10 @@ def main(page: ft.Page):
                 TranslatorSaveView(
                     profile=active_profile,
                     all_profiles=profiles,
-                    front_text=kwargs["front_text"],
-                    result=kwargs["result"],
+                    front_primary=kwargs["front_primary"],
+                    front_alternatives=kwargs["front_alternatives"],
+                    back_primary=kwargs["back_primary"],
+                    back_alternatives=kwargs["back_alternatives"],
                     on_back=lambda: show_view("dashboard"),
                 )
             )

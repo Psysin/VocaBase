@@ -1,8 +1,9 @@
 """core/translate_client.py
 
 Bindet die kostenlose MyMemory Translation API an, um im "Übersetzer"
-(ui/views/translator.py) ein deutsches Wort in die Zielsprache des aktiven
-Profils zu übersetzen. Kein API-Key nötig - im Gegensatz zu ElevenLabs
+(ui/views/translator.py) zwischen Deutsch und der Zielsprache des aktiven
+Profils zu übersetzen (in beide Richtungen, siehe translator.py:
+self.reverse). Kein API-Key nötig - im Gegensatz zu ElevenLabs
 (core/tts_client.py) gibt es hier also keine Zugangsdaten zu speichern.
 
 translate_word() ist bewusst synchron (urllib ist ohnehin blockierend) -
@@ -45,8 +46,8 @@ def zielsprachcode(profile_language: str) -> str:
     return TTS_SPRACHCODES.get(profile_language, "en")
 
 
-def translate_word(text: str, target_code: str) -> TranslationResult:
-    """Übersetzt `text` von Deutsch in die Sprache `target_code` (z. B. 'en').
+def translate_word(text: str, source_code: str, target_code: str) -> TranslationResult:
+    """Übersetzt `text` von `source_code` nach `target_code` (z. B. 'de' -> 'en').
 
     Wirft TranslateFehler mit einer für die Oberfläche geeigneten Klartext-
     Meldung, statt die App abstürzen zu lassen - Aufrufer fangen das ab.
@@ -55,7 +56,7 @@ def translate_word(text: str, target_code: str) -> TranslationResult:
     if not text:
         raise TranslateFehler("Kein Wort eingegeben.")
 
-    query = urllib.parse.urlencode({"q": text, "langpair": f"de|{target_code}"})
+    query = urllib.parse.urlencode({"q": text, "langpair": f"{source_code}|{target_code}"})
     anfrage = urllib.request.Request(f"{_API_URL}?{query}", method="GET")
 
     try:

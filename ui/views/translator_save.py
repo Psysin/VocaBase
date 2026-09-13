@@ -2,15 +2,18 @@
 
 Eigene Seite, um einen Übersetzer-Treffer als Vokabel zu speichern (siehe
 ui/views/translator.py). Haupttreffer-Maske ist vorausgefüllt und editierbar;
-weitere zutreffende Übersetzungen können optional per Checkbox als
-zusätzliche Vokabeln mitgespeichert werden (Standard: nur der Haupttreffer).
+weitere zutreffende Übersetzungen können optional per Checkbox mit angehakt
+werden - sie werden dann kommagetrennt in dasselbe Feld eingetragen (nur EINE
+Vokabel pro Speicherung, keine separaten Einträge). front/back sind hier
+immer bereits auf Deutsch (oben) / Zielsprache (unten) normalisiert - unab-
+hängig davon, in welche Richtung im Übersetzer gesucht wurde (siehe
+translator.py: handle_translate).
 """
 
 import flet as ft
 from core.i18n import t
 from core.models import UserProfile, Word
 from core.spaced_rep import word_exists
-from core.translate_client import TranslationResult
 from data.storage import save_app_data
 
 
@@ -21,8 +24,10 @@ class TranslatorSaveView(ft.Container):
         self,
         profile: UserProfile,
         all_profiles: list[UserProfile],
-        front_text: str,
-        result: TranslationResult,
+        front_primary: str,
+        front_alternatives: list[str],
+        back_primary: str,
+        back_alternatives: list[str],
         on_back,
     ):
         super().__init__()
@@ -34,22 +39,27 @@ class TranslatorSaveView(ft.Container):
         # 1. HAUPTTREFFER-MASKE (vorausgefüllt, editierbar)
         self.front_input = ft.TextField(
             label=t("deutsches_wort_frage", self.lang),
-            value=front_text,
+            value=front_primary,
             width=320,
         )
         self.back_input = ft.TextField(
             label=t("uebersetzung_sprache", self.lang, sprache=self.profile.language),
-            value=result.primary,
+            value=back_primary,
             width=320,
         )
 
         # 2. WEITERE ÜBERSETZUNGEN (optional, standardmäßig abgewählt)
-        # Jede Checkbox merkt sich ihren Alternativ-Text über (Checkbox, Text)
-        # -Paare, damit handle_save() beim Auswerten nicht erneut auf die
-        # Reihenfolge der Controls angewiesen ist.
+        # Nur eine der beiden Listen ist nicht leer, je nachdem in welche
+        # Richtung übersetzt wurde: Alternativen gehören immer zur Seite, die
+        # gerade das Übersetzungsergebnis war (Zielsprache vorwärts, Deutsch
+        # rückwärts). Jede Checkbox merkt sich ihren Alternativ-Text über
+        # (Checkbox, Text)-Paare, damit handle_save() beim Auswerten nicht
+        # erneut auf die Reihenfolge der Controls angewiesen ist.
+        self.combine_front = bool(front_alternatives)
+        alternativen = front_alternatives or back_alternatives
         self.alt_checkboxes: list[tuple[ft.Checkbox, str]] = []
         alternatives_controls: list[ft.Control] = []
-        if result.alternatives:
+        if alternativen:
             alternatives_controls.append(
                 ft.Text(
                     t("translator_weitere_speichern_hinweis", self.lang),
@@ -57,7 +67,7 @@ class TranslatorSaveView(ft.Container):
                     color=ft.Colors.GREY_500,
                 )
             )
-            for alt in result.alternatives:
+            for alt in alternativen:
                 checkbox = ft.Checkbox(label=alt, value=False)
                 self.alt_checkboxes.append((checkbox, alt))
                 # In einem Container mit derselben Breite wie die TextFields
@@ -110,8 +120,9 @@ class TranslatorSaveView(ft.Container):
         )
 
     def handle_save(self, e):
-        """Prüft die Haupttreffer-Felder, sammelt angehakte Alternativen und
-        speichert alle nicht bereits vorhandenen Paare als neue Vokabeln."""
+        """Prüft die Felder, kombiniert angehakte Alternativen kommagetrennt
+        in das jeweilige Feld und speichert EINE Vokabel (Muster wie
+        add_word.py, nur mit vorausgefüllten/kombinierbaren Feldern)."""
         front = self.front_input.value.strip()
         back = self.back_input.value.strip()
 
@@ -121,39 +132,23 @@ class TranslatorSaveView(ft.Container):
             self.update()
             return
 
-        # Haupttreffer immer dabei, plus jede angehakte Alternative - alle
-        # mit demselben (ggf. vom Nutzer angepassten) deutschen Wort.
-        zu_speichern = [back] + [
-            alt for checkbox, alt in self.alt_checkboxes if checkbox.value
-        ]
+        angehakt = [alt for checkbox, alt in self.alt_checkboxes if checkbox.value]
+        if angehakt:
+            if self.combine_front:
+                front = ", ".join([front] + angehakt)
+            else:
+                back = ", ".join([back] + angehakt)
 
-        hinzugefuegt: list[str] = []
-        duplikate: list[str] = []
-        for kandidat in zu_speichern:
-            # Sequenziell prüfen: bereits in dieser Aktion gespeicherte
-            # Wörter zählen für die Duplikatsprüfung der nächsten mit, da
-            # word_exists() direkt gegen self.profile.words prüft.
-            if word_exists(self.profile.words, kandidat):
-                duplikate.append(kandidat)
-                continue
-            new_id = max([w.id for w in self.profile.words], default=0) + 1
-            self.profile.words.append(Word(id=new_id, front=front, back=kandidat))
-            hinzugefuegt.append(kandidat)
+        if word_exists(self.profile.words, back):
+            self.message_text.value = t("fehler_duplikat", self.lang, wort=back)
+            self.message_text.color = ft.Colors.ORANGE_800
+            self.update()
+            return
 
-        if hinzugefuegt:
-            save_app_data(self.all_profiles, active_profile_name=self.profile.name)
+        new_id = max([w.id for w in self.profile.words], default=0) + 1
+        self.profile.words.append(Word(id=new_id, front=front, back=back))
+        save_app_data(self.all_profiles, active_profile_name=self.profile.name)
 
-        nachricht = ""
-        if hinzugefuegt:
-            nachricht = t(
-                "translator_speichern_erfolg", self.lang, anzahl=len(hinzugefuegt)
-            )
-        if duplikate:
-            duplikat_zeile = t(
-                "translator_speichern_duplikate", self.lang, woerter=", ".join(duplikate)
-            )
-            nachricht = f"{nachricht}\n{duplikat_zeile}" if nachricht else duplikat_zeile
-
-        self.message_text.value = nachricht
-        self.message_text.color = ft.Colors.GREEN_600 if hinzugefuegt else ft.Colors.ORANGE_800
+        self.message_text.value = t("erfolg_hinzugefuegt", self.lang, front=front, back=back)
+        self.message_text.color = ft.Colors.GREEN_600
         self.update()

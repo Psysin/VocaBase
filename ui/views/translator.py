@@ -12,12 +12,7 @@ import asyncio
 import flet as ft
 from core.i18n import t
 from core.models import UserProfile
-from core.translate_client import (
-    TranslateFehler,
-    TranslationResult,
-    translate_word,
-    zielsprachcode,
-)
+from core.translate_client import TranslateFehler, translate_word, zielsprachcode
 
 
 class TranslatorView(ft.Container):
@@ -30,11 +25,26 @@ class TranslatorView(ft.Container):
         self.on_save_word = on_save_word
         self.lang = getattr(profile, "ui_language", "Deutsch")
         self.target_code = zielsprachcode(profile.language)
-        # Letztes erfolgreiches Ergebnis, für die Navigation zur Speicherseite
-        # (siehe handle_translate/handle_save_word) - lebt sonst nirgends,
-        # da TranslationResult nur lokal in handle_translate erzeugt wird.
-        self.last_front_text: str | None = None
-        self.last_result: TranslationResult | None = None
+        # Letztes erfolgreiches Ergebnis, bereits auf Deutsch/Zielsprache
+        # normalisiert (siehe handle_translate) - für die Navigation zur
+        # Speicherseite, die die Suchrichtung nicht kennen muss.
+        self.last_front_primary: str | None = None
+        self.last_front_alternatives: list[str] = []
+        self.last_back_primary: str | None = None
+        self.last_back_alternatives: list[str] = []
+        # Übersetzungsrichtung: False = Deutsch -> Zielsprache (Standard),
+        # True = Zielsprache -> Deutsch. Wirkt sich NUR auf den Übersetzer
+        # aus - beim Speichern landet unabhängig davon immer Deutsch oben
+        # und die Zielsprache unten (siehe handle_translate).
+        self.reverse: bool = False
+
+        # 0. RICHTUNGS-UMSCHALTER
+        self.direction_label = ft.Text(
+            value=t("translator_richtung_vorwaerts", self.lang, sprache=self.profile.language),
+            size=13,
+            color=ft.Colors.GREY_500,
+        )
+        self.direction_switch = ft.Switch(value=False, on_change=self.handle_toggle_direction)
 
         # 1. EINGABEFELD
         self.input_field = ft.TextField(
@@ -87,7 +97,12 @@ class TranslatorView(ft.Container):
                 tight=True,
             ),
             visible=False,
-            on_click=lambda e: self.on_save_word(self.last_front_text, self.last_result),
+            on_click=lambda e: self.on_save_word(
+                self.last_front_primary,
+                self.last_front_alternatives,
+                self.last_back_primary,
+                self.last_back_alternatives,
+            ),
         )
 
         # 4. ZURÜCK-BUTTON
@@ -110,6 +125,11 @@ class TranslatorView(ft.Container):
             spacing=15,
             controls=[
                 ft.Text(t("translator_titel", self.lang), size=22, weight=ft.FontWeight.BOLD),
+                ft.Row(
+                    controls=[self.direction_label, self.direction_switch],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    tight=True,
+                ),
                 self.input_field,
                 self.go_btn,
                 self.message_text,
@@ -121,6 +141,28 @@ class TranslatorView(ft.Container):
                 self.back_btn,
             ],
         )
+
+    def handle_toggle_direction(self, e):
+        """Wechselt die Übersetzungsrichtung (wirkt sich nur auf den
+        Übersetzer aus, nicht auf die Feldbelegung beim Speichern)."""
+        self.reverse = self.direction_switch.value
+        if self.reverse:
+            self.direction_label.value = t(
+                "translator_richtung_rueckwaerts", self.lang, sprache=self.profile.language
+            )
+            self.input_field.label = t("translator_eingabe_hint_rueckwaerts", self.lang)
+        else:
+            self.direction_label.value = t(
+                "translator_richtung_vorwaerts", self.lang, sprache=self.profile.language
+            )
+            self.input_field.label = t("translator_eingabe_hint", self.lang)
+
+        self.message_text.value = ""
+        self.result_label.visible = False
+        self.alternatives_label.visible = False
+        self.alternatives_column.controls = []
+        self.btn_save_word.visible = False
+        self.update()
 
     async def handle_translate(self, e):
         """Übersetzt die Eingabe asynchron (urllib blockiert sonst die Oberfläche)."""
@@ -136,14 +178,19 @@ class TranslatorView(ft.Container):
         self.alternatives_label.visible = False
         self.alternatives_column.controls = []
         self.btn_save_word.visible = False
-        self.last_front_text = None
-        self.last_result = None
+        self.last_front_primary = None
+        self.last_front_alternatives = []
+        self.last_back_primary = None
+        self.last_back_alternatives = []
         self.loading_ring.visible = True
         self.go_btn.disabled = True
         self.update()
 
+        source_code = self.target_code if self.reverse else "de"
+        target_code = "de" if self.reverse else self.target_code
+
         try:
-            ergebnis = await asyncio.to_thread(translate_word, text, self.target_code)
+            ergebnis = await asyncio.to_thread(translate_word, text, source_code, target_code)
         except TranslateFehler as fehler:
             self.result_text.value = ""
             self.message_text.value = t("translator_fehler", self.lang, grund=str(fehler))
@@ -156,8 +203,20 @@ class TranslatorView(ft.Container):
                 self.alternatives_column.controls = [
                     ft.Text(alt, size=15) for alt in ergebnis.alternatives
                 ]
-            self.last_front_text = text
-            self.last_result = ergebnis
+
+            # Normalisierung auf Deutsch (front) / Zielsprache (back) - die
+            # Speicherseite bekommt so immer dieselbe Feldbelegung, egal in
+            # welche Richtung gerade gesucht wurde.
+            if self.reverse:
+                self.last_front_primary = ergebnis.primary
+                self.last_front_alternatives = ergebnis.alternatives
+                self.last_back_primary = text
+                self.last_back_alternatives = []
+            else:
+                self.last_front_primary = text
+                self.last_front_alternatives = []
+                self.last_back_primary = ergebnis.primary
+                self.last_back_alternatives = ergebnis.alternatives
             self.btn_save_word.visible = True
         finally:
             self.loading_ring.visible = False

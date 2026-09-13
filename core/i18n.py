@@ -135,6 +135,21 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "Enter a German word",
         "Spanisch": "Introduce una palabra en alemán",
     },
+    "translator_eingabe_hint_rueckwaerts": {
+        "Deutsch": "Wort in der Zielsprache eingeben",
+        "Englisch": "Enter a word in the target language",
+        "Spanisch": "Introduce una palabra en el idioma de destino",
+    },
+    "translator_richtung_vorwaerts": {
+        "Deutsch": "Deutsch → {sprache}",
+        "Englisch": "German → {sprache}",
+        "Spanisch": "Alemán → {sprache}",
+    },
+    "translator_richtung_rueckwaerts": {
+        "Deutsch": "{sprache} → Deutsch",
+        "Englisch": "{sprache} → German",
+        "Spanisch": "{sprache} → Alemán",
+    },
     "translator_go_button": {
         "Deutsch": "Go",
         "Englisch": "Go",
@@ -179,16 +194,6 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Deutsch": "Weitere Übersetzungen auch speichern?",
         "Englisch": "Also save these translations?",
         "Spanisch": "¿Guardar también estas traducciones?",
-    },
-    "translator_speichern_erfolg": {
-        "Deutsch": "{anzahl} Vokabel(n) hinzugefügt.",
-        "Englisch": "{anzahl} word(s) added.",
-        "Spanisch": "{anzahl} palabra(s) añadida(s).",
-    },
-    "translator_speichern_duplikate": {
-        "Deutsch": "Bereits vorhanden (übersprungen): {woerter}",
-        "Englisch": "Already exists (skipped): {woerter}",
-        "Spanisch": "Ya existe (omitido): {woerter}",
     },
     # --- Übungsansicht (practice.py) ---
     "aussprache_abspielen_tooltip": {
