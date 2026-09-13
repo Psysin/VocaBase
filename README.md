@@ -24,10 +24,12 @@ Ein moderner, plattformübergreifender Karteikarten- und Vokabeltrainer, entwick
   * **Jederzeit abbrechbar:** Bereits geübte Wörter werden sofort persistent gespeichert.
   * **Abschluss-Screen mit Ergebnis:** Zeigt die Erfolgsquote der Runde (z. B. "22 von 30 korrekt") sowie einen dazu passenden Motivationsspruch (fünf Stufen je nach Trefferquote).
   * Zähler für wöchentlich gemeisterte Lerneinheiten.
+  * Antwortprüfung ignoriert sämtliche Leerzeichen (nicht nur am Rand) – wichtig bei Vokabeln mit mehreren kommagetrennten Übersetzungen in einem Feld.
 * **Übersetzer:**
-  * Eigener "Übersetzer"-Button im Hauptmenü: deutsches Wort oder Satz eingeben, "Go" antippen – Haupttreffer plus (sofern vorhanden) weitere zutreffende Übersetzungen werden angezeigt.
-  * Nutzt die kostenlose MyMemory Translation API (kein API-Key nötig, siehe `core/translate_client.py`); Zielsprache richtet sich automatisch nach der Zielsprache des aktiven Profils.
-  * **Treffer als Vokabel speichern:** Eigene Seite mit vorausgefüllter, editierbarer Maske für den Haupttreffer sowie Checkboxen für weitere gefundene Übersetzungen (standardmäßig nur der Haupttreffer ausgewählt); inklusive Duplikatsprüfung wie bei der manuellen Erfassung (siehe `ui/views/translator_save.py`).
+  * Eigener "Übersetzer"-Button im Hauptmenü: Wort oder Satz eingeben, "Go" antippen – Haupttreffer plus (sofern vorhanden) weitere zutreffende Übersetzungen werden angezeigt.
+  * **Umschaltbare Richtung:** Standardmäßig Deutsch → Zielsprache des aktiven Profils, per Schalter umkehrbar (Zielsprache → Deutsch) – wirkt sich nur auf die Übersetzung aus.
+  * Nutzt die kostenlose MyMemory Translation API (kein API-Key nötig, siehe `core/translate_client.py`).
+  * **Treffer als Vokabel speichern:** Eigene Seite mit vorausgefüllter, editierbarer Maske. Landet unabhängig von der Suchrichtung immer als Deutsch (oben) / Zielsprache (unten) auf der Karte. Weitere gefundene Übersetzungen können per Checkbox mit angehakt werden und werden dann kommagetrennt in dasselbe Feld eingetragen (eine Vokabel statt mehrerer separater Einträge); inklusive Duplikatsprüfung wie bei der manuellen Erfassung (siehe `ui/views/translator_save.py`).
 * **Vokabelverwaltung & Live-Suche:**
   * Durchsuchbare Listenansicht mit Schnellfilter beim Tippen.
   * Bearbeiten-Dialog für bestehende Einträge (Wortkorrekturen und manuelle Kastenanpassung).
@@ -172,5 +174,5 @@ Folgende Module sind für zukünftige Releases vorgesehen:
 ## 👤 Entwickler & Copyright
 
 * **Entwickler:** Philipp Edelbrock
-* **Version:** 1.3.1
+* **Version:** 1.3.2
 * **Lizenz:** © 2026 Alle Rechte vorbehalten
