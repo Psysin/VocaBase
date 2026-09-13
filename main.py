@@ -24,6 +24,7 @@ from ui.views.add_word import AddWordView
 from ui.views.dashboard import DashboardView
 from ui.views.practice import PracticeView
 from ui.views.translator import TranslatorView
+from ui.views.translator_save import TranslatorSaveView
 from ui.views.word_list import WordListView
 
 
@@ -80,7 +81,7 @@ def main(page: ft.Page):
     )
 
     # 4. NAVIGATION (ROUTING)
-    def show_view(view_name: str):
+    def show_view(view_name: str, **kwargs):
         """Wechselt den Bildschirm, indem das alte UI gelöscht und das neue geladen wird."""
         page.clean()  # Löscht alles vom Bildschirm
 
@@ -100,6 +101,19 @@ def main(page: ft.Page):
             page.add(
                 TranslatorView(
                     profile=active_profile,
+                    on_back=lambda: show_view("dashboard"),
+                    on_save_word=lambda front_text, result: show_view(
+                        "translator_save", front_text=front_text, result=result
+                    ),
+                )
+            )
+        elif view_name == "translator_save":
+            page.add(
+                TranslatorSaveView(
+                    profile=active_profile,
+                    all_profiles=profiles,
+                    front_text=kwargs["front_text"],
+                    result=kwargs["result"],
                     on_back=lambda: show_view("dashboard"),
                 )
             )

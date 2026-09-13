@@ -2,8 +2,9 @@
 
 Einfacher Übersetzer: deutsches Wort eingeben, "Go" antippen, Haupttreffer
 plus weitere zutreffende Übersetzungen ansehen (MyMemory Translation API,
-siehe core/translate_client.py). Das Speichern als Vokabel ist bewusst noch
-nicht Teil dieser Ansicht - das kommt erst in einer späteren Phase.
+siehe core/translate_client.py). Ein gefundener Treffer kann über
+"Als Vokabel speichern" auf einer eigenen Seite (translator_save.py)
+übernommen werden.
 """
 
 import asyncio
@@ -11,18 +12,29 @@ import asyncio
 import flet as ft
 from core.i18n import t
 from core.models import UserProfile
-from core.translate_client import TranslateFehler, translate_word, zielsprachcode
+from core.translate_client import (
+    TranslateFehler,
+    TranslationResult,
+    translate_word,
+    zielsprachcode,
+)
 
 
 class TranslatorView(ft.Container):
     """Eingabemaske mit Übersetzungs-Ergebnis (Haupttreffer + Alternativen)."""
 
-    def __init__(self, profile: UserProfile, on_back):
+    def __init__(self, profile: UserProfile, on_back, on_save_word):
         super().__init__()
         self.profile = profile
         self.on_back = on_back
+        self.on_save_word = on_save_word
         self.lang = getattr(profile, "ui_language", "Deutsch")
         self.target_code = zielsprachcode(profile.language)
+        # Letztes erfolgreiches Ergebnis, für die Navigation zur Speicherseite
+        # (siehe handle_translate/handle_save_word) - lebt sonst nirgends,
+        # da TranslationResult nur lokal in handle_translate erzeugt wird.
+        self.last_front_text: str | None = None
+        self.last_result: TranslationResult | None = None
 
         # 1. EINGABEFELD
         self.input_field = ft.TextField(
@@ -64,6 +76,20 @@ class TranslatorView(ft.Container):
         self.alternatives_column = ft.Column(spacing=2)
         self.message_text = ft.Text(value="", size=14, weight=ft.FontWeight.W_500)
 
+        # 3b. ALS VOKABEL SPEICHERN (nur sichtbar nach erfolgreicher Übersetzung)
+        self.btn_save_word = ft.ElevatedButton(
+            content=ft.Row(
+                controls=[
+                    ft.Icon(ft.Icons.BOOKMARK_ADD),
+                    ft.Text(t("translator_als_vokabel_speichern", self.lang)),
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                tight=True,
+            ),
+            visible=False,
+            on_click=lambda e: self.on_save_word(self.last_front_text, self.last_result),
+        )
+
         # 4. ZURÜCK-BUTTON
         self.back_btn = ft.OutlinedButton(
             content=ft.Row(
@@ -91,6 +117,7 @@ class TranslatorView(ft.Container):
                 self.result_text,
                 self.alternatives_label,
                 self.alternatives_column,
+                self.btn_save_word,
                 self.back_btn,
             ],
         )
@@ -108,6 +135,9 @@ class TranslatorView(ft.Container):
         self.result_label.visible = False
         self.alternatives_label.visible = False
         self.alternatives_column.controls = []
+        self.btn_save_word.visible = False
+        self.last_front_text = None
+        self.last_result = None
         self.loading_ring.visible = True
         self.go_btn.disabled = True
         self.update()
@@ -126,6 +156,9 @@ class TranslatorView(ft.Container):
                 self.alternatives_column.controls = [
                     ft.Text(alt, size=15) for alt in ergebnis.alternatives
                 ]
+            self.last_front_text = text
+            self.last_result = ergebnis
+            self.btn_save_word.visible = True
         finally:
             self.loading_ring.visible = False
             self.go_btn.disabled = False

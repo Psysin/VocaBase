@@ -165,6 +165,31 @@ _TEXTE: dict[str, dict[str, str]] = {
         "Englisch": "Please enter a word first.",
         "Spanisch": "Introduce primero una palabra.",
     },
+    "translator_als_vokabel_speichern": {
+        "Deutsch": "Als Vokabel speichern",
+        "Englisch": "Save as word",
+        "Spanisch": "Guardar como palabra",
+    },
+    "translator_speichern_titel": {
+        "Deutsch": "Vokabel speichern",
+        "Englisch": "Save word",
+        "Spanisch": "Guardar palabra",
+    },
+    "translator_weitere_speichern_hinweis": {
+        "Deutsch": "Weitere Übersetzungen auch speichern?",
+        "Englisch": "Also save these translations?",
+        "Spanisch": "¿Guardar también estas traducciones?",
+    },
+    "translator_speichern_erfolg": {
+        "Deutsch": "{anzahl} Vokabel(n) hinzugefügt.",
+        "Englisch": "{anzahl} word(s) added.",
+        "Spanisch": "{anzahl} palabra(s) añadida(s).",
+    },
+    "translator_speichern_duplikate": {
+        "Deutsch": "Bereits vorhanden (übersprungen): {woerter}",
+        "Englisch": "Already exists (skipped): {woerter}",
+        "Spanisch": "Ya existe (omitido): {woerter}",
+    },
     # --- Übungsansicht (practice.py) ---
     "aussprache_abspielen_tooltip": {
         "Deutsch": "Aussprache abspielen",
